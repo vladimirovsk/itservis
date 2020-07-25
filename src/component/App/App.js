@@ -8,7 +8,10 @@ import Logout from "../Logout/Logout";
 import {autoLogin} from "../../store/actions/auth";
 import Home from "../Pages/Home";
 import Dashboard from "../Pages/Dashboard";
-import Headers from "../Headers/Headers";
+import Headers from "../UI/Headers/Headers";
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from '../UI/Theme'
+
 import Project from "../Pages/Project";
 import Cabinet from '../Pages/Cabinet';
 import {setDefaultLanguage, setLanguageCookie, setTranslations, translate} from "react-switch-lang";
@@ -29,7 +32,6 @@ class App extends Component {
     componentDidMount() {
         this.props.autoLogin();
     }
-
 
     render(){
 
@@ -61,10 +63,10 @@ class App extends Component {
 
 
     return (
-        <div className='App'>
+        <ThemeProvider theme={theme}>
             <Headers />
             {routes}
-        </div>
+        </ThemeProvider>
     )
     }
 }
