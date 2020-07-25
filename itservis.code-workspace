@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "../cap_react_rest"
 		}
 	],
 	"settings": {}
