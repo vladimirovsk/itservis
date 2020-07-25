@@ -54,7 +54,7 @@ class App extends Component {
                     <Switch>
                         <Route exact={true} path="/"       render={()=><Home />}/>
                         <Route exact={true} path="/auth"   render={() => <Auth  />}/>
-                        <Route path="/project" exact={true} render={()=><Project />}/>
+                        <Route exact={true} path="/project"  render={()=><Project />}/>
                         <Route exact={true} path="/about"  render={() => <About />}/>
                         <Redirect to={'/auth'}/>
                     </Switch>
@@ -64,8 +64,10 @@ class App extends Component {
 
     return (
         <ThemeProvider theme={theme}>
-            <Headers />
-            {routes}
+            
+                <Headers />
+                {routes}
+            
         </ThemeProvider>
     )
     }

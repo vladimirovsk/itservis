@@ -28,23 +28,11 @@ import {
     getLanguage,
     translate,
 } from 'react-switch-lang';
+
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 const drawerWidth = 220;
 
