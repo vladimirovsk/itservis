@@ -21,6 +21,16 @@ export default createMuiTheme({
   typography:{
     h4:{
       fontWeight: 10
+    },
+    signin:{
+      borderRadius:"50px",
+      marginLeft:"50px",
+      marginRight:"25px",
+      fontFamily:"Pacifico, Arial",
+      fontSize:'1rem',
+      textTransform:"none",
+      color:"white"
     }
-  }
+  },
+  
 })

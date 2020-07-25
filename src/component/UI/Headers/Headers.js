@@ -1,4 +1,4 @@
-import React, {useEffect, useStyles} from "react";
+import React, {useEffect, useStyles, useState} from "react";
 import {connect} from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -11,6 +11,8 @@ import Tab from '@material-ui/core/Tab';
 import logo from '../../../assets/logo.png'; 
 import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 
 import {
   setLanguage,
@@ -35,14 +37,14 @@ const thStyles = makeStyles(theme => ({
   toolbarMargin:{
     ...theme.mixins.toolbar,
     marginBottom:"5em",
-
   },
   logo:{
-    height:"2rem"
+    height:"4em"
   },
+  
   logoContainer:{
-    padding:'0',
-    "&:hober":{
+    padding:'5px',
+    "&:hover":{
       backgroundColor:"transparent"
     }
   },
@@ -55,19 +57,35 @@ const thStyles = makeStyles(theme => ({
     fontWeight:700,
     fontSize:'1rem',
     minWidth:10,
-    marginLeft:'25px',
+    marginLeft:'5em',
+   },
+   button:{
+     ...theme.typography.signin,
+      
+      height:"45px",
    }
 }));
 
 function Headers (props) {
-  const [value, setValue] = React.useState(1);
-
+  const [value, setValue] = useState(0);
+  const [anchorEl, setAnchoeEl] =  useState(null)
+  const [open, setOpen] = useState(false)
   const classes = thStyles();
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
 
+  const handleClick = (e) => {
+    setAnchoeEl(e.currentTarget)
+    setOpen(true)
+  }
+
+  const handleClose = (e) => {
+    setAnchoeEl(null)
+    setOpen(false)
+  }
+  //Для возможности роутинга по страницам без перезагрузки сайта
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0){
       setValue(0)
@@ -86,7 +104,7 @@ function Headers (props) {
           <Button component={Link} to="/" 
           disableRipple
           className={classes.logoContainer}> 
-            <img alt="logo" src={logo} classNam={classes.logo} />
+            <img alt="logo" src={logo} className={classes.logo} />
           </Button>
               <Tabs 
               aria-label="simple tabs example"
@@ -96,9 +114,33 @@ function Headers (props) {
               >
 
                 <Tab className={classes.tab} component={Link} to='/' label="Home"/>
-                <Tab className={classes.tab} component={Link} to='/Project' label="Project"/>
+                <Tab 
+                  aria-owns={anchorEl ? "simple-menu": undefined}
+                  aria-haspopup={anchorEl ? "true": undefined}
+                  onMouseOver={event => handleClick(event)}
+                  className={classes.tab} 
+                  component={Link} 
+                  to='/Project' 
+                  label="Project"/>
                 <Tab className={classes.tab} component={Link} to='/About' label="About"/>
               </Tabs>
+              <Button component={Link} variant="contained" color="secondary" className={classes.button}>  
+                Sign in
+              </Button>
+              <Menu id="simple-menu" anchorEl={anchorEl} open={open}
+                onClose={handleClose}
+                MenuListProps={{onMouseLeave: handleClose}}
+              >
+                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project'>
+                CustomSoft
+                </MenuItem>  
+                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project'>
+                Mobile software
+                </MenuItem>  
+                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' >
+                Network software
+                </MenuItem>  
+              </Menu>  
           </Toolbar>
       </AppBar>
     </ElevationScroll>
