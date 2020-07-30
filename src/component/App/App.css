@@ -9,9 +9,7 @@
   opacity: 0.8; /* Полупрозрачный фон */
   filter: alpha(Opacity=0.7); /* Прозрачность в IE */
 }
-  .a.nav-link .a.active .a.wfm-active {
-    font-weight: bold;
-  }
+ 
 
 
 

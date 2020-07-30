@@ -7,26 +7,30 @@ export default createMuiTheme({
 
   palette:{
     common:{
+
       arcBlue:`${arcBlue}`,
       arcOrange:`${arcOrange}`, 
     },
     primary:{
       main:`${arcBlue}`
     },
-
     secondary:{
       main:`${arcOrange}`
     }
   },
   typography:{
-    h4:{
-      fontWeight: 10
+
+    tab:{
+      fontFamily:"Raleway",
+      textTransform:"none",
+      fontWeight:700,
+      fontSize:'1rem',
     },
     signin:{
       borderRadius:"50px",
       marginLeft:"50px",
       marginRight:"25px",
-      fontFamily:"Pacifico, Arial",
+      fontFamily:"Pacifico",
       fontSize:'1rem',
       textTransform:"none",
       color:"white"

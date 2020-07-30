@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-//import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/styles'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab';
@@ -13,12 +12,16 @@ import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import {useTheme} from '@material-ui/core/styles'
+import Theme from "../Theme";
 
 import {
   setLanguage,
   getLanguage,
   translate,
 } from 'react-switch-lang';
+
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -29,48 +32,75 @@ function ElevationScroll(props) {
   });
 
   return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
+	elevation: trigger ? 4 : 0,
   });
 }
 
 const thStyles = makeStyles(theme => ({
   toolbarMargin:{
     ...theme.mixins.toolbar,
-    marginBottom:"5em",
+    marginBottom:"3em",
   },
+
   logo:{
-    height:"4em"
+	height:"4em",
+	[theme.breakpoints.down("md")]:{
+	height:"3em"  },
+	[theme.breakpoints.down("sm")]:{
+		height:"2em"  }
   },
-  
+
   logoContainer:{
+
     padding:'5px',
     "&:hover":{
       backgroundColor:"transparent"
     }
   },
+  
   tabContainer:{
-    marginLeft:'auto',
+	marginLeft:'auto',
   },
+ 
   tab:{
-    fontStyle: 'bold',
-    fontFamily:"Raleway",
-    fontWeight:700,
-    fontSize:'1rem',
-    minWidth:10,
-    marginLeft:'5em',
+	...theme.typography.tab,
+	minWidth:10,
+    marginLeft:'25px',
    },
+
    button:{
      ...theme.typography.signin,
-      
       height:"45px",
+   },
+ 
+   menu:{
+     backgroundColor: theme.palette.common.arcBlue,
+	 color  :"white",
+	 borderRadius:'0px'
+   },
+   menuItem:{
+	...theme.typography.tab,
+	opacity:0.7,
+	"&:hover": {
+		opacity:1,
+		color:"red"
+
+	},
+	
+	selected: { /* Increase the specificity */
+		color: "green"
    }
+  }
 }));
 
 function Headers (props) {
   const [value, setValue] = useState(0);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md")) 
   const [anchorEl, setAnchoeEl] =  useState(null)
   const [open, setOpen] = useState(false)
   const classes = thStyles();
+
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -95,52 +125,92 @@ function Headers (props) {
       setValue(2)
     } 
   }, [value]); 
+
+  const tabs =(
+	   <React.Fragment>
+<Tabs 
+              	aria-label="simple tabs example"
+				className={classes.tabContainer} 
+				value={value} 
+                onChange={handleChange}
+                indicatorColor="secondary"
+              >
+                <Tab
+                    className={classes.tab} 
+					component={Link}  
+					to='/'
+					label="Home"
+
+                />
+                <Tab 
+					className={classes.tab} 
+					component={Link} 
+                    to='/Project' 
+					label="Project"
+		
+					aria-owns={anchorEl ? "simple-menu": undefined}
+                    aria-haspopup={anchorEl ? "true": undefined}
+                    onMouseOver={(event) => handleClick(event)}
+                />
+                <Tab 
+					className={classes.tab} 
+					component={Link} 
+					to='/About' 
+					label="About"
+	
+                />
+              </Tabs>
+              
+              <Button component={Link} variant="contained" color="secondary" className={classes.button}>  
+                Sign in
+              </Button>
+              <Menu 
+                id="simple-menu" 
+				anchorEl={anchorEl} 
+				open={open}
+				component={Link}
+                //onClose={handleClose}
+                MenuListProps={{onMouseLeave: handleClose}}
+                classes={{paper: classes.menu}}
+				elevation={0}
+				
+              >
+                <MenuItem 
+                  onClick={()=>{handleClose(); setValue(1)}} 
+                  component={Link} 
+                  to='/Project'
+				  classes={{root: classes.menuItem}}
+				  pathname="/Project"                  >
+                Project
+                </MenuItem>
+
+                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+                CustomSoft
+                </MenuItem>  
+                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+                Mobile software
+                </MenuItem>  
+                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+                Network software
+                </MenuItem>  
+              </Menu>  
+	   </React.Fragment>
+  )
     
   return(
     <React.Fragment>
     <ElevationScroll>
       <AppBar position="fixed" color="primary">
-        <Toolbar disableGutters={true}>
+		<Toolbar 
+		//disableGutters={true}
+		>
           <Button component={Link} to="/" 
           disableRipple
           className={classes.logoContainer}> 
             <img alt="logo" src={logo} className={classes.logo} />
           </Button>
-              <Tabs 
-              aria-label="simple tabs example"
-                className={classes.tabContainer} value={value} 
-                onChange={handleChange}
-                indicatorColor="secondary"
-              >
 
-                <Tab className={classes.tab} component={Link} to='/' label="Home"/>
-                <Tab 
-                  aria-owns={anchorEl ? "simple-menu": undefined}
-                  aria-haspopup={anchorEl ? "true": undefined}
-                  onMouseOver={event => handleClick(event)}
-                  className={classes.tab} 
-                  component={Link} 
-                  to='/Project' 
-                  label="Project"/>
-                <Tab className={classes.tab} component={Link} to='/About' label="About"/>
-              </Tabs>
-              <Button component={Link} variant="contained" color="secondary" className={classes.button}>  
-                Sign in
-              </Button>
-              <Menu id="simple-menu" anchorEl={anchorEl} open={open}
-                onClose={handleClose}
-                MenuListProps={{onMouseLeave: handleClose}}
-              >
-                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project'>
-                CustomSoft
-                </MenuItem>  
-                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project'>
-                Mobile software
-                </MenuItem>  
-                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' >
-                Network software
-                </MenuItem>  
-              </Menu>  
+              {matches ? null: tabs}
           </Toolbar>
       </AppBar>
     </ElevationScroll>
