@@ -128,52 +128,52 @@ function Headers (props) {
 
   const tabs =(
 	   <React.Fragment>
-<Tabs 
-              	aria-label="simple tabs example"
-				className={classes.tabContainer} 
-				value={value} 
-                onChange={handleChange}
-                indicatorColor="secondary"
-              >
-                <Tab
-                    className={classes.tab} 
-					component={Link}  
-					to='/'
-					label="Home"
-
-                />
-                <Tab 
-					className={classes.tab} 
-					component={Link} 
-                    to='/Project' 
-					label="Project"
-		
-					aria-owns={anchorEl ? "simple-menu": undefined}
-                    aria-haspopup={anchorEl ? "true": undefined}
-                    onMouseOver={(event) => handleClick(event)}
-                />
-                <Tab 
-					className={classes.tab} 
-					component={Link} 
-					to='/About' 
-					label="About"
+        <Tabs 
+         	aria-label="simple tabs example"
+			className={classes.tabContainer} 
+			value={value} 
+         	onChange={handleChange}
+          	indicatorColor="secondary"
+        >
+          <Tab
+			className={classes.tab} 
+			component={Link}  
+			to='/'
+			label="Home"
+          />
+          <Tab 
+            className={classes.tab} 
+            component={Link} 
+			to='/Project' 
+			label="Project"
+			aria-haspopup="true"
+      
+            aria-owns={anchorEl ? "simple-menu": undefined}
+            //aria-haspopup={anchorEl ? "true": undefined}
+            onMouseOver={(event) => handleClick(event)}
+          />
+          <Tab 
+            className={classes.tab} 
+            component={Link} 
+            to='/About' 
+			label="About"
 	
-                />
-              </Tabs>
+			/>
+		</Tabs>
               
-              <Button component={Link} variant="contained" color="secondary" className={classes.button}>  
-                Sign in
-              </Button>
+		<Button component={Link} variant="contained" color="secondary" className={classes.button}>  
+		Sign in
+		</Button>
+		
               <Menu 
-                id="simple-menu" 
+				id="simple-menu" 
 				anchorEl={anchorEl} 
 				open={open}
 				component={Link}
-                //onClose={handleClose}
-                MenuListProps={{onMouseLeave: handleClose}}
-                classes={{paper: classes.menu}}
+				//onClose={handleClose}
+				MenuListProps={{onMouseLeave: handleClose}}
+				classes={{paper: classes.menu}}
 				elevation={0}
-				
               >
                 <MenuItem 
                   onClick={()=>{handleClose(); setValue(1)}} 
