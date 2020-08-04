@@ -202,14 +202,13 @@ function Headers (props) {
     <ElevationScroll>
       <AppBar position="fixed" color="primary">
 		<Toolbar 
-		//disableGutters={true}
+		disableGutters={true}
 		>
           <Button component={Link} to="/" 
           disableRipple
           className={classes.logoContainer}> 
             <img alt="logo" src={logo} className={classes.logo} />
           </Button>
-
               {matches ? null: tabs}
           </Toolbar>
       </AppBar>
