@@ -161,7 +161,11 @@ function Headers (props) {
 			/>
 		</Tabs>
               
-		<Button component={Link} variant="contained" color="secondary" className={classes.button}>  
+		<Button component={Link} 
+			variant="contained" 
+			color="secondary" 
+			className={classes.button}
+		>  
 		Sign in
 		</Button>
 		
@@ -169,20 +173,22 @@ function Headers (props) {
 				id="simple-menu" 
 				anchorEl={anchorEl} 
 				open={open}
-				component={Link}
+				//component={Link}
 				//onClose={handleClose}
 				MenuListProps={{onMouseLeave: handleClose}}
+				//keepMounted
 				classes={{paper: classes.menu}}
 				elevation={0}
               >
                 <MenuItem 
-                  onClick={()=>{handleClose(); setValue(1)}} 
-                  component={Link} 
-                  to='/Project'
-				  classes={{root: classes.menuItem}}
-				  pathname="/Project"                  >
-                Project
-                </MenuItem>
+					onClick={()=>{handleClose(); setValue(1)}} 
+					component={Link} 
+					to='/Project'
+					classes={{root: classes.menuItem}}
+					pathname="/Project"
+				>
+					Project
+				</MenuItem>
 
                 <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
                 CustomSoft
