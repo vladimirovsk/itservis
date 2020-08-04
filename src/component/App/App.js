@@ -8,7 +8,7 @@ import Logout from "../Logout/Logout";
 import {autoLogin} from "../../store/actions/auth";
 import Home from "../Pages/Home";
 import Dashboard from "../Pages/Dashboard";
-import Headers from "../UI/Headers/Headers";
+import HeadersCls from "../UI/HeaderCls/Headercls";
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../UI/Theme'
 
@@ -65,7 +65,7 @@ class App extends Component {
     return (
         <ThemeProvider theme={theme}>
             
-                <Headers />
+                <HeadersCls />
                 {routes}
             
         </ThemeProvider>
