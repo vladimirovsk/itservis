@@ -8,10 +8,10 @@ import Logout from "../Logout/Logout";
 import {autoLogin} from "../../store/actions/auth";
 import Home from "../Pages/Home";
 import Dashboard from "../Pages/Dashboard";
-import HeadersCls from "../UI/HeaderCls/Headercls";
+import Headers from "../UI/HeaderCls/Headercls";
+//import Headers from '../UI/Headers/Headers';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../UI/Theme'
-
 import Project from "../Pages/Project";
 import Cabinet from '../Pages/Cabinet';
 import {setDefaultLanguage, setLanguageCookie, setTranslations, translate} from "react-switch-lang";
@@ -64,8 +64,7 @@ class App extends Component {
 
     return (
         <ThemeProvider theme={theme}>
-            
-                <HeadersCls />
+                <Headers />
                 {routes}
             
         </ThemeProvider>

@@ -65,8 +65,11 @@ const thStyles = makeStyles(theme => ({
  
   tab:{
 	...theme.typography.tab,
-	minWidth:10,
+	  minWidth:10,
     marginLeft:'25px',
+    "&:hover":{
+      color:"white"
+    }
    },
 
    button:{
@@ -75,22 +78,23 @@ const thStyles = makeStyles(theme => ({
    },
  
    menu:{
-     backgroundColor: theme.palette.common.arcBlue,
-	 color  :"white",
-	 borderRadius:'0px'
+      backgroundColor: theme.palette.common.arcBlue,
+	    color  :"white",
+      borderRadius:'0px',
+      "&:hover":{
+        color:"white"
+      }
+
+      
    },
    menuItem:{
 	...theme.typography.tab,
-	opacity:0.7,
-	"&:hover": {
-		opacity:1,
-		color:"red"
-
+    opacity:0.7,
+    
+	  "&:hover": {
+  		color:"white"
 	},
 	
-	selected: { /* Increase the specificity */
-		color: "green"
-   }
   }
 }));
 
@@ -191,13 +195,13 @@ function Headers (props) {
 					Project
 				</MenuItem>
 
-                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
                 CustomSoft
                 </MenuItem>  
-                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
                 Mobile software
                 </MenuItem>  
-                <MenuItem onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
                 Network software
                 </MenuItem>  
               </Menu>  

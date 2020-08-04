@@ -23,17 +23,77 @@ import {
         theme: 0,//useTheme(),
 		matches: null,//useMediaQuery(this.theme.breakpoints.down("md")),
 		anchorEl:null,
-		classes:0,
+		classes:this.thStyles(),
+		open:false,
 
 
       }
 	}
+
+	thStyles = () => makeStyles(theme => ({
+		toolbarMargin:{
+		  ...theme.mixins.toolbar,
+		  marginBottom:"3em",
+		},
+	  
+		logo:{
+		height:"4em",
+		[theme.breakpoints.down("md")]:{
+		height:"3em"  },
+		[theme.breakpoints.down("sm")]:{
+		  height:"2em"  }
+		},
+	  
+		logoContainer:{
+	  
+		  padding:'5px',
+		  "&:hover":{
+			backgroundColor:"transparent"
+		  }
+		},
+		
+		tabContainer:{
+		marginLeft:'auto',
+		},
+	   
+		tab:{
+		...theme.typography.tab,
+		minWidth:10,
+		  marginLeft:'25px',
+		 },
+	  
+		 button:{
+		   ...theme.typography.signin,
+			height:"45px",
+		 },
+	   
+		 menu:{
+		   backgroundColor: theme.palette.common.arcBlue,
+		 color  :"white",
+		 borderRadius:'0px'
+		 },
+		 menuItem:{
+		...theme.typography.tab,
+		opacity:0.7,
+		"&:hover": {
+		  opacity:1,
+		  color:"red"
+	  
+		},
+		
+		selected: { /* Increase the specificity */
+		  color: "green"
+		 }
+		}
+	  }));
 	
 
 	componentDidMount() {
 		this.setState({theme:useTheme});
-		//console.log(this.);
-		//this.setState({classes: thStyles()});
+		//console.log(thStyles);
+		this.setState({classes: this.thStyles()});
+		this.setState({open: false})
+		this.setState({matches: useMediaQuery(this.theme.breakpoints.down("md"))})
 		//this.props.classes = useTheme();
     }
 

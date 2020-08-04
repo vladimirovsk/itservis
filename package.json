@@ -17,6 +17,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "cors": "^2.8.5",
+    "create-react-class": "^15.6.3",
     "https-proxy-agent": "^5.0.0",
     "is_js": "^0.9.0",
     "mdbreact": "^4.27.0",
@@ -65,4 +66,3 @@
     "redux-devtools-log-monitor": "^1.4.0"
   }
 }
-
