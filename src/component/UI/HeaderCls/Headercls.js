@@ -87,7 +87,6 @@ import {
 		}
 	  }));
 	
-
 	componentDidMount() {
 		this.setState({theme:useTheme});
 		//console.log(thStyles);
