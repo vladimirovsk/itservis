@@ -84,8 +84,6 @@ const thStyles = makeStyles(theme => ({
       "&:hover":{
         color:"white"
       }
-
-      
    },
    menuItem:{
 	...theme.typography.tab,
@@ -120,6 +118,7 @@ function Headers (props) {
     setAnchoeEl(null)
     setOpen(false)
   }
+
   //Для возможности роутинга по страницам без перезагрузки сайта
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0){
