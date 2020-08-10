@@ -1,10 +1,12 @@
-import React, {Component, useStyles} from "react"
+import React, {Component, useStyles, useState} from "react"
 import {connect} from "react-redux";
-import { withStyles, useTheme } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import {makeStyles} from '@material-ui/styles';
-import {useMediaQuery, AppBar, useScrollTrigger, Toolbar, Button, Link, Tabs, Tab, Menu, MenuItem} from '@material-ui/core';
+import {useMediaQuery, AppBar, useScrollTrigger, Toolbar, Button, Tabs, Tab, Menu, MenuItem} from '@material-ui/core';
+import {useTheme} from '@material-ui/core/styles'
 import logo from '../../../assets/logo.png'; 
-import Theme from "../Theme";
+import {Link} from 'react-router-dom';
+
 
 
 import {
@@ -14,21 +16,21 @@ import {
   } from 'react-switch-lang';
 
 
-
   class Headerscls extends Component {
     constructor(props) {
       super(props);
       this.state = {
         value: 0,
-        theme: 0,//useTheme(),
+        theme: null,//useTheme(),
 		matches: null,//useMediaQuery(this.theme.breakpoints.down("md")),
 		anchorEl:null,
 		classes:this.thStyles(),
 		open:false,
-		anchorEl:null
-
-
-      }
+		tabs:this.tabs
+	  }
+	  
+	  this.handleClick = this.handleClick.bind(this);
+	  this.handleClose = this.handleClose.bind(this);
 	}
 
 	thStyles = () => makeStyles(theme => ({
@@ -112,7 +114,7 @@ import {
 	   
 			 aria-owns={this.anchorEl ? "simple-menu": undefined}
 			 //aria-haspopup={anchorEl ? "true": undefined}
-			 //onMouseOver={(event) => handleClick(event)}
+			 onMouseOver={(event) => this.handleClick(event)}
 		   />
 		   <Tab 
 			 className={this.classes.tab} 
@@ -137,7 +139,7 @@ import {
 				 open={this.open}
 				 //component={Link}
 				 //onClose={handleClose}
-				 //MenuListProps={{onMouseLeave: handleClose}}
+				 MenuListProps={{onMouseLeave: this.handleClose}}
 				 //keepMounted
 				 classes={{paper: this.classes.menu}}
 				 elevation={0}
@@ -153,14 +155,14 @@ import {
 				 </MenuItem>
  
 				 <MenuItem className={this.classes.menuItem} 
-					//onClick={()=>{handleClose(); setValue(1)}} 
+				///	onClick={()=>{this.handleClose(); setValue(1)}} 
 					 component={Link} 
 					 to='/Project' 
 					 pathname="/Project">
 				 CustomSoft
 				 </MenuItem>  
 				 <MenuItem className={this.classes.menuItem} 
-					//onClick={()=>{handleClose(); setValue(1)}} 
+				//	onClick={()=>{this.handleClose(); setValue(1)}} 
 					component={Link} 
 					to='/Project' 
 					pathname="/Project"
@@ -168,7 +170,7 @@ import {
 				 Mobile software
 				 </MenuItem>  
 				 <MenuItem className={this.classes.menuItem} 
-				 //onClick={()=>{handleClose(); setValue(1)}} 
+				// onClick={()=>{this.handleClose(); setValue(1)}} 
 				 component={Link} 
 				 to='/Project' 
 				 pathname="/Project">
@@ -178,13 +180,21 @@ import {
 		</React.Fragment>
    )
 	 
-	
+   handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = event => {
+    this.setState({ anchorEl: null });
+    console.log(event.target);
+  };
 
 	componentDidMount() {
-		this.setState({theme:useTheme});
+		console.log(this.props)
+		//this.setState({theme:useTheme});
 		//console.log(thStyles);
-		this.setState({classes: this.thStyles()});
-		this.setState({open: false});
+		//this.setState({classes: this.thStyles()});
+		//this.setState({open: false});
 		//this.setState({matches: useMediaQuery(this.theme.breakpoints.down("md"))})
 	}
 	
@@ -193,7 +203,19 @@ import {
 
       render () {
 		const {t} = this.props;
-		
+
+		//this.setState({theme:useTheme});
+		//setValue = () => this.setState(false);
+		//this.setState({value:this.useState(0)})
+		//const [value, setValue] = useState(0);
+		//this.setState({theme:useTheme});
+		//const matches = useMediaQuery(theme.breakpoints.down("md")) 
+		//const [anchorEl, setAnchoeEl] =   this.state;//useState(null)
+		//const [open, setOpen] = useState(false)
+		//const [state, setstate] = useState(initialState)
+		//this.setState({classes:this.thStyles});
+		//const [open, setOpen] = useState(false)
+		//const classes = thStyles();
 
 
 		  
@@ -220,7 +242,7 @@ import {
 				className={this.props.classes.logoContainer}> 
 				<img alt="logo" src={logo} className={this.props.classes.logo} />
 			</Button>
-				{this.tabs}	
+				{this.props.tabs}	
           	</Toolbar>				  
 
 			 </AppBar>      

@@ -10,8 +10,10 @@ import Home from "../Pages/Home";
 import Dashboard from "../Pages/Dashboard";
 import Headers from "../UI/HeaderCls/Headercls";
 //import Headers from '../UI/Headers/Headers';
+
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../UI/Theme'
+
 import Project from "../Pages/Project";
 import Cabinet from '../Pages/Cabinet';
 import {setDefaultLanguage, setLanguageCookie, setTranslations, translate} from "react-switch-lang";
@@ -32,9 +34,7 @@ class App extends Component {
     componentDidMount() {
         this.props.autoLogin();
     }
-
     render(){
-
         let routes = '';
         //Если выполненна авторизация
         if (this.props.isAuth){
@@ -66,7 +66,6 @@ class App extends Component {
         <ThemeProvider theme={theme}>
                 <Headers />
                 {routes}
-            
         </ThemeProvider>
     )
     }
