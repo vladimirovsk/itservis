@@ -21,7 +21,6 @@ import pl from '../../i18/pl.json';
 
 import * as PropTypes from "prop-types";
 
-
 setTranslations({ ru, en, pl });
 setDefaultLanguage('ru');
 setLanguageCookie();
