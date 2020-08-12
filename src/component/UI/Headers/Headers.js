@@ -1,6 +1,5 @@
 import React, {useEffect, useStyles, useState} from "react";
 import {connect} from "react-redux";
-
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,7 +14,6 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import {useTheme} from '@material-ui/core/styles'
-import Theme from "../Theme";
 
 import {
   setLanguage,
@@ -100,12 +98,17 @@ const thStyles = makeStyles(theme => ({
 
 function Headers (props) {
   const [value, setValue] = useState(0);
+
+ 
+
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md")) 
   const [anchorEl, setAnchoeEl] =  useState(null)
   const [open, setOpen] = useState(false)
   const classes = thStyles();
 
+  const [{t}] = useState(props)
+  console.log(t('navbar.dashboard'));
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -212,9 +215,9 @@ function Headers (props) {
     <React.Fragment>
     <ElevationScroll>
       <AppBar position="fixed" color="primary">
-		<Toolbar 
-		disableGutters={true}
-		>
+        <Toolbar 
+        disableGutters={true}
+        >
           <Button component={Link} to="/" 
           disableRipple
           className={classes.logoContainer}> 
@@ -231,10 +234,10 @@ function Headers (props) {
 
 function mapStateToProps(state){
   //console.log(new Date(localStorage.getItem('expirationDate')))
-  //console.log(new Date(state.auth.expData))
+  //console.log(new Date(state.auth.expData)
   return{
-      isAuth: !!state.auth.token,
-      stDate: new Date(state.auth.expData)
+    isAuth: !!state.auth.token,
+    stDate: new Date(state.auth.expData)
   }
 }
 

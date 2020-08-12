@@ -22,7 +22,7 @@ import pl from '../../i18/pl.json';
 import * as PropTypes from "prop-types";
 
 setTranslations({ ru, en, pl });
-setDefaultLanguage('ru');
+setDefaultLanguage('en');
 setLanguageCookie();
 
 class App extends Component {
@@ -38,9 +38,9 @@ class App extends Component {
             routes = (
             <Switch>
                 <Route exact path="/"  render={()=><Home />}/>
-                <Route path="/logout" exact={true} render={()=><Logout />}/>
-                <Route path="/project" exact={true} render={()=><Project />}/>
-                <Route path="/dashboard" exact={true} render={() => <Dashboard />}/>
+                <Route path="/logout" exact={true} render={() =><Logout />}/>
+                <Route path="/project" exact={true} render={() =><Project />}/>
+                <Route path="/dashboard" exact={true} render={() =><Dashboard />}/>
                 <Route path="/cabinet" exact={true} render={() => <Cabinet />}/>
                 <Route exact={true} path="/about"  render={() => <About />}/>
                 <Redirect to={'/'}/>

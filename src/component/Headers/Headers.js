@@ -155,7 +155,7 @@ class Headers extends Component {
         const {t} = this.props
         const { classes } = this.props;
         const menuId = 'primary-search-account-menu';
-        console.log(classes);
+        console.log(t.{});
         const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
         return (
             <div className={classes.root}>
@@ -258,9 +258,7 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps) (translate(withStyles(useStyles) (Headers)));
-
-
+export default connect(mapStateToProps) (translate(withStyles(useStyles)(Headers)));
 /*
                 <Navbar sticky="top" collapseOnSelect expand="md"
                         className="navbar-expand-lg fixed-top scrolling-navbar navbar-dark bg-dar">
