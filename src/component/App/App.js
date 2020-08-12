@@ -32,7 +32,6 @@ class App extends Component {
     }
 
     render(){
-
         let routes = '';
         //Если выполненна авторизация
         if (this.props.isAuth){
