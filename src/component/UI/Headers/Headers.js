@@ -72,13 +72,14 @@ const thStyles = makeStyles(theme => ({
       height:"45px",
    },
  
-   menu:{
+   menu: {
       backgroundColor: theme.palette.common.arcBlue,
 	    color  :"white",
       borderRadius:'0px',
       "&:hover":{
-        color:"white"
-      }
+        color:"white",
+      },
+      
 
       
    },
@@ -172,15 +173,27 @@ function Headers (props) {
 		</Button>
 		
               <Menu 
+
 				id="simple-menu" 
 				anchorEl={anchorEl} 
 				open={open}
 				//component={Link}
 				//onClose={handleClose}
 				MenuListProps={{onMouseLeave: handleClose}}
-				keepMounted
+				//keepMounted
 				classes={{paper: classes.menu}}
-				elevation={0}
+        elevation={0}
+        
+        getContentAnchorEl={null}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        {...props}
               >
                 <MenuItem 
 					onClick={()=>{handleClose(); setValue(1)}} 
