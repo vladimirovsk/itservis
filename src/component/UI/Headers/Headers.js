@@ -1,5 +1,7 @@
 import React, {useEffect, useStyles, useState} from "react";
 import {connect} from "react-redux";
+import {NavLink} from "react-router-dom";
+
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -8,19 +10,13 @@ import {makeStyles} from '@material-ui/styles'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab';
 import logo from '../../../assets/logo.png'; 
-import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import {useTheme} from '@material-ui/core/styles'
 
-import {
-  setLanguage,
-  getLanguage,
-  translate,
-} from 'react-switch-lang';
-
+import {translate } from 'react-switch-lang';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -98,9 +94,6 @@ const thStyles = makeStyles(theme => ({
 
 function Headers (props) {
   const [value, setValue] = useState(0);
-
- 
-
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md")) 
   const [anchorEl, setAnchoeEl] =  useState(null)
@@ -145,13 +138,13 @@ function Headers (props) {
         >
           <Tab
 			className={classes.tab} 
-			component={Link}  
+			component={NavLink}  
 			to='/'
 			label="Home"
           />
           <Tab 
             className={classes.tab} 
-            component={Link} 
+            component={NavLink} 
 			to='/Project' 
 			label="Project"
 			aria-haspopup="true"
@@ -162,16 +155,17 @@ function Headers (props) {
           />
           <Tab 
             className={classes.tab} 
-            component={Link} 
+            component={NavLink} 
             to='/About' 
-			label="About"
+			      label="About"
 	
 			/>
 		</Tabs>
               
-		<Button component={Link} 
+		<Button component={NavLink} 
 			variant="contained" 
-			color="secondary" 
+      color="secondary" 
+      
 			className={classes.button}
 		>  
 		Sign in
@@ -184,13 +178,13 @@ function Headers (props) {
 				//component={Link}
 				//onClose={handleClose}
 				MenuListProps={{onMouseLeave: handleClose}}
-				//keepMounted
+				keepMounted
 				classes={{paper: classes.menu}}
 				elevation={0}
               >
                 <MenuItem 
 					onClick={()=>{handleClose(); setValue(1)}} 
-					component={Link} 
+					component={NavLink} 
 					to='/Project'
 					classes={{root: classes.menuItem}}
 					pathname="/Project"
@@ -198,13 +192,13 @@ function Headers (props) {
 					Project
 				</MenuItem>
 
-                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={NavLink} to='/Project' pathname="/Project">
                 CustomSoft
                 </MenuItem>  
-                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={NavLink} to='/Project' pathname="/Project">
                 Mobile software
                 </MenuItem>  
-                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={NavLink} to='/Project' pathname="/Project">
                 Network software
                 </MenuItem>  
               </Menu>  
@@ -218,7 +212,7 @@ function Headers (props) {
         <Toolbar 
         disableGutters={true}
         >
-          <Button component={Link} to="/" 
+          <Button component={NavLink} to="/" 
           disableRipple
           className={classes.logoContainer}> 
             <img alt="logo" src={logo} className={classes.logo} />
@@ -242,5 +236,4 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps) (translate(withStyles(useStyles) (Headers)));
-//            <img alt="logo" src={logo} classNam={classes.logo}/ >
 
