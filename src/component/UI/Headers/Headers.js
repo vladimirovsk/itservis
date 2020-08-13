@@ -1,9 +1,10 @@
 import React, {useEffect, useStyles, useState} from "react";
 import {connect} from "react-redux";
-import {NavLink} from "react-router-dom";
+//import {NavLink} from "react-router-dom";
 
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
+import NavLink from "@material-ui/core/Link";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import {makeStyles} from '@material-ui/styles'
@@ -131,10 +132,10 @@ function Headers (props) {
 	   <React.Fragment>
         <Tabs 
          	aria-label="simple tabs example"
-			className={classes.tabContainer} 
-			value={value} 
+		    	className={classes.tabContainer} 
+			    value={value} 
          	onChange={handleChange}
-          	indicatorColor="secondary"
+          indicatorColor="secondary"
         >
           <Tab
 			className={classes.tab} 
@@ -148,8 +149,8 @@ function Headers (props) {
 			to='/Project' 
 			label="Project"
 			aria-haspopup="true"
-      
-            aria-owns={anchorEl ? "simple-menu": undefined}
+			aria-controls="simple-menu"
+            aria-owns={anchorEl}
             //aria-haspopup={anchorEl ? "true": undefined}
             onMouseOver={(event) => handleClick(event)}
           />
@@ -164,8 +165,7 @@ function Headers (props) {
               
 		<Button component={NavLink} 
 			variant="contained" 
-      color="secondary" 
-      
+      		color="secondary" 
 			className={classes.button}
 		>  
 		Sign in
@@ -217,7 +217,7 @@ function Headers (props) {
           className={classes.logoContainer}> 
             <img alt="logo" src={logo} className={classes.logo} />
           </Button>
-              {matches ? null: tabs}
+              {tabs}
           </Toolbar>
       </AppBar>
     </ElevationScroll>
