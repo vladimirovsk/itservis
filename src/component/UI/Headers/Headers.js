@@ -7,6 +7,7 @@ import AppBar from "@material-ui/core/AppBar";
 import NavLink from "@material-ui/core/Link";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+
 import {makeStyles} from '@material-ui/styles'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab';
@@ -103,7 +104,7 @@ function Headers (props) {
   const classes = thStyles();
 
   const [{t}] = useState(props)
-  console.log(t('navbar.dashboard'));
+  //console.log(t('navbar.dashboard'));
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -142,15 +143,15 @@ function Headers (props) {
 			className={classes.tab} 
 			component={NavLink}  
 			to='/'
-			label="Home"
+      label={t('navbar.glavn')}
           />
           <Tab 
             className={classes.tab} 
             component={NavLink} 
-			to='/Project' 
-			label="Project"
-			aria-haspopup="true"
-			aria-controls="simple-menu"
+			      to='/Project' 
+			      label={t('navbar.project')}
+			      aria-haspopup="true"
+			      aria-controls="simple-menu"
             aria-owns={anchorEl}
             //aria-haspopup={anchorEl ? "true": undefined}
             onMouseOver={(event) => handleClick(event)}
@@ -159,9 +160,9 @@ function Headers (props) {
             className={classes.tab} 
             component={NavLink} 
             to='/About' 
-			      label="About"
+            label ={t('navbar.kontact')}
 	
-			/>
+			    />
 		</Tabs>
               
 		<Button component={NavLink} 
@@ -174,36 +175,28 @@ function Headers (props) {
 		
               <Menu 
 
-				id="simple-menu" 
-				anchorEl={anchorEl} 
-				open={open}
-				//component={Link}
-				//onClose={handleClose}
-				MenuListProps={{onMouseLeave: handleClose}}
-				//keepMounted
-				classes={{paper: classes.menu}}
-        elevation={0}
+			  	id="simple-menu" 
+				  anchorEl={anchorEl} 
+				  open={open}
+				  //component={Link}
+				  //onClose={handleClose}
+				  MenuListProps={{onMouseLeave: handleClose}}
+				  //keepMounted
+				  classes={{paper: classes.menu}}
+          elevation={0}
         
-        getContentAnchorEl={null}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        {...props}
+          getContentAnchorEl={null}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+          //{...props}
               >
-                <MenuItem 
-					onClick={()=>{handleClose(); setValue(1)}} 
-					component={NavLink} 
-					to='/Project'
-					classes={{root: classes.menuItem}}
-					pathname="/Project"
-				>
-					Project
-				</MenuItem>
+
 
                 <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={NavLink} to='/Project' pathname="/Project">
                 CustomSoft
