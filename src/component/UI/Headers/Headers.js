@@ -2,13 +2,16 @@ import React, {useEffect, useStyles, useState} from "react";
 import {connect} from "react-redux";
 //import {NavLink} from "react-router-dom";
 
-import { withStyles } from "@material-ui/core/styles";
+import { createStyles, makeStyles, withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import NavLink from "@material-ui/core/Link";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import InputBase from '@material-ui/core/InputBase';
 
-import {makeStyles} from '@material-ui/styles'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab';
 import logo from '../../../assets/logo.png'; 
@@ -18,7 +21,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import {useTheme} from '@material-ui/core/styles'
 
-import {translate } from 'react-switch-lang';
+import {translate, getDefaultLanguage, setLanguage } from 'react-switch-lang';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -80,9 +83,6 @@ const thStyles = makeStyles(theme => ({
       "&:hover":{
         color:"white",
       },
-      
-
-      
    },
    menuItem:{
 	...theme.typography.tab,
@@ -92,10 +92,22 @@ const thStyles = makeStyles(theme => ({
   		color:"white"
 	},
 	
-  }
+  },
+
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 60,
+
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+    borderRadius: 4,
+    borderColor: '#80bdff',
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',  },
 }));
 
 function Headers (props) {
+  const [langauge, setLang] = React.useState(getDefaultLanguage());
   const [value, setValue] = useState(0);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md")) 
@@ -110,9 +122,16 @@ function Headers (props) {
     setValue(newValue);
   };
 
+  const handleChangeLg = (event) => {
+    setLang(event.target.value);
+    setLanguage(event.target.value);
+  };
+
+  
+
   const handleClick = (e) => {
     setAnchoeEl(e.currentTarget)
-    setOpen(true)
+    setOpen(!open)
   }
 
   const handleClose = (e) => {
@@ -154,7 +173,9 @@ function Headers (props) {
 			      aria-controls="simple-menu"
             aria-owns={anchorEl}
             //aria-haspopup={anchorEl ? "true": undefined}
-            onMouseOver={(event) => handleClick(event)}
+//            onMouseOver={(event) => handleClick(event)}
+            onClick={(event) => handleClick(event)}
+            MenuListProps={{onMouseLeave: handleClose}}
           />
           <Tab 
             className={classes.tab} 
@@ -165,13 +186,18 @@ function Headers (props) {
 			    />
 		</Tabs>
               
-		<Button component={NavLink} 
-			variant="contained" 
-      		color="secondary" 
-			className={classes.button}
-		>  
-		Sign in
-		</Button>
+    <FormControl className={classes.formControl}>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={langauge}
+          onChange={handleChangeLg}
+        >
+          <MenuItem value={'en'}>EN</MenuItem>
+          <MenuItem value={'ru'}>RU</MenuItem>
+          <MenuItem value={'pl'}>PL</MenuItem>
+        </Select>
+      </FormControl>
 		
               <Menu 
 
@@ -210,7 +236,7 @@ function Headers (props) {
               </Menu>  
 	   </React.Fragment>
   )
-    
+    console.log(langauge)
   return(
     <React.Fragment>
     <ElevationScroll>
