@@ -1,16 +1,14 @@
 import React, {useEffect, useStyles, useState} from "react";
 import {connect} from "react-redux";
-//import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
-import { createStyles, makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import NavLink from "@material-ui/core/Link";
+//import Link from "@material-ui/core/Link";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
-import InputBase from '@material-ui/core/InputBase';
 
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab';
@@ -19,7 +17,7 @@ import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import {useTheme} from '@material-ui/core/styles'
+import InputLabel from '@material-ui/core/InputLabel'
 
 import {translate, getDefaultLanguage, setLanguage } from 'react-switch-lang';
 
@@ -81,13 +79,13 @@ const thStyles = makeStyles(theme => ({
 	    color  :"white",
       borderRadius:'0px',
       "&:hover":{
-        color:"white",
+		color:"white",
       },
    },
    menuItem:{
 	...theme.typography.tab,
     opacity:0.7,
-    
+    borderRadius:'0px',
 	  "&:hover": {
   		color:"white"
 	},
@@ -95,15 +93,18 @@ const thStyles = makeStyles(theme => ({
   },
 
   formControl: {
-    margin: theme.spacing(1),
-    minWidth: 60,
-
+   margin: theme.spacing(1),
+	minWidth: 60,
+	
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
     borderRadius: 4,
     borderColor: '#80bdff',
-    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',  },
+	boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+	
+},
+  
 }));
 
 function Headers (props) {
@@ -114,6 +115,7 @@ function Headers (props) {
   const [anchorEl, setAnchoeEl] =  useState(null)
   const [open, setOpen] = useState(false)
   const classes = thStyles();
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const [{t}] = useState(props)
   //console.log(t('navbar.dashboard'));
@@ -131,6 +133,7 @@ function Headers (props) {
 
   const handleClick = (e) => {
     setAnchoeEl(e.currentTarget)
+    setSelectedIndex(e.currentTarget.index);
     setOpen(!open)
   }
 
@@ -160,42 +163,45 @@ function Headers (props) {
         >
           <Tab
 			className={classes.tab} 
-			component={NavLink}  
+			component={Link}  
 			to='/'
-      label={t('navbar.glavn')}
+      		label={t('navbar.glavn')}
           />
           <Tab 
             className={classes.tab} 
-            component={NavLink} 
+            component={Link} 
 			      to='/Project' 
 			      label={t('navbar.project')}
-			      aria-haspopup="true"
+			      //aria-haspopup="true"
 			      aria-controls="simple-menu"
             aria-owns={anchorEl}
-            //aria-haspopup={anchorEl ? "true": undefined}
+            aria-haspopup={anchorEl ? "true": undefined}
 //            onMouseOver={(event) => handleClick(event)}
             onClick={(event) => handleClick(event)}
-            MenuListProps={{onMouseLeave: handleClose}}
+
           />
           <Tab 
             className={classes.tab} 
-            component={NavLink} 
-            to='/About' 
+            component={Link} 
+            to='/about' 
             label ={t('navbar.kontact')}
 	
 			    />
 		</Tabs>
               
     <FormControl className={classes.formControl}>
+
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={langauge}
-          onChange={handleChangeLg}
+		  onChange={handleChangeLg}
+		  component={Button}
+		  className={classes.menu}
         >
-          <MenuItem value={'en'}>EN</MenuItem>
-          <MenuItem value={'ru'}>RU</MenuItem>
-          <MenuItem value={'pl'}>PL</MenuItem>
+          <MenuItem   selected={1 === selectedIndex} value={'en'}>EN</MenuItem>
+          <MenuItem   selected={2 === selectedIndex} value={'ru'}>RU</MenuItem>
+          <MenuItem   selected={3 === selectedIndex} value={'pl'}>PL</MenuItem>
         </Select>
       </FormControl>
 		
@@ -222,15 +228,13 @@ function Headers (props) {
           }}
           //{...props}
               >
-
-
-                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={NavLink} to='/Project' pathname="/Project">
+                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
                 CustomSoft
                 </MenuItem>  
-                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={NavLink} to='/Project' pathname="/Project">
+                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
                 Mobile software
                 </MenuItem>  
-                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={NavLink} to='/Project' pathname="/Project">
+                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
                 Network software
                 </MenuItem>  
               </Menu>  
@@ -244,7 +248,7 @@ function Headers (props) {
         <Toolbar 
         disableGutters={true}
         >
-          <Button component={NavLink} to="/" 
+          <Button component={Link} to="/" 
           disableRipple
           className={classes.logoContainer}> 
             <img alt="logo" src={logo} className={classes.logo} />
