@@ -41,16 +41,16 @@ const thStyles = makeStyles(theme => ({
   },
 
   logo:{
-	height:"4em",
+	height:"5em",
 	[theme.breakpoints.down("md")]:{
-	height:"3em"  },
+	height:"4em"  },
 	[theme.breakpoints.down("sm")]:{
-		height:"2em"  }
+		height:"3em"  }
   },
 
   logoContainer:{
 
-    padding:'5px',
+    padding:'10px',
     "&:hover":{
       backgroundColor:"transparent"
     }
@@ -108,11 +108,13 @@ const thStyles = makeStyles(theme => ({
 }));
 
 function Headers (props) {
+
   const [langauge, setLang] = React.useState(getDefaultLanguage());
   const [value, setValue] = useState(0);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md")) 
   const [anchorEl, setAnchoeEl] =  useState(null)
+  const [anchorEl2, setAnchorEl2] =  useState(null)
   const [open, setOpen] = useState(false)
   const classes = thStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -124,23 +126,30 @@ function Headers (props) {
     setValue(newValue);
   };
 
+  const handleClick = (e) => {
+    setAnchoeEl(e.currentTarget)
+    setSelectedIndex(e.currentTarget.index);
+    setOpen(true)
+  }
+
+  const handleClose = (e) => {
+	setAnchoeEl(null)
+    setOpen(false)
+  }
+
+  const handleClickLng = (event) => {
+	setAnchorEl2(event.currentTarget);
+  }
+  const handleCloseLng = (e) => {
+	setAnchorEl2(null)
+  }
+
   const handleChangeLg = (event) => {
+	  console.log(event.target.value)
     setLang(event.target.value);
     setLanguage(event.target.value);
   };
 
-  
-
-  const handleClick = (e) => {
-    setAnchoeEl(e.currentTarget)
-    setSelectedIndex(e.currentTarget.index);
-    setOpen(!open)
-  }
-
-  const handleClose = (e) => {
-    setAnchoeEl(null)
-    setOpen(false)
-  }
   //Для возможности роутинга по страницам без перезагрузки сайта
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0){
@@ -189,29 +198,40 @@ function Headers (props) {
 			    />
 		</Tabs>
               
-    <FormControl className={classes.formControl}>
+    <Button 
+       tabindex="0" 
+       type="button" 
+       aria-haspopup="true" 
+	   aria-label="Сменить язык" 
+	   aria-controls="simple-menu"
+       title="Сменить язык"
+	   onClick={handleClickLng}>
+		onChange={handleChangeLg}
+		   {getDefaultLanguage()}
+    </Button>
 
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={langauge}
-		  onChange={handleChangeLg}
-		  component={Button}
-		  className={classes.menu}
-        >
-          <MenuItem   selected={1 === selectedIndex} value={'en'}>EN</MenuItem>
-          <MenuItem   selected={2 === selectedIndex} value={'ru'}>RU</MenuItem>
-          <MenuItem   selected={3 === selectedIndex} value={'pl'}>PL</MenuItem>
-        </Select>
-      </FormControl>
+    	<Menu
+			id="simple-menu"
+			anchorEl={anchorEl2}
+			keepMounted
+			open={Boolean(anchorEl2)}
+			onClose={handleCloseLng}
+		>
+		  <MenuItem  selected={1 === selectedIndex} value={'en'} >EN</MenuItem>
+          <MenuItem  selected={2 === selectedIndex} value={'ru'} >RU</MenuItem>
+          <MenuItem  selected={3 === selectedIndex} value={'pl'} >PL</MenuItem>
+
+      	</Menu>
 		
+
+
               <Menu 
 
 			  	id="simple-menu" 
 				  anchorEl={anchorEl} 
 				  open={open}
 				  //component={Link}
-				  //onClose={handleClose}
+				  onClose={handleClose}
 				  MenuListProps={{onMouseLeave: handleClose}}
 				  //keepMounted
 				  classes={{paper: classes.menu}}
