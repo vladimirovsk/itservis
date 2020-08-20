@@ -30,9 +30,8 @@ export default createMuiTheme({
       borderRadius:"50px",
       marginLeft:"50px",
       marginRight:"25px",
-      fontFamily:"Pacifico",
       fontSize:'1rem',
-      textTransform:"none",
+      textTransform:"upper",
       color:"white"
     },
     links:{

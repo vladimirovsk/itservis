@@ -1,15 +1,10 @@
 import React, {useEffect, useStyles, useState} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-
 import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-//import Link from "@material-ui/core/Link";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import FormControl from '@material-ui/core/FormControl'
-import Select from '@material-ui/core/Select'
-
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab';
 import logo from '../../../assets/logo.png'; 
@@ -17,9 +12,9 @@ import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import InputLabel from '@material-ui/core/InputLabel'
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-import {translate, getDefaultLanguage, setLanguage } from 'react-switch-lang';
+import {translate, getDefaultLanguage ,getLanguage, setLanguage } from 'react-switch-lang';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -118,36 +113,42 @@ function Headers (props) {
   const [open, setOpen] = useState(false)
   const classes = thStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(1);
+ // const [isAuth, setAuth] = useState();
 
   const [{t}] = useState(props)
-  //console.log(t('navbar.dashboard'));
+
+  console.log(props.isAuth);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
 
-  const handleClick = (e) => {
-    setAnchoeEl(e.currentTarget)
-    setSelectedIndex(e.currentTarget.index);
-    setOpen(true)
+  const handleClick = (event) => {
+    	setAnchoeEl(event.currentTarget)
+    	setSelectedIndex(event.currentTarget.index);
+    	setOpen(true)
   }
 
-  const handleClose = (e) => {
-	setAnchoeEl(null)
-    setOpen(false)
+  const handleClose = (event) => {
+	  setAnchoeEl(null)
+      setOpen(false)
   }
 
   const handleClickLng = (event) => {
-	setAnchorEl2(event.currentTarget);
-  }
-  const handleCloseLng = (e) => {
-	setAnchorEl2(null)
+		setAnchorEl2(event.currentTarget);
   }
 
-  const handleChangeLg = (event) => {
-	  console.log(event.target.value)
-    setLang(event.target.value);
-    setLanguage(event.target.value);
+  const handleCloseLng = (event) => {
+		setOpen(false)
+	  	setAnchorEl2(null)
+  }
+
+  const handleChangeLg = (event, lng) => {
+	  console.log(event.currentTarget.value, lng)
+    	setLang(lng);
+		setLanguage(lng);
+		setAnchorEl2(null)
+		setOpen(false)
   };
 
   //Для возможности роутинга по страницам без перезагрузки сайта
@@ -163,7 +164,7 @@ function Headers (props) {
 
   const tabs =(
 	   <React.Fragment>
-        <Tabs 
+    	<Tabs 
          	aria-label="simple tabs example"
 		    	className={classes.tabContainer} 
 			    value={value} 
@@ -179,14 +180,16 @@ function Headers (props) {
           <Tab 
             className={classes.tab} 
             component={Link} 
-			      to='/Project' 
-			      label={t('navbar.project')}
-			      //aria-haspopup="true"
-			      aria-controls="simple-menu"
+			to='/Project' 
+			label={t('navbar.project')}
+			//aria-haspopup="true"
+			aria-controls="simple-menu"
             aria-owns={anchorEl}
             aria-haspopup={anchorEl ? "true": undefined}
 //            onMouseOver={(event) => handleClick(event)}
-            onClick={(event) => handleClick(event)}
+			onClick={(event) => handleClick(event)}
+			//icon={<ArrowDropDownIcon/>}
+			wrapped={false}
 
           />
           <Tab 
@@ -194,73 +197,83 @@ function Headers (props) {
             component={Link} 
             to='/about' 
             label ={t('navbar.kontact')}
-	
-			    />
+			/>
+			<Tab 
+			hidden={props.isAuth}
+            className={classes.tab} 
+            component={Link} 
+            to='/auth' 
+            label ={t('navbar.login')}
+			/>
+			
+			<Tab 
+			hidden={!props.isAuth}
+            className={classes.tab} 
+            component={Link} 
+            to='/logout' 
+            label ={t('navbar.logout')}
+			/>
+
+
 		</Tabs>
               
-    <Button 
-       tabindex="0" 
-       type="button" 
-       aria-haspopup="true" 
-	   aria-label="Сменить язык" 
-	   aria-controls="simple-menu"
-       title="Сменить язык"
-	   onClick={handleClickLng}>
-		onChange={handleChangeLg}
-		   {getDefaultLanguage()}
-    </Button>
+      <Button 
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+		onClick={handleClickLng}
+		endIcon={<ArrowDropDownIcon/>}
+		>
+        {getLanguage()}
+      </Button>
 
     	<Menu
-			id="simple-menu"
+			id="simple-menu-lng"
 			anchorEl={anchorEl2}
 			keepMounted
 			open={Boolean(anchorEl2)}
 			onClose={handleCloseLng}
+			classes={{paper: classes.menu}}
 		>
-		  <MenuItem  selected={1 === selectedIndex} value={'en'} >EN</MenuItem>
-          <MenuItem  selected={2 === selectedIndex} value={'ru'} >RU</MenuItem>
-          <MenuItem  selected={3 === selectedIndex} value={'pl'} >PL</MenuItem>
+			<MenuItem onClick={(event) => handleChangeLg(event, 'en')} className={classes.menuItem} selected={1 === selectedIndex} >EN</MenuItem>
+          	<MenuItem onClick={(event) => handleChangeLg(event, 'ru')} className={classes.menuItem} selected={2 === selectedIndex} >RU</MenuItem>
+          	<MenuItem onClick={(event) => handleChangeLg(event, 'pl')} className={classes.menuItem} selected={3 === selectedIndex}  >PL</MenuItem>
+      	</Menu>	
 
-      	</Menu>
-		
-
-
-              <Menu 
-
-			  	id="simple-menu" 
-				  anchorEl={anchorEl} 
-				  open={open}
-				  //component={Link}
-				  onClose={handleClose}
-				  MenuListProps={{onMouseLeave: handleClose}}
-				  //keepMounted
-				  classes={{paper: classes.menu}}
-          elevation={0}
-        
-          getContentAnchorEl={null}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-          }}
-          //{...props}
-              >
-                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
-                CustomSoft
-                </MenuItem>  
-                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
-                Mobile software
-                </MenuItem>  
-                <MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
-                Network software
-                </MenuItem>  
-              </Menu>  
+		<Menu 
+			id="simple-menu" 
+			anchorEl={anchorEl} 
+			open={open}
+			component={Link}
+			onClose={handleClose}
+			MenuListProps={{onMouseLeave: handleClose}}
+			keepMounted
+			classes={{paper: classes.menu}}
+			elevation={0}
+	
+			/*getContentAnchorEl={null}
+			anchorOrigin={{
+			vertical: 'bottom',
+			horizontal: 'center',
+			}}
+			transformOrigin={{
+			vertical: 'top',
+			horizontal: 'center',
+			}}*/
+		//{...props}
+			>
+			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+			CustomSoft
+			</MenuItem>  
+			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+			Mobile software
+			</MenuItem>  
+			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+			Network software
+			</MenuItem>  
+			</Menu>  
 	   </React.Fragment>
   )
-    console.log(langauge)
   return(
     <React.Fragment>
     <ElevationScroll>
