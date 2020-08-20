@@ -24,6 +24,8 @@ import {
 
 
 import imgDatabase from '../Home/database.jpg';
+import imgServer from '../Home/servers.jpg';
+import imgRest from '../Home/REST.jpeg';
 
 const useStyles = makeStyles(({breakpoints, spacing}) => ({
     root: {
@@ -33,7 +35,6 @@ const useStyles = makeStyles(({breakpoints, spacing}) => ({
         boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
         position: 'relative',
         maxWidth: 500,
-        //height:200,
         marginLeft: 'auto',
         overflow: 'initial',
         background: '#ffffff',
@@ -47,7 +48,7 @@ const useStyles = makeStyles(({breakpoints, spacing}) => ({
         },
       },
       media: {
-        width: '80%',
+        width: '88%',
         marginLeft: 'auto',
         marginRight: 'auto',
         marginTop: spacing(-3),
@@ -101,13 +102,10 @@ function Home (props) {
 
     const [{t}] = useState(props)
     
-
-        //console.log(h('card1.header'));
         return (
             <Grid container spacing={5}>
 
-                <Grid item xs={12}>
-                    
+                <Grid item xs={4}>
                     <Card className={cx(classes.root, shadowStyles.root)}>
                         <CardMedia 
                             className={classes.media}
@@ -116,7 +114,6 @@ function Home (props) {
                             image={imgDatabase}
                             //title="database"
                         />
-
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                             {t("home.card1.header")}
@@ -126,8 +123,39 @@ function Home (props) {
                             </Typography>
                         </CardContent>    
                     </Card>
-                   
                 </Grid>    
+                <Grid item xs={4}>
+                    <Card className={cx(classes.root, shadowStyles.root)}>
+                        <CardMedia 
+                            className={classes.media}
+                            image={imgServer}
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                            {t("home.card2.header")}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                            {t('home.card2.text')}
+                            </Typography>
+                        </CardContent>    
+                    </Card>
+                </Grid>  
+                <Grid item xs={4}>
+                    <Card className={cx(classes.root, shadowStyles.root)}>
+                        <CardMedia 
+                            className={classes.media}
+                            image={imgRest}
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                            {t("home.card3.header")}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                            {t('home.card3.text')}
+                            </Typography>
+                        </CardContent>    
+                    </Card>
+                </Grid>  
             </Grid>
         )
     

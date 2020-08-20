@@ -186,8 +186,8 @@ function Headers (props) {
 			aria-controls="simple-menu"
             aria-owns={anchorEl}
             aria-haspopup={anchorEl ? "true": undefined}
-//            onMouseOver={(event) => handleClick(event)}
-			onClick={(event) => handleClick(event)}
+            onMouseOver={(event) => handleClick(event)}
+//			onClick={(event) => handleClick(event)}
 			//icon={<ArrowDropDownIcon/>}
 			wrapped={false}
 
