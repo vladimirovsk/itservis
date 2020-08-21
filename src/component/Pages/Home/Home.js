@@ -33,7 +33,7 @@ const useStyles = makeStyles(({breakpoints, spacing}) => ({
         borderRadius: spacing(2), // 16px
         transition: '0.3s',
         boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
-        position: 'relative',
+        //position: 'relative',
         maxWidth: 500,
         marginLeft: 'auto',
         overflow: 'initial',
@@ -104,7 +104,15 @@ function Home (props) {
     
         return (
             <Grid container spacing={5}>
-
+                <Grid container>
+                    <Grid item xs={12} className={cx(classes.root, shadowStyles.root)}>
+                        <Card>
+                            <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2" >Мы решаем задачи которые ставят нам заказчики </Typography>
+                        </CardContent>
+                        </Card> 
+                    </Grid>    
+                </Grid>
                 <Grid item xs={4}>
                     <Card className={cx(classes.root, shadowStyles.root)}>
                         <CardMedia 
