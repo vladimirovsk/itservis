@@ -21,7 +21,8 @@ import {
 import imgDatabase from '../Home/img/database.jpg';
 import imgServer from '../Home/img/servers.jpg';
 import imgRest from '../Home/img/REST.jpeg';
-import laptopItservis from '../Home/img/laptopItservis2.jpg';
+import laptopItservis from '../Home/img/laptopItservis.jpg';
+//import laptopItservis from '../Home/img/laptopItservis2.jpg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
         color: theme.palette.common.white,
         marginBottom: theme.spacing(3),
+        
         backgroundImage: `url(${laptopItservis})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -44,13 +46,17 @@ const useStyles = makeStyles((theme) => ({
         bottom: 0,
         right: 0,
         left: 0, 
-        backgroundOverlay: "rgba(0,0,0,.8)"
+        backgroundOverlay: "rgba(0,0,0,.9)"
      },
      mainFuturePostContetnt:{
         position:"relative",
-        padding:theme.spacing(9),
-
+        padding:theme.spacing(6),
+        textShadow: '1px 1px 2px black, 0 0 1em black',
+        marginTop: theme.spacing(2)
       },
+      mainContent:{
+
+      }
     }));
 
 /*
@@ -76,10 +82,10 @@ function Home (props) {
                     <Grid container>
                         <Grid item md={6}>
                             <div className={classes.mainFuturePostContetnt}>
-                            <Typography gutterBottom variant="h3" component="h1" color="inherit" >
+                            <Typography gutterBottom variant="h2" component="h2" color="inherit" >
                                 Мы решаем задачи которые ставят нам заказчики
                              </Typography>
-                             <Typography gutterBottom variant="h5" color="inherit" paragraph>
+                             <Typography gutterBottom variant="h5" component="h5" color="inherit" paragraph>
                              
                                 Труля ля тру ляля мы не пилим тополя nруля ля тру ляля мы не пилим тополя tруля ля тру ляля мы не пилим тополя
                               </Typography>
@@ -93,6 +99,18 @@ function Home (props) {
                     
                 </Container>
                 </Paper>  
+                <div className={classes.mainContent}>
+                    <Container maxWidth='sm'>
+                        <Typography variant='h2' align='center' color='textPrymary' gutterBottom>Developer</Typography>
+                        <Typography variant='h5' align='center' color='textSecondary' gutterBottom paragraph>Труля ля тру ляля мы не пилим тополя nруля ля тру ляля мы не пилим тополя tруля ля тру ляля мы не пилим тополя</Typography>
+                        <div className={classes.mainButtons}>
+                            <Grid>
+
+                            </Grid>
+                        </div>
+
+                    </Container>
+                </div>
             </React.Fragment>
         )
 }
