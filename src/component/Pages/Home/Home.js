@@ -18,36 +18,37 @@ import FavotiteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FolderIcon from '@material-ui/icons/Folder';
 
-import {Card, CardContent, CardMedia, CardActions} from '@material-ui/core';
+import {Card, CardContent, CardMedia, CardActions, TextareaAutosize} from '@material-ui/core';
 import {BottomNavigation, BottomNavigationAction} from '@material-ui/core/';
 import Typography from '@material-ui/core/Typography';
 
-import {
-    translate,
-} from 'react-switch-lang';
+import {translate} from 'react-switch-lang';
 
 
 import imgDatabase from '../Home/img/database.jpg';
 import imgServer from '../Home/img/servers.jpg';
 import imgRest from '../Home/img/REST.jpeg';
-import laptopItservis from '../Home/img/laptopItservis.jpg';
-//import laptopItservis from '../Home/img/laptopItservis2.jpg';
+import laptopItservis1 from '../Home/img/laptopItservis.jpg';
+import laptopItservis2 from '../Home/img/laptopItservis2.jpg';
+import BackgroundSlider from '../../BackgroundSlider/BackgroundSlider'
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        color: theme.palette.primary,
+        
         flexGrow: 1,
       },
       mainFuturePost:{
         position: "relative",
         //position: 'sticky',
-        //top: '0px',
-        //zIndex: '-1000',
+        top: '0px',
+        zIndex: '-1000',
         color: theme.palette.common.white,
-        marginBottom: theme.spacing(4),
-        backgroundImage: `url(${laptopItservis})`,
+        marginBottom: theme.spacing(6),
+        backgroundImage: `url(${laptopItservis1})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center"
+        backgroundPosition: "center",
       },
       overlay:{
         position:"absolute",
@@ -58,27 +59,61 @@ const useStyles = makeStyles((theme) => ({
         backgroundOverlay: "rgba(0,0,0,.9)"
      },
      mainFuturePostContetnt:{
+         left:-50,
         position:"relative",
-        padding:theme.spacing(4),
+        padding:theme.spacing(6),
         textShadow: '1px 1px 2px black, 0 0 1em black',
-        marginTop: theme.spacing(4)
+        marginTop: theme.spacing(4),
+        //marginLeft: theme.spacing(-20)
       },
       mainContent:{
 
       },
       mainButtons:{
+          backgroundColor:theme.palette.secondary
 
       },
       cardMedia:{
-          paddingTop:"56.25%"
+        paddingTop: "56.25%",
+        //borderRadius: theme.spacing(2), // 16px   
+        //boxShadow: '0px 4px 4px rgba(34, 35, 58, 0.2)',
+          //position: 'relative'
       },
+      
       CardContent:{
-          flexGrow:1, 
-          height: '350px'
-          
+            margin:'auto',
+            maxWidth: 500,
+            //paddingBottom: theme.spacing(2),
+            flexGrow:1, 
+            //heigh:500
       },
       cardGrid:{
-          marginTop: theme.spacing(4),
+
+           
+            // 16px
+            transition: '0.3s',
+            //boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
+            //position: 'relative',
+            //maxWidth: 500,
+            //marginLeft: 'auto',
+            overflow: 'initial',
+            background: '#ffffff',
+           //display: 'flex',
+           //flexDirection: 'column',
+           //alignItems: 'left',
+           //paddingBottom: 100,
+            //marginTop: theme.spacing(4)
+      },
+      cardItem:{
+        borderRadius: theme.spacing(2),  
+        width: '100%',
+        height: '100%',
+        //paddingBottom: theme.spacing(2),
+        //marginBottom:theme.spacing(4),
+        "&:hover":{
+            //color: "red"
+            boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
+          }
       }
     }));
 
@@ -90,14 +125,12 @@ lg, large: 1280px
 xl, extra-large: 1920px
 */
   
-let cards = []
-
+let cards = [];
 
 function Home (props) {
     const classes = useStyles();
     const [{t}] = useState(props)
     const [value, setValue] = React.useState("recents")
-
     const handleChangle =  (event, newValue) =>{
             setValue(newValue )
     }
@@ -123,68 +156,50 @@ function Home (props) {
             
         return (
             <React.Fragment>
-                <Paper className={classes.mainFuturePost} >
+                <Paper className={classes.mainFuturePost}>
                 <Container fixed>
                     <div className={classes.overlay}/>
+
                     <Grid container>
                         <Grid item md={6}>
                             <div className={classes.mainFuturePostContetnt}>
-                            <Typography gutterBottom variant="h3" component="h3" color="inherit" >
+                            
+
+                            <Typography variant="h4" component="h4" color="inherit" >
                                 {t('home.deviz.text1')}
                              </Typography>
-                             <Typography gutterBottom variant="h5" component="h5" color="inherit" paragraph>
+                             <Typography variant="h5" component="h5" color="inherit" paragraph>
                                 {t('home.deviz.text2')}
                              </Typography>
-                              <Button variant="contained" color="secondary">
-                                  Learn More
-                              </Button>
                              </div>
                         </Grid>
                     </Grid>    
                 </Container>
                 </Paper>
-                
                 <div className={classes.mainContent}>
-                    <Container maxWidth='md'>
-                        <Typography variant='h2' align='center' color='textPrymary' gutterBottom>Developer</Typography>
-                        <Typography variant='h5' align='center' color='textSecondary' gutterBottom paragraph>Труля ля тру ляля мы не пилим тополя nруля ля тру ляля мы не пилим тополя tруля ля тру ляля мы не пилим тополя</Typography>
-                        <div className={classes.mainButtons}>
-                            <Grid container spacing={5} justify="center" >
-                                <Grid item>
-                                    <Button variant="contained" color="primary">Start now</Button>
-                                </Grid>
-                                <Grid item>
-                                    <Button variant="outlined" color="primary">Learn more</Button>
-                                </Grid>
-                            </Grid>
-                        </div>
-                    </Container> 
+                    <container maxWidth='md'>
+                        <Typography variant='contained' color='secondary'></Typography>
+                    </container>
                 </div>
-                <Container className={classes.cardGrid} maxWidth='md'>
-                <Grid container spacing="4">
+                
+                <Container className={classes.cardGrid}>
+                <Grid container spacing={5} justify='center'>
                             {cards.map ((card)=> (
-                                <Grid item key={card}  xs={12} xm={6} md={4}>
-                                    <Card className={classes.cardGrid}>
+                                <Grid item key={card.id} xs={12} xm={6} md={4} >
+                                    <Card className={classes.cardItem}>
                                     <CardMedia 
                                             className={classes.cardMedia}
                                             image={card.img}
                                             title="image card"
-                                        />
+                                    />
                                         <CardContent  className={classes.cardContext}>
-                                            <Typography variant="h5" gutterBottom>
+                                            <Typography variant="h5" gutterBottom align='center'>
                                                 {card.title}
                                             </Typography>
                                             <Typography paragraph>
                                                 {card.text}
                                             </Typography>
                                         </CardContent>
-                                        <CardActions>
-                                        <Button size="small" color="prymary">View</Button>
-                                        <Button size="small" color="secondary">Edit</Button>
-                                        <LayerIcon />
-                                        <PlayCircleFilledIcon />
-                                        </CardActions>
-
                                     </Card>    
                                 </Grid>
                             ))}
@@ -192,13 +207,14 @@ function Home (props) {
 
                 </Container>
                 <footer>
-                    <Typography variant='h6' align='center' gutterBottom> Footer</Typography>
+                    <Typography variant='h6' align='center' gutterBottom>Fotter</Typography>
                     <BottomNavigation
                         value={value}
                         onChange={handleChangle}
-                        className={classes.root}
+                        //className={classes.}
+                        //color="primary"
                     >
-                                                <BottomNavigationAction 
+                        <BottomNavigationAction 
                             label='Recents'
                             value='recents'
                             icon={<RestoreIcon/>}
@@ -230,4 +246,10 @@ function Home (props) {
 export default translate(Home);
 
 /**
+ *                                         <CardActions>
+                                        <Button size="small" color="secondary">View</Button>
+                                        <Button size="small" color="secondary">Edit</Button>
+                                        <LayerIcon />
+                                        <PlayCircleFilledIcon />
+                                        </CardActions>
  */

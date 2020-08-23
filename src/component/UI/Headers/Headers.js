@@ -1,7 +1,7 @@
 import React, {useEffect, useStyles, useState} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles, withStyles} from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -11,10 +11,9 @@ import logo from '../../../assets/logo.png';
 import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-
-import {translate, getDefaultLanguage ,getLanguage, setLanguage } from 'react-switch-lang';
+//import {Link, animateScroll as scroll } from "react-scroll"
+import {translate ,getLanguage, setLanguage } from 'react-switch-lang';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -44,7 +43,6 @@ const thStyles = makeStyles(theme => ({
   },
 
   logoContainer:{
-
     padding:'10px',
     "&:hover":{
       backgroundColor:"transparent"
@@ -64,26 +62,27 @@ const thStyles = makeStyles(theme => ({
     }
    },
 
-   button:{
+   buttonLng:{
      ...theme.typography.button,
-      height:"45px",
+	  height:"45px",
    },
  
    menu: {
       backgroundColor: theme.palette.common.arcBlue,
 	    color  :"black",
       borderRadius:'0px',
-      "&:hover":{
-		color:"black",
-      },
+      //"&:hover":{
+	//	color:"black",
+     // },
    },
    menuItem:{
 	...theme.typography.tab,
     opacity:0.7,
-    borderRadius:'0px',
-	  "&:hover": {
-  		color:"black"
-	},
+	borderRadius:'0px',
+	
+	//  "&:hover": {
+  	//	color:"black"
+	//},
 	
   },
 
@@ -104,16 +103,12 @@ const thStyles = makeStyles(theme => ({
 
 function Headers (props) {
 
-  const [langauge, setLang] = React.useState(getDefaultLanguage());
   const [value, setValue] = useState(0);
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md")) 
   const [anchorEl, setAnchoeEl] =  useState(null)
   const [anchorEl2, setAnchorEl2] =  useState(null)
   const [open, setOpen] = useState(false)
   const classes = thStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(1);
- // const [isAuth, setAuth] = useState();
 
   const [{t}] = useState(props)
 
@@ -145,7 +140,6 @@ function Headers (props) {
 
   const handleChangeLg = (event, lng) => {
 	  console.log(event.currentTarget.value, lng)
-    	setLang(lng);
 		setLanguage(lng);
 		setAnchorEl2(null)
 		setOpen(false)
@@ -172,9 +166,9 @@ function Headers (props) {
           indicatorColor="secondary"
         >
           <Tab
-			className={classes.tab} 
-			component={Link}  
-			to='/'
+          className={classes.tab} 
+          component={Link}  
+          to='/'
       		label={t('navbar.glavn')}
           />
           <Tab 
@@ -220,10 +214,10 @@ function Headers (props) {
       <Button 
         variant="contained"
         color="secondary"
-        className={classes.button}
-		onClick={handleClickLng}
-		endIcon={<ArrowDropDownIcon/>}
-		>
+        className={classes.buttonLng}
+		    onClick={handleClickLng}
+		    endIcon={<ArrowDropDownIcon/>}
+		  >
         {getLanguage()}
       </Button>
 

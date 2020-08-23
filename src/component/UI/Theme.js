@@ -3,24 +3,31 @@ import { createMuiTheme } from '@material-ui/core/styles';
 //const colorPrimary = "#00838f";
 //const colorSecondary = "#FFBA60";
 
-const colorPrimary = "#fff";
-//const colorSecondary = "#0d47a1"; //blue
-const colorSecondary = "#0d47a1"; //
+const colorPrimary = "#fff"; //white
+const colorSecondary = "#0d47a1"; //blue
+const colorSpecial = "#FFBA60"; //orange
 
 export default createMuiTheme({
-
   palette:{
+	///type:"light", //dark
     common:{
-
       colorPrimary:`${colorPrimary}`,
       colorSecondary:`${colorSecondary}`, 
+      //colorSpecial:`${colorSpecial}`, 
     },
     primary:{
-      main:`${colorPrimary}`
+	  //light: '#757ce8',	
+	  main:'#fff',
+	  //dark: '#002884',
+	  contrastText: '#000',
     },
     secondary:{
-      main:`${colorSecondary}`
-    }
+	  //main:`${colorSecondary}`
+	  //light: '#ff7961',
+      main: '#0d47a1',
+      //dark: '#ba000d',
+      contrastText: '#fff',
+    },
   },
   typography:{
     tab:{
@@ -35,11 +42,9 @@ export default createMuiTheme({
       marginRight:"25px",
       fontSize:'1rem',
       textTransform:"upper",
-      color:"white",
-      //backgroundColor:"#FFBA60"
     },
     links:{
-       color:"black", 
+       //color:"black", 
     }
   },
   
