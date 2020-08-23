@@ -1,20 +1,15 @@
 import React, {useState} from "react";
-import cx from 'clsx';
-import './Home.css'
 import { makeStyles } from '@material-ui/core/styles';
-
 //import {faHome} from '@fortawesome/free-solid-svg-icons'
 //import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 //import {CardDeck, Container} from "react-bootstrap";
-import Card from '@material-ui/core/Card';
+
+import Button from '@material-ui/core/Button';
+
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-//import Paper from '@material-ui/core/Paper';
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-//import CardActionArea from '@material-ui/core/CardActionArea'
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography'
-import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
-import { useBlogTextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/blog';
 
 
 
@@ -23,64 +18,38 @@ import {
 } from 'react-switch-lang';
 
 
-import imgDatabase from '../Home/database.jpg';
-import imgServer from '../Home/servers.jpg';
-import imgRest from '../Home/REST.jpeg';
+import imgDatabase from '../Home/img/database.jpg';
+import imgServer from '../Home/img/servers.jpg';
+import imgRest from '../Home/img/REST.jpeg';
+import laptopItservis from '../Home/img/laptopItservis2.jpg';
 
-const useStyles = makeStyles(({breakpoints, spacing}) => ({
+const useStyles = makeStyles((theme) => ({
     root: {
-        margin: 'auto',
-        borderRadius: spacing(2), // 16px
-        transition: '0.3s',
-        boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
-        //position: 'relative',
-        maxWidth: 500,
-        marginLeft: 'auto',
-        overflow: 'initial',
-        background: '#ffffff',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        paddingBottom: spacing(2),
-        [breakpoints.up('md')]: {
-          flexDirection: 'row',
-          paddingTop: spacing(2),
-        },
+        flexGrow: 1,
+        
       },
-      media: {
-        width: '88%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginTop: spacing(-3),
-        height: 0,
-        paddingBottom: '48%',
-        borderRadius: spacing(2),
-        backgroundColor: '#fff',
-        position: 'relative',
-        [breakpoints.up('md')]: {
-          width: '100%',
-          marginLeft: spacing(-3),
-          marginTop: 0,
-          transform: 'translateX(-8px)',
-        },
-        '&:after': {
-          content: '" "',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          //backgroundImage: 'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)',
-          borderRadius: spacing(2), // 16
-          opacity: 0.5,
-        },
+
+      mainFuturePost:{
+        position: "relative",
+        color: theme.palette.common.white,
+        marginBottom: theme.spacing(3),
+        backgroundImage: `url(${laptopItservis})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center"
       },
-      content: {
-        padding: 24,
-      },
-      cta: {
-        marginTop: 24,
-        textTransform: 'initial',
+      overlay:{
+        position:"absolute",
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0, 
+        backgroundOverlay: "rgba(0,0,0,.8)"
+     },
+     mainFuturePostContetnt:{
+        position:"relative",
+        padding:theme.spacing(9),
+
       },
     }));
 
@@ -94,26 +63,50 @@ xl, extra-large: 1920px
     
 function Home (props) {
     const classes = useStyles();
-    const shadowStyles = useOverShadowStyles();
-    const {
-        button: buttonStyles,
-        ...contentStyles
-      } = useBlogTextInfoContentStyles();    
-
     const [{t}] = useState(props)
     
         return (
-            <Grid container spacing={5}>
-                <Grid container>
-                    <Grid item xs={12} className={cx(classes.root, shadowStyles.root)}>
-                        <Card>
-                            <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2" >Мы решаем задачи которые ставят нам заказчики </Typography>
-                        </CardContent>
-                        </Card> 
+            <React.Fragment>
+                <Paper className={classes.mainFuturePost} 
+                //style={{backgroundImage:`url(https://source.unsplash.com/random)`}}
+                //style={{ backgroundImage:laptopItservis}}
+                >
+                <Container fixed>
+                    <div className={classes.overlay}/>
+                    <Grid container>
+                        <Grid item md={6}>
+                            <div className={classes.mainFuturePostContetnt}>
+                            <Typography gutterBottom variant="h3" component="h1" color="inherit" >
+                                Мы решаем задачи которые ставят нам заказчики
+                             </Typography>
+                             <Typography gutterBottom variant="h5" color="inherit" paragraph>
+                             
+                                Труля ля тру ляля мы не пилим тополя nруля ля тру ляля мы не пилим тополя tруля ля тру ляля мы не пилим тополя
+                              </Typography>
+                              <Button variant="contained" color="secondary">
+                                  Learn More
+                              </Button>
+                             </div>
+                        </Grid>
+                        
                     </Grid>    
-                </Grid>
-                <Grid item xs={4}>
+                    
+                </Container>
+                </Paper>  
+            </React.Fragment>
+        )
+}
+
+/*Home.propTypes = {
+    t: PropTypes.func.isRequired,
+};*/
+
+
+export default translate(Home);
+
+/*
+
+<Grid item xs={4}>
                     <Card className={cx(classes.root, shadowStyles.root)}>
                         <CardMedia 
                             className={classes.media}
@@ -163,20 +156,7 @@ function Home (props) {
                             </Typography>
                         </CardContent>    
                     </Card>
-                </Grid>  
-            </Grid>
-        )
-    
-}
-
-/*Home.propTypes = {
-    t: PropTypes.func.isRequired,
-};*/
-
-
-export default translate(Home);
-
-/*
+                </Grid>
 
                     <Card  bg={"info"} className=" m-4 bg-light">
                         <Card.Img varian={"top"} src={"database.jpg"}/>
