@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
+
 //import {faHome} from '@fortawesome/free-solid-svg-icons'
 //import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 //import {CardDeck, Container} from "react-bootstrap";
@@ -9,9 +10,17 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography'
 
+import LayerIcon from '@material-ui/icons/Layers'; 
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import RestoreIcon from '@material-ui/icons/Restore';
+import FavotiteIcon from '@material-ui/icons/Favorite';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import FolderIcon from '@material-ui/icons/Folder';
 
+import {Card, CardContent, CardMedia, CardActions} from '@material-ui/core';
+import {BottomNavigation, BottomNavigationAction} from '@material-ui/core/';
+import Typography from '@material-ui/core/Typography';
 
 import {
     translate,
@@ -27,14 +36,14 @@ import laptopItservis from '../Home/img/laptopItservis.jpg';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        
       },
-
       mainFuturePost:{
         position: "relative",
+        //position: 'sticky',
+        //top: '0px',
+        //zIndex: '-1000',
         color: theme.palette.common.white,
-        marginBottom: theme.spacing(3),
-        
+        marginBottom: theme.spacing(4),
         backgroundImage: `url(${laptopItservis})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -50,12 +59,26 @@ const useStyles = makeStyles((theme) => ({
      },
      mainFuturePostContetnt:{
         position:"relative",
-        padding:theme.spacing(6),
+        padding:theme.spacing(4),
         textShadow: '1px 1px 2px black, 0 0 1em black',
-        marginTop: theme.spacing(2)
+        marginTop: theme.spacing(4)
       },
       mainContent:{
 
+      },
+      mainButtons:{
+
+      },
+      cardMedia:{
+          paddingTop:"56.25%"
+      },
+      CardContent:{
+          flexGrow:1, 
+          height: '350px'
+          
+      },
+      cardGrid:{
+          marginTop: theme.spacing(4),
       }
     }));
 
@@ -66,153 +89,145 @@ md, medium: 960px
 lg, large: 1280px
 xl, extra-large: 1920px
 */
-    
+  
+let cards = []
+
+
 function Home (props) {
     const classes = useStyles();
     const [{t}] = useState(props)
-    
+    const [value, setValue] = React.useState("recents")
+
+    const handleChangle =  (event, newValue) =>{
+            setValue(newValue )
+    }
+
+    cards[0] = {
+        id:"1",
+        title:t("home.card1.header"),
+        text:t("home.card1.text"),
+        img: imgDatabase
+    }
+    cards[1] = {
+        id:"2",
+        title:t("home.card2.header"),
+        text:t("home.card2.text"),
+        img: imgServer
+    }
+    cards[2] = {
+        id:"3",
+        title:t("home.card3.header"),
+        text:t("home.card3.text"),
+        img: imgRest
+    }
+            
         return (
             <React.Fragment>
-                <Paper className={classes.mainFuturePost} 
-                //style={{backgroundImage:`url(https://source.unsplash.com/random)`}}
-                //style={{ backgroundImage:laptopItservis}}
-                >
+                <Paper className={classes.mainFuturePost} >
                 <Container fixed>
                     <div className={classes.overlay}/>
                     <Grid container>
                         <Grid item md={6}>
                             <div className={classes.mainFuturePostContetnt}>
-                            <Typography gutterBottom variant="h2" component="h2" color="inherit" >
-                                Мы решаем задачи которые ставят нам заказчики
+                            <Typography gutterBottom variant="h3" component="h3" color="inherit" >
+                                {t('home.deviz.text1')}
                              </Typography>
                              <Typography gutterBottom variant="h5" component="h5" color="inherit" paragraph>
-                             
-                                Труля ля тру ляля мы не пилим тополя nруля ля тру ляля мы не пилим тополя tруля ля тру ляля мы не пилим тополя
-                              </Typography>
+                                {t('home.deviz.text2')}
+                             </Typography>
                               <Button variant="contained" color="secondary">
                                   Learn More
                               </Button>
                              </div>
                         </Grid>
-                        
                     </Grid>    
-                    
                 </Container>
-                </Paper>  
+                </Paper>
+                
                 <div className={classes.mainContent}>
-                    <Container maxWidth='sm'>
+                    <Container maxWidth='md'>
                         <Typography variant='h2' align='center' color='textPrymary' gutterBottom>Developer</Typography>
                         <Typography variant='h5' align='center' color='textSecondary' gutterBottom paragraph>Труля ля тру ляля мы не пилим тополя nруля ля тру ляля мы не пилим тополя tруля ля тру ляля мы не пилим тополя</Typography>
                         <div className={classes.mainButtons}>
-                            <Grid>
-
+                            <Grid container spacing={5} justify="center" >
+                                <Grid item>
+                                    <Button variant="contained" color="primary">Start now</Button>
+                                </Grid>
+                                <Grid item>
+                                    <Button variant="outlined" color="primary">Learn more</Button>
+                                </Grid>
                             </Grid>
                         </div>
-
-                    </Container>
+                    </Container> 
                 </div>
+                <Container className={classes.cardGrid} maxWidth='md'>
+                <Grid container spacing="4">
+                            {cards.map ((card)=> (
+                                <Grid item key={card}  xs={12} xm={6} md={4}>
+                                    <Card className={classes.cardGrid}>
+                                    <CardMedia 
+                                            className={classes.cardMedia}
+                                            image={card.img}
+                                            title="image card"
+                                        />
+                                        <CardContent  className={classes.cardContext}>
+                                            <Typography variant="h5" gutterBottom>
+                                                {card.title}
+                                            </Typography>
+                                            <Typography paragraph>
+                                                {card.text}
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                        <Button size="small" color="prymary">View</Button>
+                                        <Button size="small" color="secondary">Edit</Button>
+                                        <LayerIcon />
+                                        <PlayCircleFilledIcon />
+                                        </CardActions>
+
+                                    </Card>    
+                                </Grid>
+                            ))}
+                    </Grid>
+
+                </Container>
+                <footer>
+                    <Typography variant='h6' align='center' gutterBottom> Footer</Typography>
+                    <BottomNavigation
+                        value={value}
+                        onChange={handleChangle}
+                        className={classes.root}
+                    >
+                                                <BottomNavigationAction 
+                            label='Recents'
+                            value='recents'
+                            icon={<RestoreIcon/>}
+                        />
+                        <BottomNavigationAction 
+                            label='Favorites'
+                            value='favorites'
+                            icon={<FavotiteIcon/>}
+                        />
+                        <BottomNavigationAction 
+                            label='Nearby'
+                            value='nearby'
+                            icon={<LocationOnIcon/>}
+                        />
+                        <BottomNavigationAction 
+                            label='Folder'
+                            value='folder'
+                            icon={<FolderIcon/>}
+                        />
+
+                    </BottomNavigation>
+
+
+                </footer>
             </React.Fragment>
         )
 }
 
-/*Home.propTypes = {
-    t: PropTypes.func.isRequired,
-};*/
-
-
 export default translate(Home);
 
-/*
-
-<Grid item xs={4}>
-                    <Card className={cx(classes.root, shadowStyles.root)}>
-                        <CardMedia 
-                            className={classes.media}
-                            //component="img"
-                            //alt="database"
-                            image={imgDatabase}
-                            //title="database"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                            {t("home.card1.header")}
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                            {t('home.card1.text')}
-                            </Typography>
-                        </CardContent>    
-                    </Card>
-                </Grid>    
-                <Grid item xs={4}>
-                    <Card className={cx(classes.root, shadowStyles.root)}>
-                        <CardMedia 
-                            className={classes.media}
-                            image={imgServer}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                            {t("home.card2.header")}
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                            {t('home.card2.text')}
-                            </Typography>
-                        </CardContent>    
-                    </Card>
-                </Grid>  
-                <Grid item xs={4}>
-                    <Card className={cx(classes.root, shadowStyles.root)}>
-                        <CardMedia 
-                            className={classes.media}
-                            image={imgRest}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                            {t("home.card3.header")}
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                            {t('home.card3.text')}
-                            </Typography>
-                        </CardContent>    
-                    </Card>
-                </Grid>
-
-                    <Card  bg={"info"} className=" m-4 bg-light">
-                        <Card.Img varian={"top"} src={"database.jpg"}/>
-
-                        <Card.Header>{t("home.card1.header")}</Card.Header>
-                        <Card.Body>
-                            <Card.Title></Card.Title>
-                            <Card.Text className="text-left">
-                                {t('home.card1.text')}
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
-
-                        </Card.Footer>
-                    </Card>
-                    
-                    <Card bg={"info"} className=" m-4 bg-light">
-                        <Card.Img varian={"bottom"} src={"servers.jpg"}/>
-                        <Card.Header>{t("home.card2.header")}</Card.Header>
-                        <Card.Body>
-                            <Card.Title></Card.Title>
-                            <Card.Text className="text-left">
-                                {t("home.card2.text")}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    
-                    <Card className=" m-4 bg-light">
-                        <Card.Img varian={"top"} src={"REST.jpeg"}/>
-                        <Card.Header>{t("home.card3.header")}</Card.Header>
-                        <Card.Body>
-                            <Card.Title></Card.Title>
-                            <Card.Text className="text-left">
-                                {t("home.card3.text")}
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
-
-                        </Card.Footer>
-                    </Card>
-*/
+/**
+ */

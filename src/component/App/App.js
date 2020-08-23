@@ -22,7 +22,7 @@ import pl from '../../i18/pl.json';
 import * as PropTypes from "prop-types";
 
 setTranslations({ ru, en, pl });
-setDefaultLanguage('en');
+setDefaultLanguage('ru');
 setLanguageCookie();
 
 class App extends Component {

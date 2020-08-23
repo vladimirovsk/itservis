@@ -60,21 +60,21 @@ const thStyles = makeStyles(theme => ({
 	  minWidth:10,
     marginLeft:'25px',
     "&:hover":{
-      color:"white"
+      color: "black"
     }
    },
 
    button:{
-     ...theme.typography.signin,
+     ...theme.typography.button,
       height:"45px",
    },
  
    menu: {
       backgroundColor: theme.palette.common.arcBlue,
-	    color  :"white",
+	    color  :"black",
       borderRadius:'0px',
       "&:hover":{
-		color:"white",
+		color:"black",
       },
    },
    menuItem:{
@@ -82,7 +82,7 @@ const thStyles = makeStyles(theme => ({
     opacity:0.7,
     borderRadius:'0px',
 	  "&:hover": {
-  		color:"white"
+  		color:"black"
 	},
 	
   },
