@@ -19,7 +19,6 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FolderIcon from '@material-ui/icons/Folder';
 
 import {Card, CardContent, CardMedia, CardActions, TextareaAutosize} from '@material-ui/core';
-import {BottomNavigation, BottomNavigationAction} from '@material-ui/core/';
 import Typography from '@material-ui/core/Typography';
 
 import {translate} from 'react-switch-lang';
@@ -41,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
       mainFuturePost:{
         position: "relative",
         //position: 'sticky',
-        top: '0px',
-        zIndex: '-1000',
+        //top: '0px',
+        //zIndex: '-1000',
         color: theme.palette.common.white,
         marginBottom: theme.spacing(6),
         backgroundImage: `url(${laptopItservis1})`,
@@ -59,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundOverlay: "rgba(0,0,0,.9)"
      },
      mainFuturePostContetnt:{
-         left:-50,
+        // left:-50,
         position:"relative",
         padding:theme.spacing(6),
         textShadow: '1px 1px 2px black, 0 0 1em black',
@@ -88,8 +87,6 @@ const useStyles = makeStyles((theme) => ({
             //heigh:500
       },
       cardGrid:{
-
-           
             // 16px
             transition: '0.3s',
             //boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
@@ -98,10 +95,10 @@ const useStyles = makeStyles((theme) => ({
             //marginLeft: 'auto',
             overflow: 'initial',
             background: '#ffffff',
-           //display: 'flex',
-           //flexDirection: 'column',
-           //alignItems: 'left',
-           //paddingBottom: 100,
+            //display: 'flex',
+            //flexDirection: 'column',
+            //alignItems: 'left',
+            //paddingBottom: 100,
             //marginTop: theme.spacing(4)
       },
       cardItem:{
@@ -159,12 +156,9 @@ function Home (props) {
                 <Paper className={classes.mainFuturePost}>
                 <Container fixed>
                     <div className={classes.overlay}/>
-
-                    <Grid container>
-                        <Grid item md={6}>
+                    <Grid container maxWidth='md' >
+                        <Grid item md={6} >
                             <div className={classes.mainFuturePostContetnt}>
-                            
-
                             <Typography variant="h4" component="h4" color="inherit" >
                                 {t('home.deviz.text1')}
                              </Typography>
@@ -206,39 +200,7 @@ function Home (props) {
                     </Grid>
 
                 </Container>
-                <footer>
-                    <Typography variant='h6' align='center' gutterBottom>Fotter</Typography>
-                    <BottomNavigation
-                        value={value}
-                        onChange={handleChangle}
-                        //className={classes.}
-                        //color="primary"
-                    >
-                        <BottomNavigationAction 
-                            label='Recents'
-                            value='recents'
-                            icon={<RestoreIcon/>}
-                        />
-                        <BottomNavigationAction 
-                            label='Favorites'
-                            value='favorites'
-                            icon={<FavotiteIcon/>}
-                        />
-                        <BottomNavigationAction 
-                            label='Nearby'
-                            value='nearby'
-                            icon={<LocationOnIcon/>}
-                        />
-                        <BottomNavigationAction 
-                            label='Folder'
-                            value='folder'
-                            icon={<FolderIcon/>}
-                        />
-
-                    </BottomNavigation>
-
-
-                </footer>
+                
             </React.Fragment>
         )
 }

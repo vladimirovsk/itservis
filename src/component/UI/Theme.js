@@ -5,7 +5,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const colorPrimary = "#fff"; //white
 const colorSecondary = "#0d47a1"; //blue
-const colorSpecial = "#FFBA60"; //orange
+//const colorSpecial = "#FFBA60"; //orange
 
 export default createMuiTheme({
   palette:{

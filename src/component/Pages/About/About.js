@@ -40,7 +40,7 @@ function About (props ) {
     const [{t}] = useState(props);
     const classes = useStyles();
     return (
-
+        <React.Fragment>
         <Grid container spacing={1} className={classes.root}>
                 <Grid container item xs={12} spacing={3}>
                     <Paper className={classes.paper}>
@@ -102,6 +102,7 @@ function About (props ) {
                      </Paper>       
                 </Grid> 
         </Grid>
+        </React.Fragment>
     )
 }
 
