@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './About.scss';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -53,10 +53,6 @@ const useStyles = makeStyles((theme) => ({
           marginTop: theme.spacing(6),
         height: "600px"
       },
-      box:{
-          height:"100%",
-          width:"100%"
-      },
       item:{
           marginTop:theme.spacing(1),
           flex:1    
@@ -66,17 +62,27 @@ const useStyles = makeStyles((theme) => ({
 function About (props ) {
     const [{t}] = useState(props);
     const classes = useStyles();
-    const theme = useTheme();
     return (
         <Container>
             <Grid container className={classes.container} spacing={5} bgcolor={'red'}>
-                <Grid item xs={8}>
+                <Grid item xs={8} >
                     <Paper className={classes.paper}>
+                        <Typography gutterBottom variant="h5" component="h4" align="center" style={{marginTop:'2em'}}>
+                               {t("contact.block4.header")}
+                        </Typography>
+                        <Typography variant="subtitle1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
+                               {t('contact.block4.text1')}
+                        </Typography>
+                        <Typography variant="subtitle1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
+                               {t('contact.block4.text2')}
+                        </Typography>
+                        <hr />
+                        <div align="center">
                         <Typography>
                             <FontAwesomeIcon icon={faCoffee}/>&nbsp; 
                             {t('kontact.title')}
                         </Typography>        
-                        <Typography>
+                        <Typography hidden={true}>
                             <FontAwesomeIcon icon={faCity}/>&nbsp; 
                             {t('kontact.city')}
                         </Typography>  
@@ -88,6 +94,7 @@ function About (props ) {
                             <FontAwesomeIcon icon={faAddressCard}/>&nbsp; 
                             <a className="mail" href="mailto:admin@citypay.org.ua"><u>sergey@itservis.od.ua</u></a>
                         </Typography>
+                        </div>
                         </Paper>
                 </Grid>
                 <Grid item xs={4}>
@@ -101,8 +108,8 @@ function About (props ) {
                             <Typography gutterBottom variant="h5" component="h4" align="center">
                                 {t("contact.block1.header")}
                             </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p" align='justify'>
-                                {t('contact.block1.text')}
+                            <Typography variant="body1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
+                            {t('contact.block1.text')}
                             </Typography>
                         </Paper>
                     </Grid>
@@ -112,7 +119,7 @@ function About (props ) {
                             <Typography gutterBottom variant="h5" component="h4" align="center">
                                 {t("contact.block2.header")}
                             </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p" align='justify'>
+                            <Typography variant="body1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
                                 {t('contact.block2.text')}
                             </Typography>
                         </Paper>
@@ -122,7 +129,7 @@ function About (props ) {
                             <Typography gutterBottom variant="h5" component="h4" align="center">
                                 {t("contact.block3.header")}
                             </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p" align='justify'>
+                            <Typography variant="body1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
                                 {t('contact.block3.text')}
                             </Typography>
                         </Paper>

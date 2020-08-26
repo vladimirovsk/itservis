@@ -25,7 +25,11 @@ function BottomPanel (props)  {
     const handleChangle =  (event, newValue) =>{
             setValue(newValue )
     }
-
+    
+    const [value, setValue] = React.useState("recents")
+    const handleChangle =  (event, newValue) =>{
+            setValue(newValue )
+    }
     return(
         <footer>
                     <Typography variant='h6' align='center' gutterBottom>Fotter</Typography>

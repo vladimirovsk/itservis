@@ -116,6 +116,9 @@ const useStyles = makeStyles((theme) => ({
             //color: "red"
             boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
           }
+      },
+      footer:{
+        marginTop:theme.spacing(5)
       }
     }));
 
@@ -132,10 +135,7 @@ let cards = [];
 function Home (props) {
     const classes = useStyles();
     const [{t}] = useState(props)
-    const [value, setValue] = React.useState("recents")
-    const handleChangle =  (event, newValue) =>{
-            setValue(newValue )
-    }
+
 
     cards[0] = {
         id:"1",
@@ -161,13 +161,13 @@ function Home (props) {
                 <Paper className={classes.mainFuturePost}>
                 <Container fixed>
                     <div className={classes.overlay}/>
-                    <Grid container maxWidth='md' >
+                    <Grid container>
                         <Grid item md={6} >
                             <div className={classes.mainFuturePostContetnt}>
-                            <Typography variant="h4" component="h4" color="inherit" >
+                            <Typography variant="h3" component="h1" color="inherit" >
                                 {t('home.deviz.text1')}
                              </Typography>
-                             <Typography variant="h5" component="h5" color="inherit" paragraph>
+                             <Typography variant="h6" component="h2" color="inherit" paragraph>
                                 {t('home.deviz.text2')}
                              </Typography>
                              </div>
@@ -176,9 +176,9 @@ function Home (props) {
                 </Container>
                 </Paper>
                 <div className={classes.mainContent}>
-                    <container maxWidth='md'>
-                        <Typography variant='contained' color='secondary'></Typography>
-                    </container>
+                    <Container maxWidth='md'>
+                        <Typography variant='caption' color='secondary'></Typography>
+                    </Container>
                 </div>
                 
                 <Container className={classes.cardGrid}>
@@ -205,7 +205,9 @@ function Home (props) {
                     </Grid>
 
                 </Container>
-                
+                <Typography className={classes.footer} align="center" color="textSecondary" component="p" variant="subtitle1">
+                        Разработано itservis.od.ua @2020
+                </Typography>
             </React.Fragment>
         )
 }

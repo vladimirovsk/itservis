@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import { makeStyles, withStyles} from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab';
 import logo from '../../../assets/logo.png'; 
@@ -16,18 +15,6 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import {translate ,getLanguage, setLanguage } from 'react-switch-lang';
 import { Container } from "@material-ui/core";
 
-function ElevationScroll(props) {
-  const { children } = props;
-  
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-  });
-
-  return React.cloneElement(children, {
-	elevation: trigger ? 4 : 0,
-  });
-}
 
 const thStyles = makeStyles(theme => ({
   toolbarMargin:{
