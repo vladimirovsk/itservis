@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 //import {Link, animateScroll as scroll } from "react-scroll"
 import {translate ,getLanguage, setLanguage } from 'react-switch-lang';
+import { Container } from "@material-ui/core";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -69,7 +70,7 @@ const thStyles = makeStyles(theme => ({
  
    menu: {
       backgroundColor: theme.palette.common.arcBlue,
-	    color  :"black",
+		color  :"black",
       borderRadius:'0px',
       //"&:hover":{
 	//	color:"black",
@@ -159,11 +160,11 @@ function Headers (props) {
   const tabs =(
 	   <React.Fragment>
     	<Tabs 
-         	aria-label="simple tabs example"
-		    	className={classes.tabContainer} 
-			    value={value} 
-         	onChange={handleChange}
-          indicatorColor="secondary"
+			aria-label="simple tabs example"
+			className={classes.tabContainer} 
+			value={value} 
+			onChange={handleChange}
+			indicatorColor="secondary"
         >
           <Tab
           className={classes.tab} 
@@ -171,47 +172,53 @@ function Headers (props) {
           to='/'
       		label={t('navbar.glavn')}
           />
-          <Tab 
+		  <Tab 
+		  hidden = {true}
             className={classes.tab} 
             component={Link} 
-			to='/Project' 
-			label={t('navbar.project')}
-			//aria-haspopup="true"
-			aria-controls="simple-menu"
-            aria-owns={anchorEl}
-            aria-haspopup={anchorEl ? "true": undefined}
-            onMouseOver={(event) => handleClick(event)}
-//			onClick={(event) => handleClick(event)}
-			//icon={<ArrowDropDownIcon/>}
-			wrapped={false}
+            to='/Project' 
+            label={t('navbar.project')}
+            //aria-haspopup="true"
+            aria-controls="simple-menu"
+			aria-owns={anchorEl}
+			aria-haspopup={anchorEl ? "true": undefined}
+			onMouseOver={(event) => handleClick(event)}
+			//onClick={(event) => handleClick(event)}
+            //icon={<ArrowDropDownIcon/>}
+            wrapped={false}
 
           />
-          <Tab 
-            className={classes.tab} 
-            component={Link} 
-            to='/about' 
-            label ={t('navbar.kontact')}
+      <Tab 
+        hidden = {false}
+        className={classes.tab} 
+        component={Link} 
+        to='/about' 
+        label ={t('navbar.kontact')}
 			/>
 			<Tab 
-			hidden={props.isAuth}
-            className={classes.tab} 
-            component={Link} 
-            to='/auth' 
-            label ={t('navbar.login')}
+			 hidden = {true}
+        //hidden={props.isAuth}
+        className={classes.tab} 
+        component={Link} 
+        to='/auth' 
+        label ={t('navbar.login')}
 			/>
 			
 			<Tab 
-			hidden={!props.isAuth}
-            className={classes.tab} 
-            component={Link} 
-            to='/logout' 
-            label ={t('navbar.logout')}
+			 hidden = {true}
+		  	//hidden={!props.isAuth}
+        className={classes.tab} 
+        component={Link} 
+        to='/logout' 
+        label ={t('navbar.logout')}
 			/>
 
 
 		</Tabs>
               
+      
       <Button 
+        hidden = {true}
         variant="contained"
         color="secondary"
         className={classes.buttonLng}
@@ -235,6 +242,7 @@ function Headers (props) {
       	</Menu>	
 
 		<Menu 
+		    
 			id="simple-menu" 
 			anchorEl={anchorEl} 
 			open={open}
@@ -269,8 +277,8 @@ function Headers (props) {
 	   </React.Fragment>
   )
   return(
-    <React.Fragment>
-    <ElevationScroll>
+    <Container>
+    
       <AppBar position="fixed" color="primary">
         <Toolbar 
         disableGutters={true}
@@ -283,9 +291,9 @@ function Headers (props) {
               {tabs}
           </Toolbar>
       </AppBar>
-    </ElevationScroll>
+ 
     <div className={classes.toolbarMargin}/>
-    </React.Fragment>
+    </Container>
   )
 }
 

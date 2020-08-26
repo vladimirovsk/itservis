@@ -15,18 +15,18 @@ export default createMuiTheme({
       colorSecondary:`${colorSecondary}`, 
       //colorSpecial:`${colorSpecial}`, 
     },
-    primary:{
-	  //light: '#757ce8',	
-	  main:'#fff',
-	  //dark: '#002884',
-	  contrastText: '#000',
+     primary:{
+    //light: '#757ce8',	
+     main:'#fff',
+	   //dark: '#002884',
+	   contrastText: '#000',
     },
-    secondary:{
-	  //main:`${colorSecondary}`
-	  //light: '#ff7961',
-      main: '#0d47a1',
-      //dark: '#ba000d',
-      contrastText: '#fff',
+     secondary:{
+	   //main:`${colorSecondary}`
+	   //light: '#ff7961',
+     main: '#0d47a1',
+     //dark: '#ba000d',
+     contrastText: '#fff',
     },
   },
   typography:{

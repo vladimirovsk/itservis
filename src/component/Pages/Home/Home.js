@@ -5,20 +5,20 @@ import { makeStyles } from '@material-ui/core/styles';
 //import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 //import {CardDeck, Container} from "react-bootstrap";
 
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-import LayerIcon from '@material-ui/icons/Layers'; 
-import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavotiteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import FolderIcon from '@material-ui/icons/Folder';
+//import LayerIcon from '@material-ui/icons/Layers'; 
+//import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+//import RestoreIcon from '@material-ui/icons/Restore';
+//import FavotiteIcon from '@material-ui/icons/Favorite';
+//import LocationOnIcon from '@material-ui/icons/LocationOn';
+//import FolderIcon from '@material-ui/icons/Folder';
 
-import {Card, CardContent, CardMedia, CardActions, TextareaAutosize} from '@material-ui/core';
+import {Card, CardContent, CardMedia} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
 import {translate} from 'react-switch-lang';
@@ -28,20 +28,20 @@ import imgDatabase from '../Home/img/database.jpg';
 import imgServer from '../Home/img/servers.jpg';
 import imgRest from '../Home/img/REST.jpeg';
 import laptopItservis1 from '../Home/img/laptopItservis.jpg';
-import laptopItservis2 from '../Home/img/laptopItservis2.jpg';
-import BackgroundSlider from '../../BackgroundSlider/BackgroundSlider'
+//import laptopItservis2 from '../Home/img/laptopItservis2.jpg';
+//import BackgroundSlider from '../../BackgroundSlider/BackgroundSlider'
 
 const useStyles = makeStyles((theme) => ({
     root: {
         color: theme.palette.primary,
-        
         flexGrow: 1,
       },
       mainFuturePost:{
         position: "relative",
-        //position: 'sticky',
+        //position: 'static',
         //top: '0px',
         //zIndex: '-1000',
+        //marginTop: theme.spacing(6),
         color: theme.palette.common.white,
         marginBottom: theme.spacing(6),
         backgroundImage: `url(${laptopItservis1})`,
@@ -58,20 +58,24 @@ const useStyles = makeStyles((theme) => ({
         backgroundOverlay: "rgba(0,0,0,.9)"
      },
      mainFuturePostContetnt:{
-        // left:-50,
+         MarginLeftleft:'-500px',
         position:"relative",
         padding:theme.spacing(6),
         textShadow: '1px 1px 2px black, 0 0 1em black',
         marginTop: theme.spacing(4),
+       // opacity:0
+        //transition: 'all 0.8s easy 0s',
         //marginLeft: theme.spacing(-20)
       },
       mainContent:{
 
       },
+
       mainButtons:{
           backgroundColor:theme.palette.secondary
 
       },
+
       cardMedia:{
         paddingTop: "56.25%",
         //borderRadius: theme.spacing(2), // 16px   
@@ -86,6 +90,7 @@ const useStyles = makeStyles((theme) => ({
             flexGrow:1, 
             //heigh:500
       },
+
       cardGrid:{
             // 16px
             transition: '0.3s',
