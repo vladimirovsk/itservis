@@ -1,19 +1,95 @@
-import React from "react";
-import {Component} from "react";
-import {Button, Card, Col, Container, ListGroup, Media, Row} from "react-bootstrap";
-import {translate} from "react-switch-lang";
+import React,  {useState} from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import {Grid, Container, Paper, Typography } from "@material-ui/core";
 
-class Project extends Component {
-    render() {
-        const {t} = this.props;
+//import {Button, Card, Col, Container, ListGroup, Media, Row} from "react-bootstrap";
+import {translate} from "react-switch-lang";
+import restApi from '../Project/img/REST_API.png'; 
+import cabinetTgo from '../Project/img/TGO_CABINET.png'; 
+import avr from '../Project/img/AVR.jpeg'; 
+import gkh from '../Project/img/GKH.jpg'; 
+
+const useStyles = makeStyles((theme) => ({
+    mt5:{ marginTop:theme.spacing(8)},
+    paper:{
+        padding:theme.spacing(2)
+    }
+}));
+
+function Project (props)  {
+    const classes = useStyles();
+    const [{t}] = useState(props);
         return (
-            <Container>
-                <Row>
+            <Container className={classes.mt5}>
+                <Grid container className={classes.container} spacing={5}>
+
+                    <Grid item md={12} >
+                        <Paper className={classes.paper}>
+                        <Grid container>
+                            <Grid item md={2}>
+                                <img  width={150} height={110} alt={t('project.row1.title')} className="mr-3" src={restApi} />
+                            </Grid>
+                            <Grid item md={10}>
+                                <Typography variant='h5'>{t('project.row1.title')}</Typography>
+                                <Typography variant='body1' paragraph align='justify'>{t('project.row1.text')}</Typography>
+                            </Grid>    
+                        </Grid>    
+                        </Paper>
+                    </Grid>
+                    <Grid item md={12} >
+                        <Paper className={classes.paper}>
+                        <Grid container>
+                            <Grid item md={2}>
+                                <img  width={150} height={140} alt={t('project.row2.title')} className="mr-3" src={cabinetTgo} />
+                            </Grid>
+                            <Grid item md={10}>
+                                <Typography variant='h5'>{t('project.row2.title')}</Typography>
+                                <Typography variant='body1' paragraph align='justify'>{t('project.row2.text')}</Typography>
+                            </Grid>    
+                        </Grid>    
+                        </Paper>
+                    </Grid>
+                    <Grid item md={12} >
+                        <Paper className={classes.paper}>
+                        <Grid container>
+                            <Grid item md={2}>
+                                <img  width={150} height={130} alt={t('project.row3.title')} className="mr-3" src={avr} />
+                            </Grid>
+                            <Grid item md={10}>
+                                <Typography variant='h5'>{t('project.row3.title')}</Typography>
+                                <Typography variant='body1' paragraph align='justify'>{t('project.row3.text')}</Typography>
+                            </Grid>    
+                        </Grid>    
+                        </Paper>
+                    </Grid>
+                    <Grid item md={12} >
+                        <Paper className={classes.paper}>
+                        <Grid container>
+                            <Grid item md={2}>
+                                <img  width={150} height={150} alt={t('project.row4.title')} className="mr-3" src={gkh} />
+                            </Grid>
+                            <Grid item md={10}>
+                                <Typography variant='h5'>{t('project.row4.title')}</Typography>
+                                <Typography variant='body1' paragraph align='justify'>{t('project.row4.text')}</Typography>
+                            </Grid>    
+                        </Grid>    
+                        </Paper>
+                    </Grid>
+
+                </Grid>        
+            </Container>
+        )
+}
+
+export default translate(Project)
+
+/**
+ <Row>
                     <Col md="9" className="text-left meProject">
                         <ListGroup>
 
                             <ListGroup.Item className="bg-white mt-3"><Media>
-                                <img  width={150} height={110} alt={t('project.row1.title')} className="mr-3" src={"REST_API.png"} />
+                                <img  width={150} height={110} alt={t('project.row1.title')} className="mr-3" src={restApi} />
                                 <Media.Body>
                                     <h5 className={"text-center"}>{t('project.row1.title')}</h5>
                                     <p>{t('project.row1.text')}</p>
@@ -24,7 +100,7 @@ class Project extends Component {
                             </Media></ListGroup.Item>
 
                             <ListGroup.Item className="bg-white mt-3"><Media className={" m-3 "}>
-                                <img width={150} height={140} alt={t('project.row2.title')} className="mr-3" src={"TGO_CABINET.png"} />
+                                <img width={150} height={140} alt={t('project.row2.title')} className="mr-3" src={cabinetTgo} />
                                 <Media.Body>
                                     <h5 className={"text-center"}>{t('project.row2.title')}</h5>
                                     <p>{t('project.row2.text')}
@@ -36,7 +112,7 @@ class Project extends Component {
                             </Media></ListGroup.Item>
 
                             <ListGroup.Item className="bg-white mt-3"><Media className={" m-3 "}>
-                                <img width={150} height={130} alt={t('project.row3.title')} className="mr-3" src={"AVR.jpeg"} />
+                                <img width={150} height={130} alt={t('project.row3.title')} className="mr-3" src={avr} />
                                 <Media.Body>
                                     <h5 className={"text-center"}>{t('project.row3.title')}</h5>
                                     <p>{t('project.row3.text')}
@@ -47,7 +123,7 @@ class Project extends Component {
                                 </Media.Body>
                             </Media></ListGroup.Item>
                             <ListGroup.Item className="bg-white mt-3"><Media className={" m-3 "}>
-                                <img width={150} height={150} alt={t('project.row4.title')} className="mr-3" src={"GKH.jpg"} />
+                                <img width={150} height={150} alt={t('project.row4.title')} className="mr-3" src={gkh} />
                                 <Media.Body>
                                     <h5 className={"text-center"}>{t('project.row4.title')}</h5>
                                     <p>{t('project.row4.text')}
@@ -84,6 +160,5 @@ class Project extends Component {
             </Container>
         )
     }
-}
 
-export default translate(Project)
+*/

@@ -160,19 +160,19 @@ function Headers (props) {
       		label={t('navbar.glavn')}
           />
 		  <Tab 
-		  hidden = {true}
+		  hidden = {false}
             className={classes.tab} 
             component={Link} 
             to='/Project' 
             label={t('navbar.project')}
             //aria-haspopup="true"
-            aria-controls="simple-menu"
-			aria-owns={anchorEl}
-			aria-haspopup={anchorEl ? "true": undefined}
-			onMouseOver={(event) => handleClick(event)}
+      //      aria-controls="simple-menu"
+			//      aria-owns={anchorEl}
+			//      aria-haspopup={anchorEl ? "true": undefined}
+			//     onMouseOver={(event) => handleClick(event)}
 			//onClick={(event) => handleClick(event)}
             //icon={<ArrowDropDownIcon/>}
-            wrapped={false}
+      //      wrapped={false}
 
           />
       <Tab 

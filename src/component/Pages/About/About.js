@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './About.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAddressCard } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +14,8 @@ import skypeIcon from '@iconify/icons-fa-brands/skype';
 
 import {translate} from "react-switch-lang";
 import { Container, Paper } from "@material-ui/core";
+
+import mePhoto from "../../Pages/About/me3.jpg";
 
 
 
@@ -50,6 +53,10 @@ const useStyles = makeStyles((theme) => ({
         height:"100%",
         width:"100%",
         padding:theme.spacing(2),
+        "&:hover":{
+            //color: "red"
+            boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
+          }
         //textAlign: 'center',
         //color: theme.palette.text.secondary,
       },
@@ -61,6 +68,13 @@ const useStyles = makeStyles((theme) => ({
       item:{
           marginTop:theme.spacing(1),
           flex:1    
+      },
+      avatar:{
+
+            width: theme.spacing(20),
+            height: theme.spacing(20),
+            boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
+
       }
     }));
 
@@ -70,10 +84,12 @@ function About (props ) {
     return (
         //xs={12} xm={6} md={4}
         <Container>
-            <Grid container className={classes.container} spacing={5} bgcolor={'red'}>
+            <Grid container className={classes.container} spacing={5}>
                 <Grid item xs={12} md={8} >
                     <Paper className={classes.paper}>
-                        <Typography gutterBottom variant="h5" component="h4" align="center" style={{marginTop:'2em'}}>
+                    <Avatar alt="Sergey Vladimirov" src={mePhoto} className={classes.avatar}/>
+                       
+                        <Typography gutterBottom variant="h5" component="h4" align="center">
                                {t("contact.block4.header")}
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>

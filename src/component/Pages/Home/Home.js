@@ -178,7 +178,7 @@ function Home (props) {
                 </Paper>
                 <div className={classes.mainContent} bgcolor='grey'>
                     <Container maxWidth='md'>
-                        <Typography variant='h3' color='textPrymary'  gutterBottom align="center">Основное</Typography>
+                        <Typography variant='h3' color='textPrimary'  gutterBottom align="center">Основное</Typography>
                         <Typography variant='h5' color='textSecondary' gutterBottom align="center" paragraph>направление разработок </Typography>
                     </Container>
                 </div>
