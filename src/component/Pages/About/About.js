@@ -3,8 +3,13 @@ import './About.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faPhone, faAddressCard, faCity, } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { Icon } from '@iconify/react';
+
+import viberIcon from '@iconify/icons-fa-brands/viber';
+import telegramIcon from '@iconify/icons-fa-brands/telegram';
+import skypeIcon from '@iconify/icons-fa-brands/skype';
 
 import {translate} from "react-switch-lang";
 import { Container, Paper } from "@material-ui/core";
@@ -63,9 +68,10 @@ function About (props ) {
     const [{t}] = useState(props);
     const classes = useStyles();
     return (
+        //xs={12} xm={6} md={4}
         <Container>
             <Grid container className={classes.container} spacing={5} bgcolor={'red'}>
-                <Grid item xs={8} >
+                <Grid item xs={12} md={8} >
                     <Paper className={classes.paper}>
                         <Typography gutterBottom variant="h5" component="h4" align="center" style={{marginTop:'2em'}}>
                                {t("contact.block4.header")}
@@ -78,26 +84,25 @@ function About (props ) {
                         </Typography>
                         <hr />
                         <div align="center">
-                        <Typography>
-                            <FontAwesomeIcon icon={faCoffee}/>&nbsp; 
+                        <Typography variant="h5" component="h1" align="center" style={{marginBottom:'1em'}}>
                             {t('kontact.title')}
                         </Typography>        
-                        <Typography hidden={true}>
-                            <FontAwesomeIcon icon={faCity}/>&nbsp; 
-                            {t('kontact.city')}
+                        <Typography variant="h6" component="h3">
+                            <Icon icon={telegramIcon}/>&nbsp;<Icon icon={viberIcon}/>&nbsp; 
+                            {t('kontact.telegram')}
                         </Typography>  
-                        <Typography>
-                            <FontAwesomeIcon icon={faPhone}/>&nbsp; 
-                            {t('kontact.phone')}
+                        <Typography variant="h6" component="h3">
+                            <Icon icon={skypeIcon}/>&nbsp; 
+                            {t('kontact.skype')}
                         </Typography>
-                        <Typography>
+                        <Typography variant="h6" component="h3">
                             <FontAwesomeIcon icon={faAddressCard}/>&nbsp; 
                             <a className="mail" href="mailto:admin@citypay.org.ua"><u>sergey@itservis.od.ua</u></a>
                         </Typography>
                         </div>
                         </Paper>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                     <Grid 
                         direction="column"
                         container

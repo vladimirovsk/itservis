@@ -164,6 +164,7 @@ function Home (props) {
                     <Grid container>
                         <Grid item md={6} >
                             <div className={classes.mainFuturePostContetnt}>
+                           
                             <Typography variant="h3" component="h1" color="inherit" >
                                 {t('home.deviz.text1')}
                              </Typography>
@@ -175,9 +176,10 @@ function Home (props) {
                     </Grid>    
                 </Container>
                 </Paper>
-                <div className={classes.mainContent}>
+                <div className={classes.mainContent} bgcolor='grey'>
                     <Container maxWidth='md'>
-                        <Typography variant='caption' color='secondary'></Typography>
+                        <Typography variant='h3' color='textPrymary'  gutterBottom align="center">Основное</Typography>
+                        <Typography variant='h5' color='textSecondary' gutterBottom align="center" paragraph>направление разработок </Typography>
                     </Container>
                 </div>
                 
