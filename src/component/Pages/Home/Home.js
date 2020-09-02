@@ -178,8 +178,8 @@ function Home (props) {
                 </Paper>
                 <div className={classes.mainContent} bgcolor='grey'>
                     <Container maxWidth='md'>
-                        <Typography variant='h3' color='textPrimary'  gutterBottom align="center">Основное</Typography>
-                        <Typography variant='h5' color='textSecondary' gutterBottom align="center" paragraph>направление разработок </Typography>
+                        <Typography variant='h3' color='textPrimary'  gutterBottom align="center">{t('home.modul1.text1')}</Typography>
+                        <Typography variant='h5' color='textSecondary' gutterBottom align="center" paragraph>{t('home.modul1.text2')}</Typography>
                     </Container>
                 </div>
                 

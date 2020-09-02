@@ -18,6 +18,14 @@
     "placeholderPassword": "Hasło"
   },
   "home": {
+    "deviz":{
+      "text1": "Oferuję rozwiązanie twoich problemów",
+      "text2": "Zagłębiam się w problem, proponuję optymalne rozwiązanie, jak najszybciej wdrażam projekt"
+   },
+   "modul1":{
+    "text1":"Główny",
+    "text2":"kierunek rozwoju"
+  },
     "card1": {
       "header": "Tworzenie baz danych",
       "text": "Jednym z głównych kierunków naszej pracy jest rozwój baz danych i systemów zarządzania bazami danych (DBMS). Pracujemy z bazami danych o różnych architekturach (MySQL, MSSQL, Interbase, Firebird, Postgresql). Interfejs oprogramowania jest opracowywany na życzenie klienta w postaci wygodniejszego dla niego oprogramowania, zarówno dla interfejsu WWW, jak i interfejsu API systemu operacyjnego."
@@ -78,8 +86,8 @@
       "text":"Don't like using contact forms? Please contact us by email, we will respond within one business day."
     },
     "block2":{
-      "header":"С чего начать?",
-      "text":"Расскажите нам про свой проект в любой удобной для вас форме, будь то четко сформулированные требования или просто идея. Мы подберем специалистов под ваши нужды с учетом отраслевой специфики, способа технологической реализации и характера предоставляемой услуги."
+      "header":"Gdzie zacząć?",
+      "text":"Opowiedz nam o swoim projekcie w dowolnej dogodnej dla Ciebie formie, czy to jasno sformułowane wymagania, czy tylko pomysł. Dobierzemy specjalistów do Twoich potrzeb, uwzględniając specyfikę branży, sposób realizacji technologicznej oraz charakter świadczonej usługi."
     },
     "block3":{
       "header":"Конфиденциальность",

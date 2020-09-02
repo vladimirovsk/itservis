@@ -1,7 +1,8 @@
 import React, {useEffect, useStyles, useState} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import { makeStyles, withStyles} from "@material-ui/core/styles";
+import { makeStyles, useTheme} from "@material-ui/core/styles";
+import { withStyles} from "@material-ui/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tabs from '@material-ui/core/Tabs'
@@ -14,12 +15,23 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 //import {Link, animateScroll as scroll } from "react-scroll"
 import {translate ,getLanguage, setLanguage } from 'react-switch-lang';
 import { Container } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import MenuIcon from "@material-ui/icons/Menu"; 
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 
-const thStyles = makeStyles(theme => ({
+const thStyles = makeStyles( theme => ({
   toolbarMargin:{
+    ...theme.mixins.toolbar
+  },
+
+  toolbarMarginDrawer:{
     ...theme.mixins.toolbar,
-    //marginBottom:"3em",
+    marginBottom:"3em"
   },
 
   logo:{
@@ -84,8 +96,35 @@ const thStyles = makeStyles(theme => ({
     borderRadius: 4,
     borderColor: '#80bdff',
 	boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-	
 },
+  drawerIcon:{
+    height: '30px',
+    width: '30px',
+
+  },
+  drawerIconContainer:{
+    marginLeft:"auto", 
+    "&:hover": {
+      backgroundColor:"transparent",
+      borderColor:"transparent"
+    }
+  },
+  drawer:{
+    backgroundColor: theme.palette.common.arcBlue
+  },
+  drawerItem:{
+    ...theme.typography.tab,
+    opacity: 0.5
+
+  },
+
+  drawerItemSelected: {
+    opacity: 1
+  },
+  appbar:{
+    zIndex: theme.zIndex.modal+1
+  }
+
   
 }));
 
@@ -94,27 +133,32 @@ function Headers (props) {
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchoeEl] =  useState(null)
   const [anchorEl2, setAnchorEl2] =  useState(null)
-  const [open, setOpen] = useState(false)
+  const [openMenu, setOpenMenu] = useState(false)
   const classes = thStyles();
+  const theme = useTheme();
+
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const [openDrawer, setOpenDrawer] = useState(false); 
+
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-  const [{t}] = useState(props)
+  const [{t, isAuth}] = useState(props)
 
-  console.log(props.isAuth);
-
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const handleClick = (event) => {
+  /*const handleClick = (event) => {
     	setAnchoeEl(event.currentTarget)
     	setSelectedIndex(event.currentTarget.index);
-    	setOpen(true)
-  }
+    	setOpenMenu(true)
+  }*/
 
   const handleClose = (event) => {
 	  setAnchoeEl(null)
-      setOpen(false)
+      setOpenMenu(false)
   }
 
   const handleClickLng = (event) => {
@@ -122,7 +166,7 @@ function Headers (props) {
   }
 
   const handleCloseLng = (event) => {
-		setOpen(false)
+		setOpenMenu(false)
 	  	setAnchorEl2(null)
   }
 
@@ -130,82 +174,54 @@ function Headers (props) {
 	  console.log(event.currentTarget.value, lng)
 		setLanguage(lng);
 		setAnchorEl2(null)
-		setOpen(false)
+		setOpenMenu(false)
   };
 
+  /*const route = [
+    {name: "Home", link: '/', activeIndex:0 }, 
+    {name: "Project", link: '/project', activeIndex:1},
+    {name: "About", link: '/about', activeIndex:2},
+    {name: "Auth", link: '/auth', activeIndex:3},
+  ]
+*/
   //Для возможности роутинга по страницам без перезагрузки сайта
   useEffect(() => {
+    
+   /* [...route].forEach(route => {
+      
+      switch (window.location.pathname){
+        case `$(route.link)`:
+          if (value !== route.activeIndex){
+            setValue(route.activeIndex)
+              if (route.selectedIndex && route.selectedIndex !== selectedIndex){
+                setSelectedIndex(route.selectedIndex)
+                console.log(route.selectedIndex)
+              }
+            }
+          break;
+        default:
+          break;
+      }   
+    }
+    )
+  }, [value, selectedIndex, route]);
+*/
     if (window.location.pathname === "/" && value !== 0){
       setValue(0)
     }else if  (window.location.pathname === "/project" && value !==  1) {
       setValue(1)
     }else if  (window.location.pathname === "/about" && value !==  2) {
       setValue(2)
-    } 
+    } else if  (window.location.pathname === "/auth" && value !==  3) {
+     setValue(3)
+     
+  } 
   }, [value]); 
 
-  const tabs =(
-	   <React.Fragment>
-    	<Tabs 
-			aria-label="simple tabs example"
-			className={classes.tabContainer} 
-			value={value} 
-			onChange={handleChange}
-			indicatorColor="secondary"
-        >
-          <Tab
-          className={classes.tab} 
-          component={Link}  
-          to='/'
-      		label={t('navbar.glavn')}
-          />
-		  <Tab 
-		  hidden = {false}
-            className={classes.tab} 
-            component={Link} 
-            to='/Project' 
-            label={t('navbar.project')}
-            //aria-haspopup="true"
-      //      aria-controls="simple-menu"
-			//      aria-owns={anchorEl}
-			//      aria-haspopup={anchorEl ? "true": undefined}
-			//     onMouseOver={(event) => handleClick(event)}
-			//onClick={(event) => handleClick(event)}
-            //icon={<ArrowDropDownIcon/>}
-      //      wrapped={false}
-
-          />
-      <Tab 
-        hidden = {false}
-        className={classes.tab} 
-        component={Link} 
-        to='/about' 
-        label ={t('navbar.kontact')}
-			/>
-			<Tab 
-			 hidden = {true}
-        //hidden={props.isAuth}
-        className={classes.tab} 
-        component={Link} 
-        to='/auth' 
-        label ={t('navbar.login')}
-			/>
-			
-			<Tab 
-			 hidden = {true}
-		  	//hidden={!props.isAuth}
-        className={classes.tab} 
-        component={Link} 
-        to='/logout' 
-        label ={t('navbar.logout')}
-			/>
-
-
-		</Tabs>
-              
-      
+  const lngButton = (
+    <React.Fragment>
       <Button 
-        hidden = {true}
+        hidden = {false}
         variant="contained"
         color="secondary"
         className={classes.buttonLng}
@@ -223,16 +239,77 @@ function Headers (props) {
 			onClose={handleCloseLng}
 			classes={{paper: classes.menu}}
 		>
-			<MenuItem onClick={(event) => handleChangeLg(event, 'en')} className={classes.menuItem} selected={1 === selectedIndex} >EN</MenuItem>
-          	<MenuItem onClick={(event) => handleChangeLg(event, 'ru')} className={classes.menuItem} selected={2 === selectedIndex} >RU</MenuItem>
-          	<MenuItem onClick={(event) => handleChangeLg(event, 'pl')} className={classes.menuItem} selected={3 === selectedIndex}  >PL</MenuItem>
-      	</Menu>	
+			      <MenuItem onClick={(event) => {handleChangeLg(event, 'en'); setOpenDrawer(false)}} className={classes.menuItem} selected={1 === selectedIndex} >EN</MenuItem>
+          	<MenuItem onClick={(event) => {handleChangeLg(event, 'ru'); setOpenDrawer(false)}} className={classes.menuItem} selected={2 === selectedIndex} >RU</MenuItem>
+          	<MenuItem onClick={(event) => {handleChangeLg(event, 'pl'); setOpenDrawer(false)}} className={classes.menuItem} selected={3 === selectedIndex}  >PL</MenuItem>
+      </Menu>	
+    </React.Fragment>
+  )
 
+  const tabs =(
+	   <React.Fragment>
+    	<Tabs 
+			aria-label="simple tabs example"
+			className={classes.tabContainer} 
+			value={value} 
+			onChange={handleChange}
+      indicatorColor="secondary"
+      scrollButtons="auto"
+        >
+          <Tab
+            className={classes.tab} 
+            selected ={value === 0}
+            component={Link}  
+            to='/'
+            label={t('navbar.glavn')}
+            onClick={()=>setValue(0)}
+            
+          />
+		      <Tab 
+            hidden = {false}
+            selected ={value === 1}
+            className={classes.tab} 
+            component={Link} 
+            to='/Project' 
+            label={t('navbar.project')}
+            onClick={()=>setValue(1)}
+
+            //aria-haspopup="true"
+      //      aria-controls="simple-menu"
+			//      aria-owns={anchorEl}
+			//      aria-haspopup={anchorEl ? "true": undefined}
+			//     onMouseOver={(event) => handleClick(event)}
+			//onClick={(event) => handleClick(event)}
+            //icon={<ArrowDropDownIcon/>}
+      //      wrapped={false}
+
+          />
+      <Tab 
+        hidden = {false}
+        selected ={value === 2}
+        className={classes.tab} 
+        component={Link} 
+        to='/about' 
+        label ={t('navbar.kontact')}
+        onClick={()=>setValue(2)}
+			/>
+      <Tab 
+        selected ={value === 3}
+			  hidden = {false}
+        //hidden={props.isAuth}
+        className={classes.tab} 
+        component={Link} 
+        to={isAuth ?'/logout' :'/auth'} 
+        label ={isAuth ?t('navbar.logout') :t('navbar.login')}
+        onClick={()=>setValue(3)}
+			/>
+		</Tabs>          
+      {lngButton}
 		<Menu 
 		    
 			id="simple-menu" 
 			anchorEl={anchorEl} 
-			open={open}
+			open={openMenu}
 			component={Link}
 			onClose={handleClose}
 			MenuListProps={{onMouseLeave: handleClose}}
@@ -263,19 +340,67 @@ function Headers (props) {
 			</Menu>  
 	   </React.Fragment>
   )
+
+  const drawer = (
+    <React.Fragment>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS} 
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose = {()=> setOpenDrawer(false)}
+        onOpen ={()=> setOpenDrawer(true)}
+        classes = {{paper: classes.drawer}}
+        >
+          <div className={classes.toolbarMarginDrawer} />
+          <List disablePadding>
+            
+            <ListItem  divider button component={Link} to="/" onClick={()=>{setOpenDrawer(false); setValue(0)}} selected={value===0}>
+              <ListItemText className={value ===0 ? classes.drawerItemSelected : classes.drawerItem } 
+                disableTypography>{t('navbar.glavn')}</ListItemText>
+            </ListItem>
+            <ListItem divider button component={Link} to="/project" onClick={()=>{setOpenDrawer(false); setValue(1)}} selected={value===1}>
+              <ListItemText className={value ===1 ? classes.drawerItemSelected : classes.drawerItem } 
+                disableTypography>{t('navbar.project')}</ListItemText>
+            </ListItem>
+            <ListItem divider button component={Link} to="/about" onClick={()=>{setOpenDrawer(false); setValue(2)}} selected={value===2}>
+              <ListItemText className={value ===2 ? classes.drawerItemSelected : classes.drawerItem } 
+                disableTypography>{t('navbar.kontact')}</ListItemText>
+            </ListItem>
+            <ListItem divider button component={Link} to="/auth" onClick={()=>{setOpenDrawer(false); setValue(3)}} selected={value===3}>
+              <ListItemText className={value ===3 ? classes.drawerItemSelected : classes.drawerItem } 
+                disableTypography>{isAuth ? t('navbar.logout') :t('navbar.login')}</ListItemText>
+            </ListItem>
+            <ListItem>
+              {lngButton}
+            </ListItem>
+          </List>
+
+          
+
+      </SwipeableDrawer> 
+      <IconButton 
+        className={classes.drawerIconContainer}
+        onClick={()=> setOpenDrawer(!openDrawer)}
+        disableRipple>
+        <MenuIcon 
+          className={classes.drawerIcon}
+        />
+      </IconButton>
+    </React.Fragment>
+  )
   return(
     <Container>
     
-      <AppBar position="fixed" color="primary">
+      <AppBar position="fixed" className={classes.appbar} color="primary">
         <Toolbar 
         disableGutters={true}
         >
-          <Button component={Link} to="/" 
+          <Button component={Link} to="/" onClick={()=>setSelectedIndex(1)}
           disableRipple
           className={classes.logoContainer}> 
             <img alt="logo" src={logo} className={classes.logo} />
           </Button>
-              {tabs}
+              {matches ? drawer : tabs}
           </Toolbar>
       </AppBar>
  
