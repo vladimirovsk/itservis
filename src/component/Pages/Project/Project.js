@@ -1,6 +1,8 @@
 import React,  {useState} from "react";
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {Avatar, IconButton, Card, CardActions, CardHeader, Grid, Container, Typography, CardContent } from "@material-ui/core";
+import Collapse from '@material-ui/core/Collapse';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 //import {Button, Card, Col, Container, ListGroup, Media, Row} from "react-bootstrap";
@@ -21,11 +23,27 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
         backgroundColor: theme.palette.common.colorSecondary,
       },
+      expand: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+          duration: theme.transitions.duration.shortest,
+        }),
+      },
+      expandOpen: {
+        transform: 'rotate(180deg)',
+      },
 }));
 
 function Project (props)  {
     const classes = useStyles();
     const [{t}] = useState(props);
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+      };
+    
         return (
             <Container className={classes.mt5}>
                 <Grid container className={classes.container} spacing={5} alignItems='center' justify='center' >
@@ -50,14 +68,39 @@ function Project (props)  {
                                         <img  width={150} height={110} alt={t('project.row1.title')} className="mr-3" src={restApi} />
                                     </Grid>
                                     <Grid item md={10}>
-                                        <Typography variant='h5'>{t('project.row1.title')}</Typography>
                                         <Typography variant='body1' paragraph align='justify'>{t('project.row1.text')}</Typography>
                                     </Grid>    
                                 </Grid>
                             </CardContent>
                             <CardActions disableSpacing>
+                                <IconButton
+                                    className={clsx(classes.expand, {
+                                        [classes.expandOpen]: expanded,
+                                    })}
+                                    onClick={handleExpandClick}
+                                    aria-expanded={expanded}
+                                    aria-label="show more"
+                                    >
                                 <ExpandMoreIcon />
+                                </IconButton>
                             </CardActions>
+                                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                                <CardContent>
+                                    <Typography paragraph>Общее описание:</Typography>
+                                    <Typography paragraph>
+                                        Сервис обмена создан для удобства одновременного проведения большого количества платежей, а также, для удобства реализации клиентского программного обеспечения за счет переноса части клиентской логики на сервер.
+                                    </Typography>
+                                    <Typography paragraph>
+                                        Все команды передаются по https протоколу. 
+                                            Используемые типы запросов:
+                                            ●	POST
+                                            ●	GET
+                                            ●	DELETE  
+                                            Данные запросов передаются в кодировке UTF-8.
+
+                                    </Typography>
+                                    </CardContent>
+                            </Collapse>
                         </Card>    
                     </Grid>
                     <Grid item md={12} >
