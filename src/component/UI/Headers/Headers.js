@@ -31,7 +31,7 @@ const thStyles = makeStyles( theme => ({
 
   toolbarMarginDrawer:{
     ...theme.mixins.toolbar,
-    marginBottom:"3em"
+    marginBottom:"1em"
   },
 
   logo:{
@@ -64,21 +64,23 @@ const thStyles = makeStyles( theme => ({
 
    buttonLng:{
      ...theme.typography.button,
-	  height:"45px",
+    width:'6em',
+	  //height:"45px",
    },
  
    menu: {
-      backgroundColor: theme.palette.common.arcBlue,
-		color  :"black",
-      borderRadius:'0px',
-      //"&:hover":{
-	//	color:"black",
-     // },
+    backgroundColor: theme.palette.common.arcBlue,
+    color  :"black",
+    borderRadius:'0px',
+    //"&:hover":{
+	  //color:"black",
+    // },
    },
+
    menuItem:{
-	...theme.typography.tab,
+	  ...theme.typography.tab,
     opacity:0.7,
-	borderRadius:'0px',
+	  borderRadius:'0px',
 	
 	//  "&:hover": {
   	//	color:"black"
@@ -110,7 +112,8 @@ const thStyles = makeStyles( theme => ({
     }
   },
   drawer:{
-    backgroundColor: theme.palette.common.arcBlue
+    backgroundColor: theme.palette.common.arcBlue,
+    
   },
   drawerItem:{
     ...theme.typography.tab,
@@ -119,7 +122,9 @@ const thStyles = makeStyles( theme => ({
   },
 
   drawerItemSelected: {
-    opacity: 1
+    "& .MuiListItemText-root": {
+      opacity: 1
+    }
   },
   appbar:{
     zIndex: theme.zIndex.modal+1
@@ -131,7 +136,7 @@ const thStyles = makeStyles( theme => ({
 function Headers (props) {
 
   const [value, setValue] = useState(0);
-  const [anchorEl, setAnchoeEl] =  useState(null)
+  //const [anchorEl, setAnchoeEl] =  useState(null)
   const [anchorEl2, setAnchorEl2] =  useState(null)
   const [openMenu, setOpenMenu] = useState(false)
   const classes = thStyles();
@@ -148,7 +153,7 @@ function Headers (props) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
+  }; 
 
   /*const handleClick = (event) => {
     	setAnchoeEl(event.currentTarget)
@@ -156,17 +161,18 @@ function Headers (props) {
     	setOpenMenu(true)
   }*/
 
-  const handleClose = (event) => {
-	  setAnchoeEl(null)
-      setOpenMenu(false)
-  }
+  //const handleClose = (event) => {
+	//    setAnchoeEl(null)
+  //    setOpenMenu(false)
+  //}
 
   const handleClickLng = (event) => {
+    setOpenMenu(true)
 		setAnchorEl2(event.currentTarget);
   }
 
   const handleCloseLng = (event) => {
-		setOpenMenu(false)
+		  setOpenMenu(false)
 	  	setAnchorEl2(null)
   }
 
@@ -232,16 +238,20 @@ function Headers (props) {
       </Button>
 
     	<Menu
-			id="simple-menu-lng"
-			anchorEl={anchorEl2}
-			keepMounted
-			open={Boolean(anchorEl2)}
-			onClose={handleCloseLng}
-			classes={{paper: classes.menu}}
+        id="simple-menu-lng"
+        anchorEl={anchorEl2}
+        keepMounted
+        open={openMenu}//{Boolean(anchorEl2)}
+        onClose={handleCloseLng}
+        classes={{paper: classes.menu}}
+        style={{zIndex: 5402 }}
+        MenuListProps={{
+          onMouseLeave: handleCloseLng
+        }}
 		>
-			      <MenuItem onClick={(event) => {handleChangeLg(event, 'en'); setOpenDrawer(false)}} className={classes.menuItem} selected={1 === selectedIndex} >EN</MenuItem>
-          	<MenuItem onClick={(event) => {handleChangeLg(event, 'ru'); setOpenDrawer(false)}} className={classes.menuItem} selected={2 === selectedIndex} >RU</MenuItem>
-          	<MenuItem onClick={(event) => {handleChangeLg(event, 'pl'); setOpenDrawer(false)}} className={classes.menuItem} selected={3 === selectedIndex}  >PL</MenuItem>
+			      <MenuItem onClick={(event) => {handleChangeLg(event, 'en'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={1 === selectedIndex} >EN</MenuItem>
+          	<MenuItem onClick={(event) => {handleChangeLg(event, 'ru'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={2 === selectedIndex} >RU</MenuItem>
+          	<MenuItem onClick={(event) => {handleChangeLg(event, 'pl'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={3 === selectedIndex}  >PL</MenuItem>
       </Menu>	
     </React.Fragment>
   )
@@ -305,39 +315,6 @@ function Headers (props) {
 			/>
 		</Tabs>          
       {lngButton}
-		<Menu 
-		    
-			id="simple-menu" 
-			anchorEl={anchorEl} 
-			open={openMenu}
-			component={Link}
-			onClose={handleClose}
-			MenuListProps={{onMouseLeave: handleClose}}
-			keepMounted
-			classes={{paper: classes.menu}}
-			elevation={0}
-	
-			/*getContentAnchorEl={null}
-			anchorOrigin={{
-			vertical: 'bottom',
-			horizontal: 'center',
-			}}
-			transformOrigin={{
-			vertical: 'top',
-			horizontal: 'center',
-			}}*/
-		//{...props}
-			>
-			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
-			CustomSoft
-			</MenuItem>  
-			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
-			Mobile software
-			</MenuItem>  
-			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
-			Network software
-			</MenuItem>  
-			</Menu>  
 	   </React.Fragment>
   )
 
@@ -347,27 +324,32 @@ function Headers (props) {
         disableBackdropTransition={!iOS} 
         disableDiscovery={iOS}
         open={openDrawer}
-        onClose = {()=> setOpenDrawer(false)}
-        onOpen ={()=> setOpenDrawer(true)}
+        onClose = {()=> {setOpenDrawer(false); setOpenMenu(false)}}
+        onOpen ={()=> {setOpenDrawer(true); setOpenMenu(false)}}
         classes = {{paper: classes.drawer}}
         >
           <div className={classes.toolbarMarginDrawer} />
           <List disablePadding>
             
-            <ListItem  divider button component={Link} to="/" onClick={()=>{setOpenDrawer(false); setValue(0)}} selected={value===0}>
-              <ListItemText className={value ===0 ? classes.drawerItemSelected : classes.drawerItem } 
+            <ListItem  
+                divider button component={Link} to="/" 
+                onClick={()=>{setOpenDrawer(false); setValue(0)}} 
+                selected={value===0}
+                classes={{selected: classes.drawerItemSelected}} 
+              >
+              <ListItemText className={classes.drawerItem} 
                 disableTypography>{t('navbar.glavn')}</ListItemText>
             </ListItem>
-            <ListItem divider button component={Link} to="/project" onClick={()=>{setOpenDrawer(false); setValue(1)}} selected={value===1}>
-              <ListItemText className={value ===1 ? classes.drawerItemSelected : classes.drawerItem } 
+            <ListItem classes={{selected: classes.drawerItemSelected}} divider button component={Link} to="/project" onClick={()=>{setOpenDrawer(false); setValue(1)}} selected={value===1}>
+              <ListItemText className={classes.drawerItem } 
                 disableTypography>{t('navbar.project')}</ListItemText>
             </ListItem>
-            <ListItem divider button component={Link} to="/about" onClick={()=>{setOpenDrawer(false); setValue(2)}} selected={value===2}>
-              <ListItemText className={value ===2 ? classes.drawerItemSelected : classes.drawerItem } 
+            <ListItem classes={{selected: classes.drawerItemSelected}} divider button component={Link} to="/about" onClick={()=>{setOpenDrawer(false); setValue(2)}} selected={value===2}>
+              <ListItemText className={classes.drawerItem } 
                 disableTypography>{t('navbar.kontact')}</ListItemText>
             </ListItem>
-            <ListItem divider button component={Link} to="/auth" onClick={()=>{setOpenDrawer(false); setValue(3)}} selected={value===3}>
-              <ListItemText className={value ===3 ? classes.drawerItemSelected : classes.drawerItem } 
+            <ListItem classes={{selected: classes.drawerItemSelected}} divider button component={Link} to="/auth" onClick={()=>{setOpenDrawer(false); setValue(3)}} selected={value===3}>
+              <ListItemText className={classes.drawerItem } 
                 disableTypography>{isAuth ? t('navbar.logout') :t('navbar.login')}</ListItemText>
             </ListItem>
             <ListItem>
@@ -396,8 +378,8 @@ function Headers (props) {
         disableGutters={true}
         >
           <Button component={Link} to="/" onClick={()=>setSelectedIndex(1)}
-          disableRipple
-          className={classes.logoContainer}> 
+            disableRipple
+            className={classes.logoContainer}> 
             <img alt="logo" src={logo} className={classes.logo} />
           </Button>
               {matches ? drawer : tabs}
@@ -419,4 +401,38 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps) (translate(withStyles(useStyles) (Headers)));
-
+/*
+<Menu 		    
+			id="simple-menu" 
+			anchorEl={anchorEl} 
+			open={openMenu}
+			component={Link}
+			onClose={handleClose}
+			MenuListProps={{onMouseLeave: handleClose}}
+			keepMounted
+			classes={{paper: classes.menu}}
+			elevation={0}
+	
+			/*getContentAnchorEl={null}
+			anchorOrigin={{
+			vertical: 'bottom',
+			horizontal: 'center',
+			}}
+			transformOrigin={{
+			vertical: 'top',
+			horizontal: 'center',
+			}}*/
+    //{...props}
+    /*
+			>
+			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+			CustomSoft
+			</MenuItem>  
+			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+			Mobile software
+			</MenuItem>  
+			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
+			Network software
+			</MenuItem>  
+			</Menu>  
+*/

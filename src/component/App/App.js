@@ -15,7 +15,7 @@ import theme from '../UI/Theme'
 import Project from "../Pages/Project";
 import Cabinet from '../Pages/Cabinet';
 import {setDefaultLanguage, setLanguageCookie, setTranslations, translate} from "react-switch-lang";
-
+import Footer from "../UI/Footer/Footer" 
 import ru from '../../i18/ru.json';
 import en from '../../i18/en.json';
 import pl from '../../i18/pl.json';
@@ -64,7 +64,7 @@ class App extends Component {
         <ThemeProvider theme={theme}>
                 <Headers />
                 {routes}
-               
+               <Footer /> 
             
         </ThemeProvider>
     )

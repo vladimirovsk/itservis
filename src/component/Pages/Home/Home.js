@@ -117,9 +117,6 @@ const useStyles = makeStyles((theme) => ({
             boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
           }
       },
-      footer:{
-        marginTop:theme.spacing(5)
-      }
     }));
 
 /*
@@ -135,8 +132,6 @@ let cards = [];
 function Home (props) {
     const classes = useStyles();
     const [{t}] = useState(props)
-
-
     cards[0] = {
         id:"1",
         title:t("home.card1.header"),
@@ -155,7 +150,6 @@ function Home (props) {
         text:t("home.card3.text"),
         img: imgRest
     }
-            
         return (
             <React.Fragment>
                 <Paper className={classes.mainFuturePost}>
@@ -207,9 +201,6 @@ function Home (props) {
                     </Grid>
 
                 </Container>
-                <Typography className={classes.footer} align="center" color="textSecondary" component="p" variant="subtitle1">
-                        Разработано itservis.od.ua @2020
-                </Typography>
             </React.Fragment>
         )
 }

@@ -1,7 +1,8 @@
 import React,  {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import {Grid, Container, Paper, Typography } from "@material-ui/core";
-
+import {Avatar, IconButton, Card, CardActions, CardHeader, Grid, Container, Typography, CardContent } from "@material-ui/core";
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 //import {Button, Card, Col, Container, ListGroup, Media, Row} from "react-bootstrap";
 import {translate} from "react-switch-lang";
 import restApi from '../Project/img/REST_API.png'; 
@@ -11,9 +12,15 @@ import gkh from '../Project/img/GKH.jpg';
 
 const useStyles = makeStyles((theme) => ({
     mt5:{ marginTop:theme.spacing(8)},
-    paper:{
-        padding:theme.spacing(2)
-    }
+    projectCard:{
+        //position:'absolute',
+        boxShadow: theme.shadows[10],
+        borderRadius: 15,
+        padding: '1em'
+    },
+    avatar: {
+        backgroundColor: theme.palette.common.colorSecondary,
+      },
 }));
 
 function Project (props)  {
@@ -21,59 +28,83 @@ function Project (props)  {
     const [{t}] = useState(props);
         return (
             <Container className={classes.mt5}>
-                <Grid container className={classes.container} spacing={5}>
+                <Grid container className={classes.container} spacing={5} alignItems='center' justify='center' >
+                    <Grid item md={12} >
+                        <Card className={classes.projectCard}> 
+                            <CardHeader 
+                                avatar={
+                                <Avatar aria-label="recipe" className={classes.avatar}>
+                                  NJ
+                                </Avatar>
+                                }
+                                title = {t('project.row1.title')}
+                                subheader = 'Node JS'
+                                action={<IconButton aria-label="settings">
+                                            <MoreVertIcon />
+                                        </IconButton>
+                                }
+                            />
+                            <CardContent>
+                                <Grid container direction='row'>
+                                    <Grid item md={2}>
+                                        <img  width={150} height={110} alt={t('project.row1.title')} className="mr-3" src={restApi} />
+                                    </Grid>
+                                    <Grid item md={10}>
+                                        <Typography variant='h5'>{t('project.row1.title')}</Typography>
+                                        <Typography variant='body1' paragraph align='justify'>{t('project.row1.text')}</Typography>
+                                    </Grid>    
+                                </Grid>
+                            </CardContent>
+                            <CardActions disableSpacing>
+                                <ExpandMoreIcon />
+                            </CardActions>
+                        </Card>    
+                    </Grid>
+                    <Grid item md={12} >
+                        <Card className={classes.projectCard}> 
+                        <CardContent>
+                            <Grid container>
+                                <Grid item md={2}>
+                                    <img  width={150} height={140} alt={t('project.row2.title')} className="mr-3" src={cabinetTgo} />
+                                </Grid>
+                                <Grid item md={10}>
+                                    <Typography variant='h5'>{t('project.row2.title')}</Typography>
+                                    <Typography variant='body1' paragraph align='justify'>{t('project.row2.text')}</Typography>
+                                </Grid>    
+                            </Grid>  
+                        </CardContent>  
+                        </Card>
+                    </Grid>
+                    <Grid item md={12} >
+                        <Card className={classes.projectCard}> 
+                        <CardContent>
+                            <Grid container>
+                                <Grid item md={2}>
+                                    <img  width={150} height={130} alt={t('project.row3.title')} className="mr-3" src={avr} />
+                                </Grid>
+                                <Grid item md={10}>
+                                    <Typography variant='h5'>{t('project.row3.title')}</Typography>
+                                    <Typography variant='body1' paragraph align='justify'>{t('project.row3.text')}</Typography>
+                                </Grid>    
+                            </Grid>    
+                            </CardContent>
+                        </Card>
 
-                    <Grid item md={12} >
-                        <Paper className={classes.paper}>
-                        <Grid container>
-                            <Grid item md={2}>
-                                <img  width={150} height={110} alt={t('project.row1.title')} className="mr-3" src={restApi} />
-                            </Grid>
-                            <Grid item md={10}>
-                                <Typography variant='h5'>{t('project.row1.title')}</Typography>
-                                <Typography variant='body1' paragraph align='justify'>{t('project.row1.text')}</Typography>
-                            </Grid>    
-                        </Grid>    
-                        </Paper>
                     </Grid>
                     <Grid item md={12} >
-                        <Paper className={classes.paper}>
-                        <Grid container>
-                            <Grid item md={2}>
-                                <img  width={150} height={140} alt={t('project.row2.title')} className="mr-3" src={cabinetTgo} />
-                            </Grid>
-                            <Grid item md={10}>
-                                <Typography variant='h5'>{t('project.row2.title')}</Typography>
-                                <Typography variant='body1' paragraph align='justify'>{t('project.row2.text')}</Typography>
-                            </Grid>    
-                        </Grid>    
-                        </Paper>
-                    </Grid>
-                    <Grid item md={12} >
-                        <Paper className={classes.paper}>
-                        <Grid container>
-                            <Grid item md={2}>
-                                <img  width={150} height={130} alt={t('project.row3.title')} className="mr-3" src={avr} />
-                            </Grid>
-                            <Grid item md={10}>
-                                <Typography variant='h5'>{t('project.row3.title')}</Typography>
-                                <Typography variant='body1' paragraph align='justify'>{t('project.row3.text')}</Typography>
-                            </Grid>    
-                        </Grid>    
-                        </Paper>
-                    </Grid>
-                    <Grid item md={12} >
-                        <Paper className={classes.paper}>
-                        <Grid container>
-                            <Grid item md={2}>
-                                <img  width={150} height={150} alt={t('project.row4.title')} className="mr-3" src={gkh} />
-                            </Grid>
-                            <Grid item md={10}>
-                                <Typography variant='h5'>{t('project.row4.title')}</Typography>
-                                <Typography variant='body1' paragraph align='justify'>{t('project.row4.text')}</Typography>
-                            </Grid>    
-                        </Grid>    
-                        </Paper>
+                        <Card className={classes.projectCard}> 
+                        <CardContent>
+                            <Grid container>
+                                <Grid item md={2}>
+                                    <img  width={150} height={150} alt={t('project.row4.title')} className="mr-3" src={gkh} />
+                                </Grid>
+                                <Grid item md={10}>
+                                    <Typography variant='h5'>{t('project.row4.title')}</Typography>
+                                    <Typography variant='body1' paragraph align='justify'>{t('project.row4.text')}</Typography>
+                                </Grid>    
+                            </Grid> 
+                        </CardContent>   
+                        </Card>
                     </Grid>
 
                 </Grid>        

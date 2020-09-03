@@ -29,6 +29,7 @@ export default createMuiTheme({
      contrastText: '#fff',
     },
   },
+  
   typography:{
     tab:{
       fontFamily:"Raleway",

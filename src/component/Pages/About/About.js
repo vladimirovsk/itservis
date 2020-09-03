@@ -4,13 +4,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faAddressCard } from '@fortawesome/free-solid-svg-icons';
-import { Icon } from '@iconify/react';
+import Tooltip from '@material-ui/core/Tooltip';
 
-import viberIcon from '@iconify/icons-fa-brands/viber';
-import telegramIcon from '@iconify/icons-fa-brands/telegram';
-import skypeIcon from '@iconify/icons-fa-brands/skype';
+
+//import viberIcon from '../../../assets/viber.png';
+//import telegramIcon from '../../../assets/telegram.jpg';
+import skypeIcon from '../../../assets/skype.jpg';
+import facebookIcon from '../../../assets/facebook.png';
+import emailIcon from '../../../assets/email.jpg'
+
 
 import {translate} from "react-switch-lang";
 import { Container, Paper } from "@material-ui/core";
@@ -53,17 +55,16 @@ const useStyles = makeStyles((theme) => ({
         height:"100%",
         width:"100%",
         padding:theme.spacing(2),
-        "&:hover":{
-            //color: "red"
-            boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
-          }
+        //"&:hover":{
+        //    boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
+        //  }
         //textAlign: 'center',
         //color: theme.palette.text.secondary,
       },
 
       container: {
           marginTop: theme.spacing(6),
-        height: "600px"
+            height: "100%"
       },
       item:{
           marginTop:theme.spacing(1),
@@ -75,6 +76,10 @@ const useStyles = makeStyles((theme) => ({
             height: theme.spacing(20),
             boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
 
+      },
+      icon: {
+        width: '3em',
+        heigh: '3em'
       }
     }));
 
@@ -100,21 +105,41 @@ function About (props ) {
                         </Typography>
                         <hr />
                         <div align="center">
-                        <Typography variant="h5" component="h1" align="center" style={{marginBottom:'1em'}}>
-                            {t('kontact.title')}
-                        </Typography>        
-                        <Typography variant="h6" component="h3">
-                            <Icon icon={telegramIcon}/>&nbsp;<Icon icon={viberIcon}/>&nbsp; 
-                            {t('kontact.telegram')}
-                        </Typography>  
-                        <Typography variant="h6" component="h3">
-                            <Icon icon={skypeIcon}/>&nbsp; 
-                            {t('kontact.skype')}
-                        </Typography>
-                        <Typography variant="h6" component="h3">
-                            <FontAwesomeIcon icon={faAddressCard}/>&nbsp; 
-                            <a className="mail" href="mailto:admin@citypay.org.ua"><u>sergey@itservis.od.ua</u></a>
-                        </Typography>
+                        <Grid container justify="center" >
+                            <Grid item >    
+                                <Typography variant="h5" component="h1" align="center" style={{marginBottom:'1em'}}>
+                                    {t('kontact.title')}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+
+
+                        <Grid container spacing={5} justify="center" >
+
+                            <Grid item>   
+                                <Tooltip title="vladimirov_sk" arrow enterDelay={500} leaveDelay={200} placement="top">
+                                <a href="skype:vladimirov_sk?chat">
+                                    <img src={skypeIcon} className={classes.icon} alt={t('kontact.skype')}/>
+                                </a>
+                                </Tooltip> 
+                            </Grid>
+
+                            <Grid item>
+                                <Tooltip title="sergey@itservis.od.ua" arrow enterDelay={500} leaveDelay={200} placement="top">
+                                <a className="mail" href="mailto:sergey@itservis.od.ua">
+                                    <img src={emailIcon} alt="sergey@itservis.od.ua" className={classes.icon}/>
+                                </a>
+                                </Tooltip>
+                            </Grid>
+
+                            <Grid item>
+                                <Tooltip title="facebook.com/itservis.od.ua" arrow enterDelay={500} leaveDelay={200} placement="top">
+                                <a href="https://www.facebook.com/itservis.od.ua" rel="noopener noreferrer" target="_blank" >
+                                <img className={classes.icon} src={facebookIcon} alt="facebook"/>
+                                </a>
+                                </Tooltip>
+                            </Grid>
+                        </Grid>
                         </div>
                         </Paper>
                 </Grid>
