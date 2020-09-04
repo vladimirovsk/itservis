@@ -43,6 +43,7 @@ const thStyles = makeStyles( theme => ({
   },
 
   logoContainer:{
+    outline: 'none',
     padding:'10px',
     "&:hover":{
       backgroundColor:"transparent"
@@ -64,13 +65,14 @@ const thStyles = makeStyles( theme => ({
 
    buttonLng:{
      ...theme.typography.button,
+     outline: 'none',
     width:'6em',
 	  //height:"45px",
    },
  
    menu: {
-    backgroundColor: theme.palette.common.arcBlue,
-    color  :"black",
+    //backgroundColor: theme.palette.common.primary,
+    color  : theme.typography.caption,//"black",
     borderRadius:'0px',
     //"&:hover":{
 	  //color:"black",
@@ -112,7 +114,7 @@ const thStyles = makeStyles( theme => ({
     }
   },
   drawer:{
-    backgroundColor: theme.palette.common.arcBlue,
+    backgroundColor: theme.palette.common.primary,
     
   },
   drawerItem:{

@@ -27,6 +27,7 @@ import {translate} from 'react-switch-lang';
 import imgDatabase from '../Home/img/database.jpg';
 import imgServer from '../Home/img/servers.jpg';
 import imgRest from '../Home/img/REST.jpeg';
+import imgWebDev from '../Home/img/webdev.jpg';
 import laptopItservis1 from '../Home/img/laptopItservis.jpg';
 //import laptopItservis2 from '../Home/img/laptopItservis2.jpg';
 //import BackgroundSlider from '../../BackgroundSlider/BackgroundSlider'
@@ -99,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
             //maxWidth: 500,
             //marginLeft: 'auto',
             overflow: 'initial',
-            background: '#ffffff',
+            background: theme.palette.primary, //'#ffffff',
             //display: 'flex',
             //flexDirection: 'column',
             //alignItems: 'left',
@@ -150,6 +151,13 @@ function Home (props) {
         text:t("home.card3.text"),
         img: imgRest
     }
+
+    cards[3] = {
+        id:"4",
+        title:t("home.card4.header"),
+        text:t("home.card4.text"),
+        img: imgWebDev
+    }
         return (
             <React.Fragment>
                 <Paper className={classes.mainFuturePost}>
@@ -180,7 +188,7 @@ function Home (props) {
                 <Container className={classes.cardGrid}>
                 <Grid container spacing={5} justify='center'>
                             {cards.map ((card)=> (
-                                <Grid item key={card.id} xs={12} xm={6} md={4} >
+                                <Grid item key={card.id} xs={12} md={6} lg={3}  >
                                     <Card className={classes.cardItem}>
                                     <CardMedia 
                                             className={classes.cardMedia}
@@ -191,7 +199,7 @@ function Home (props) {
                                             <Typography variant="h5" gutterBottom align='center'>
                                                 {card.title}
                                             </Typography>
-                                            <Typography paragraph>
+                                            <Typography paragraph gutterBottom align='justify'>
                                                 {card.text}
                                             </Typography>
                                         </CardContent>

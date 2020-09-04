@@ -15,6 +15,7 @@ import gkh from '../Project/img/GKH.jpg';
 const useStyles = makeStyles((theme) => ({
     mt5:{ marginTop:theme.spacing(8)},
     projectCard:{
+        outline: 'none',
         //position:'absolute',
         boxShadow: theme.shadows[10],
         borderRadius: 15,
@@ -24,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.common.colorSecondary,
       },
       expand: {
+        outline: 'none',
+
+        WebkitTapHighlightColor: 'transparent',
+        //WebkitTapHighlightColor: 'transparent',
         transform: 'rotate(0deg)',
         marginLeft: 'auto',
         transition: theme.transitions.create('transform', {
@@ -31,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
         }),
       },
       expandOpen: {
+        WebkitTapHighlightColor: 'transparent',
+        outline: 'none',
         transform: 'rotate(180deg)',
       },
 }));

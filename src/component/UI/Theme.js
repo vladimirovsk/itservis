@@ -9,23 +9,24 @@ const colorSecondary = "#0d47a1"; //blue
 
 export default createMuiTheme({
   palette:{
-	///type:"light", //dark
+	  //type:'dark',//"light", //dark
     common:{
       colorPrimary:`${colorPrimary}`,
       colorSecondary:`${colorSecondary}`, 
       //colorSpecial:`${colorSpecial}`, 
     },
      primary:{
-    //light: '#757ce8',	
+     light: '#fff',	
      main:'#fff',
-	   //dark: '#002884',
+	   dark: '#002884',
 	   contrastText: '#000',
     },
      secondary:{
-	   //main:`${colorSecondary}`
-	   //light: '#ff7961',
+     //main:`${colorSecondary}`
+     
+	   light: '#0d47a1',
      main: '#0d47a1',
-     //dark: '#ba000d',
+     dark: '#0d47a1',
      contrastText: '#fff',
     },
   },
@@ -38,6 +39,7 @@ export default createMuiTheme({
       fontSize:'1rem',
     },
     button:{
+      outline: 'none',
       borderRadius:"50px",
       marginLeft:"50px",
       marginRight:"25px",
