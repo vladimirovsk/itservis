@@ -38,16 +38,39 @@ const useStyles = makeStyles((theme) => ({
 function Project (props)  {
     const classes = useStyles();
     const [{t}] = useState(props);
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded1, setExpanded1] = React.useState(false);
+    const [expanded2, setExpanded2] = React.useState(false);
+    const [expanded3, setExpanded3] = React.useState(false);
+    const [expanded4, setExpanded4] = React.useState(false);
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-      };
+    const handleExpandClick = (event) => {
+        switch (event.currentTarget.id) {
+            case '1': 
+               setExpanded1(!expanded1);
+              break;
+            case '2': 
+                setExpanded2(!expanded2);
+               break;  
+            case '3': 
+               setExpanded3(!expanded3);
+              break;           
+            case '4': 
+              setExpanded4(!expanded4);
+             break;           
+              default: 
+                console.log('Not find id element: '+event.currentTarget.id);   
+      }
+    }
     
+    //const handleExpandClick2 = (event) => {
+        //console.log(event.currentTarget.id);
+        //setExpanded2(!expanded2);
+      //};
         return (
             <Container className={classes.mt5}>
                 <Grid container className={classes.container} spacing={5} alignItems='center' justify='center' >
                     <Grid item md={12} >
+{/*----One Cards --------------------------------*/}
                         <Card className={classes.projectCard}> 
                             <CardHeader 
                                 avatar={
@@ -57,10 +80,10 @@ function Project (props)  {
                                 }
                                 title = {t('project.row1.title')}
                                 subheader = 'Node JS'
-                                action={<IconButton aria-label="settings">
+                                /*action={<IconButton aria-label="settings">
                                             <MoreVertIcon />
                                         </IconButton>
-                                }
+                                }*/
                             />
                             <CardContent>
                                 <Grid container direction='row'>
@@ -74,17 +97,18 @@ function Project (props)  {
                             </CardContent>
                             <CardActions disableSpacing>
                                 <IconButton
+                                    id='1'
                                     className={clsx(classes.expand, {
-                                        [classes.expandOpen]: expanded,
+                                        [classes.expandOpen]: expanded1,
                                     })}
                                     onClick={handleExpandClick}
-                                    aria-expanded={expanded}
+                                    aria-expanded={expanded1}
                                     aria-label="show more"
                                     >
                                 <ExpandMoreIcon />
                                 </IconButton>
                             </CardActions>
-                                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                                <Collapse in={expanded1} timeout="auto" unmountOnExit>
                                 <CardContent>
                                     <Typography paragraph>Общее описание:</Typography>
                                     <Typography paragraph>
@@ -103,50 +127,132 @@ function Project (props)  {
                             </Collapse>
                         </Card>    
                     </Grid>
+{/*----Two Cards --------------------------------*/}
+
+
                     <Grid item md={12} >
                         <Card className={classes.projectCard}> 
+                        <CardHeader 
+                                avatar={
+                                <Avatar aria-label="recipe" className={classes.avatar}>
+                                  AN
+                                </Avatar>
+                                }
+                                title = {t('project.row2.title')}
+                                subheader = 'Angular JS'
+                                /*action={<IconButton aria-label="settings">
+                                            <MoreVertIcon />
+                                        </IconButton>
+                                }*/
+                            />
+
                         <CardContent>
                             <Grid container>
                                 <Grid item md={2}>
                                     <img  width={150} height={140} alt={t('project.row2.title')} className="mr-3" src={cabinetTgo} />
                                 </Grid>
                                 <Grid item md={10}>
-                                    <Typography variant='h5'>{t('project.row2.title')}</Typography>
                                     <Typography variant='body1' paragraph align='justify'>{t('project.row2.text')}</Typography>
                                 </Grid>    
                             </Grid>  
                         </CardContent>  
+                        <CardActions disableSpacing>
+                                <IconButton
+                                    id='2'
+                                    className={clsx(classes.expand, {
+                                        [classes.expandOpen]: expanded2,
+                                    })}
+                                    onClick={handleExpandClick}
+                                    aria-expanded={expanded2}
+                                    aria-label="show more"
+                                    >
+                                <ExpandMoreIcon />
+                                </IconButton>
+                            </CardActions>
                         </Card>
                     </Grid>
-                    <Grid item md={12} >
+{/*----Three Cards --------------------------------*/}
+
+                    <Grid item md={12} >                
                         <Card className={classes.projectCard}> 
+                        <CardHeader 
+                                avatar={
+                                <Avatar aria-label="recipe" className={classes.avatar}>
+                                  AT
+                                </Avatar>
+                                }
+                                title = {t('project.row3.title')}
+                                subheader = 'Atmel C++'
+                                /*action={<IconButton aria-label="settings">
+                                            <MoreVertIcon />
+                                        </IconButton>
+                                }*/
+                            />
                         <CardContent>
                             <Grid container>
                                 <Grid item md={2}>
                                     <img  width={150} height={130} alt={t('project.row3.title')} className="mr-3" src={avr} />
                                 </Grid>
                                 <Grid item md={10}>
-                                    <Typography variant='h5'>{t('project.row3.title')}</Typography>
                                     <Typography variant='body1' paragraph align='justify'>{t('project.row3.text')}</Typography>
                                 </Grid>    
                             </Grid>    
                             </CardContent>
+                            <CardActions disableSpacing>
+                                <IconButton
+                                    id='3'
+                                    className={clsx(classes.expand, {
+                                        [classes.expandOpen]: expanded3,
+                                    })}
+                                    onClick={handleExpandClick}
+                                    aria-expanded={expanded3}
+                                    aria-label="show more"
+                                    >
+                                <ExpandMoreIcon />
+                                </IconButton>
+                            </CardActions>
                         </Card>
 
                     </Grid>
+{/*----Fourth Cards --------------------------------*/}
                     <Grid item md={12} >
                         <Card className={classes.projectCard}> 
+                        <CardHeader 
+                                avatar={
+                                <Avatar aria-label="recipe" className={classes.avatar}>
+                                  D
+                                </Avatar>
+                                }
+                                title = {t('project.row4.title')}
+                                subheader = 'Delphi'
+                                /*action={<IconButton aria-label="settings">
+                                            <MoreVertIcon />
+                                        </IconButton>
+                                }*/
+                            />
                         <CardContent>
                             <Grid container>
                                 <Grid item md={2}>
                                     <img  width={150} height={150} alt={t('project.row4.title')} className="mr-3" src={gkh} />
                                 </Grid>
                                 <Grid item md={10}>
-                                    <Typography variant='h5'>{t('project.row4.title')}</Typography>
                                     <Typography variant='body1' paragraph align='justify'>{t('project.row4.text')}</Typography>
                                 </Grid>    
                             </Grid> 
                         </CardContent>   
+                        <CardActions disableSpacing>
+                                <IconButton
+                                    id='4'
+                                    className={clsx(classes.expand, {
+                                        [classes.expandOpen]: expanded4,
+                                    })}
+                                    onClick={handleExpandClick}
+                                    aria-expanded={expanded4}
+                                    aria-label="show more"
+                                    >
+                                <ExpandMoreIcon />
+                                </IconButton>
+                            </CardActions>
                         </Card>
                     </Grid>
 
