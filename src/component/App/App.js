@@ -7,13 +7,11 @@ import {connect} from "react-redux";
 import Logout from "../Logout/Logout";
 import {autoLogin} from "../../store/actions/auth";
 import Home from "../Pages/Home";
-import Dashboard from "../Pages/Dashboard";
 import Headers from '../UI/Headers/Headers';
 //import ButtomPanel from '../UI/BottomPanel/BottomPanel';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../UI/Theme'
 import Project from "../Pages/Project";
-import Cabinet from '../Pages/Cabinet';
 import {setDefaultLanguage, setLanguageCookie, setTranslations, translate} from "react-switch-lang";
 import Footer from "../UI/Footer/Footer" 
 import ru from '../../i18/ru.json';
@@ -41,8 +39,6 @@ class App extends Component {
                 <Route exact path="/"  render={()=><Home />}/>
                 <Route path="/logout" exact={true} render={() =><Logout />}/>
                 <Route path="/project" exact={true} render={() =><Project />}/>
-                <Route path="/dashboard" exact={true} render={() =><Dashboard />}/>
-                <Route path="/cabinet" exact={true} render={() => <Cabinet />}/>
                 <Route exact={true} path="/about"  render={() => <About />}/>
                 <Redirect to={'/'}/>
             </Switch>

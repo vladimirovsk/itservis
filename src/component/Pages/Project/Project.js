@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {Avatar, IconButton, Card, CardActions, CardHeader, Grid, Container, Typography, CardContent } from "@material-ui/core";
 import Collapse from '@material-ui/core/Collapse';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+//import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 //import {Button, Card, Col, Container, ListGroup, Media, Row} from "react-bootstrap";
 import {translate} from "react-switch-lang";

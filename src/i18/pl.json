@@ -10,7 +10,7 @@
     "logout": "Wyjście"
   },
   "login": {
-    "header": "Wpisz swoje dane",
+    "header": "Zaloguj się do konta klienta",
     "login": "Wejście",
     "errorMessageEmail": "Wprowadź poprawny email",
     "errorMessagePassword": "wprowadź poprawne hasło",
@@ -38,7 +38,10 @@
     "card3": {
       "header": "Protokół API Development",
       "text": "Opracowanie i wykorzystanie wniosków REST w systemach płatności, w systemach gromadzenia informacji elektronicznych urządzeń pomiarowych, a także w organizacji wysyłki"
-
+    },
+    "card4": {
+      "header":"Web Programowanie",
+      "text": "W dzisiejszym świecie nie da się już obejść bez aplikacji internetowych, zajmuję się tworzeniem aplikacji internetowych w technologii FullStack, aby zaprezentować produkty i usługi szerokiemu gronu odbiorców, tworząc atrakcyjne i funkcjonalne strony internetowe."
     }
   },
   "project": {
@@ -91,6 +94,11 @@
     "block3":{
       "header":"Конфиденциальность",
       "text":"Мы заботимся о конфиденциальности ваших данных, не допуская их несанкционированной передачи третьим лицам. Многоуровневая система безопасности Itransition позволяет избежать потери, порчи либо утечки любой важной информации, предоставленной клиентами"
+    },
+    "block4":{
+      "header":"Dzień dobry",
+      "text1":"Nazywam się Sergiy, jestem Programista z dużym doświadczeniem w zakresie infrastruktury IT, świadczę szereg usług z zakresu tworzenia profesjonalnego oprogramowania, integracji aplikacji, doradztwa informatycznego, testowania, utrzymania oprogramowania i wsparcia.",
+      "text2":"Klienci otrzymują do swojej dyspozycji profesjonalny z systemów myślenia i twórczego podejścia, bogate doświadczenie w opracowywaniu i realizacji projektów korporacyjnych, jak i małych aplikacji w różnych językach programowania (JavaScript, Java, Delphi)."
     }
   },
   "kontact": {

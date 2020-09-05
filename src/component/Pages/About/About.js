@@ -170,7 +170,7 @@ function About (props ) {
                             </Typography>
                         </Paper>
                     </Grid>
-                    <Grid className={classes.item} item>
+                    <Grid hidden={true} className={classes.item} item>
                     <Paper className={classes.paper}>
                             <Typography gutterBottom variant="h5" component="h4" align="center">
                                 {t("contact.block3.header")}

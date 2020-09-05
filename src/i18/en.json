@@ -17,6 +17,14 @@
     "placeholderPassword": "Password"
   },
   "home": {
+    "deviz": {
+      "text1": "I suggest a solution to your problems",
+      "text2": "I delve into the problem, offer the optimal solution, implement the project as soon as possible"
+  },
+  "modul1": {
+    "text1": "Main",
+    "text2": "direction of development"
+  },
     "card1": {
       "header":"Database Development",
       "text": "One of the main directions of our work is the development of databases and database management systems (DBMS). We work with databases of various architectures (MySQL, MSSQL, Interbase, Firebird, Postgresql). The development of the software interface is carried out at the request of the customer on more convenient software for him, both for the Web interface and for the operating system API."
@@ -28,9 +36,14 @@
     "card3": {
       "header":"Protocol API Development",
       "text": "Development and use of REST requests in payment systems, in information collection systems of electronic metering devices, as well as the organization of dispatching"
+    },
+    "card4": {
+      "header":"WEB Development",
+      "text": "In today's world it is no longer possible to do without Web applications. I am engaged in FullStack development of Web applications to present your products and services to a wide audience, creating attractive and functional websites."
     }
-
   },
+
+
   "project": {
     "link": "More details",
     "category":{
@@ -81,6 +94,11 @@
     "block3":{
       "header":"Конфиденциальность",
       "text":"Мы заботимся о конфиденциальности ваших данных, не допуская их несанкционированной передачи третьим лицам. Многоуровневая система безопасности Itransition позволяет избежать потери, порчи либо утечки любой важной информации, предоставленной клиентами"
+    },
+    "block4":{
+      "header":"Hello",
+      "text1":"My name is Sergey, I am a Programmer, with extensive experience in IT infrastructure, I provide a range of services in the field of professional software development, application integration, consulting services in the IT sector, testing, software maintenance and support.",
+      "text2":"Clients get at their disposal a professional with systems thinking and creativity, extensive experience in the development and implementation of corporate projects, as well as small applications in various programming languages (JavaScript, Java, Delphi)."
     }
   },
   "kontact": {
