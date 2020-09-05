@@ -270,7 +270,7 @@ function Home (props) {
                 </div>
                 
                 <Container className={classes.cardGrid}>
-                <Grid container spacing={3} justify='center'>
+                <Grid container spacing={2} justify='center'>
                         {cards.map ((card)=> (
                             <Grid item key={card.id} xs={12} md={6} lg={3}>
                                 <Card className={classes.cardItem}>
@@ -300,7 +300,7 @@ function Home (props) {
                 </Container>
                 </div>                    
                 <Container className={classes.cardGridSkil}>
-                    <Grid container spacing={3} justify='center'>
+                    <Grid container spacing={2} justify='center'>
                             {skils.map((skil)=> (
                                 <Grid item key={skil.id} xs={12} sm={6} md={4} lg={3} xl={3}>
                                 <Card className={classes.cardItemSkil}>

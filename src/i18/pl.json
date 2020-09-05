@@ -12,6 +12,7 @@
   "login": {
     "header": "Zaloguj się do konta klienta",
     "login": "Wejście",
+    "logout": "Wyjście",
     "errorMessageEmail": "Wprowadź poprawny email",
     "errorMessagePassword": "wprowadź poprawne hasło",
     "placeholderEmail": "Wprowadź swój email",

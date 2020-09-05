@@ -24,6 +24,12 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 
+import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField} from '@material-ui/core';
+
+
+
+
+
 const thStyles = makeStyles( theme => ({
   toolbarMargin:{
     ...theme.mixins.toolbar
@@ -82,13 +88,16 @@ const thStyles = makeStyles( theme => ({
    menuItem:{
 	  ...theme.typography.tab,
     opacity:0.7,
-	  borderRadius:'0px',
+    borderRadius:'0px',
+   },
+
+
 	
 	//  "&:hover": {
   	//	color:"black"
 	//},
 	
-  },
+
 
   formControl: {
    margin: theme.spacing(1),
@@ -99,7 +108,7 @@ const thStyles = makeStyles( theme => ({
     marginTop: theme.spacing(2),
     borderRadius: 4,
     borderColor: '#80bdff',
-	boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+	 boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
 },
   drawerIcon:{
     height: '30px',
@@ -130,8 +139,16 @@ const thStyles = makeStyles( theme => ({
   },
   appbar:{
     zIndex: theme.zIndex.modal+1
-  }
+  },
 
+  textField: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+    backgroundColor: '#fff', //theme.palette.common.primary''
+    paddingTop: theme.spacing(4),
+  }
   
 }));
 
@@ -148,6 +165,7 @@ function Headers (props) {
 
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
   const [openDrawer, setOpenDrawer] = useState(false); 
+  const [openDlg, setOpenDlg] = useState(false);
 
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
@@ -156,6 +174,15 @@ function Headers (props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }; 
+
+  const handleCloseDlg = () => {
+    setOpenDlg(false)
+  }
+
+  const handleOpenDlg = () => {
+    setOpenDlg(true)
+  }
+
 
   /*const handleClick = (event) => {
     	setAnchoeEl(event.currentTarget)
@@ -311,9 +338,10 @@ function Headers (props) {
         //hidden={props.isAuth}
         className={classes.tab} 
         component={Link} 
-        to={isAuth ?'/logout' :'/auth'} 
+        //to={isAuth ?'/logout' :'/auth'} 
         label ={isAuth ?t('navbar.logout') :t('navbar.login')}
-        onClick={()=>setValue(3)}
+        //onClick={()=>setValue(3)}
+        onClick={()=>{setValue(3); handleOpenDlg()}}
 			/>
 		</Tabs>          
       {lngButton}
@@ -387,6 +415,45 @@ function Headers (props) {
               {matches ? drawer : tabs}
           </Toolbar>
       </AppBar>
+      <Dialog open={openDlg} onClose={handleCloseDlg} aria-labelledby="customized-dialog-title">
+
+        <DialogTitle id="form-dialog-title">{t('login.header')}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            
+          </DialogContentText>
+          <TextField className={classes.textField}
+            id="login" 
+            label={t("login.placeholderEmail")}
+            //margin="dense" 
+            type="email"
+            //autoComplete="current-email"
+            //variant="outlined"
+            fullWidth
+          />
+          <TextField className={classes.textField}
+            //disabled={false}
+            //autoFocus   
+            //margin="dense"
+            id="password"
+            label={t("login.placeholderPassword")}
+            type="password"
+            //autoComplete="current-password"
+            //variant="outlined"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          
+          <Button onClick={handleCloseDlg} color="secondary" variant="outlined">
+          {t('login.logout')}
+          </Button>
+          <Button onClick={handleCloseDlg} color="secondary" variant="outlined">
+          {t('login.login')}
+          </Button>
+
+        </DialogActions>
+      </Dialog>
  
     <div className={classes.toolbarMargin}/>
     </Container>

@@ -12,6 +12,7 @@
   "login": {
     "header": "Вход в кабинет клиента",
     "login": "Войти",
+    "logout": "Отмена",
     "errorMessageEmail": "введите корректный email",
     "errorMessagePassword": "введите корректный пароль",
     "placeholderEmail": "Введите Ваш email",
