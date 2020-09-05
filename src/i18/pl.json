@@ -21,29 +21,38 @@
     "deviz":{
       "text1": "Oferuję rozwiązanie twoich problemów",
       "text2": "Zagłębiam się w problem, proponuję optymalne rozwiązanie, jak najszybciej wdrażam projekt"
-   },
-   "modul1":{
-    "text1":"Główny",
-    "text2":"kierunek rozwoju"
-  },
-    "card1": {
-      "header": "Tworzenie baz danych",
-      "text": "Jednym z głównych kierunków naszej pracy jest rozwój baz danych i systemów zarządzania bazami danych (DBMS). Pracujemy z bazami danych o różnych architekturach (MySQL, MSSQL, Interbase, Firebird, Postgresql). Interfejs oprogramowania jest opracowywany na życzenie klienta w postaci wygodniejszego dla niego oprogramowania, zarówno dla interfejsu WWW, jak i interfejsu API systemu operacyjnego."
-    },
-    "card2": {
-      "header": "Konfiguracja serwera",
-      "text": "Instalacja pod klucz i konfiguracja stacji serwerowych z systemami Linux, Windows, zgodnie z zadaniem klienta. Konfigurowanie serwerów z zainstalowanymi systemami wirtualizacji Proxmox lub VMWare"
+    },  
+      "modul1":{
+        "text1":"Główny",
+        "text2":"kierunek rozwoju",
+        "cards":{
+          "card1": {
+            "header": "Tworzenie baz danych",
+            "text": "Jednym z głównych kierunków naszej pracy jest rozwój baz danych i systemów zarządzania bazami danych (DBMS). Pracujemy z bazami danych o różnych architekturach (MySQL, MSSQL, Interbase, Firebird, Postgresql). Interfejs oprogramowania jest opracowywany na życzenie klienta w postaci wygodniejszego dla niego oprogramowania, zarówno dla interfejsu WWW, jak i interfejsu API systemu operacyjnego."
+          },
+          "card2": {
+            "header": "Konfiguracja serwera",
+            "text": "Instalacja pod klucz i konfiguracja stacji serwerowych z systemami Linux, Windows, zgodnie z zadaniem klienta. Konfigurowanie serwerów z zainstalowanymi systemami wirtualizacji Proxmox lub VMWare"
+      
+          },
+          "card3": {
+            "header": "Protokół API Development",
+            "text": "Opracowanie i wykorzystanie wniosków REST w systemach płatności, w systemach gromadzenia informacji elektronicznych urządzeń pomiarowych, a także w organizacji wysyłki"
+          },
+          "card4": {
+            "header":"Web Programowanie",
+            "text": "W dzisiejszym świecie nie da się już obejść bez aplikacji internetowych, zajmuję się tworzeniem aplikacji internetowych w technologii FullStack, aby zaprezentować produkty i usługi szerokiemu gronu odbiorców, tworząc atrakcyjne i funkcjonalne strony internetowe."
+          }
+        }
+      },
+      "modul2":{
+        "text1":"Umiejętności",
+        "text2":"Języki programowania i środowiska programistyczne",
+        "skils":{
 
-    },
-    "card3": {
-      "header": "Protokół API Development",
-      "text": "Opracowanie i wykorzystanie wniosków REST w systemach płatności, w systemach gromadzenia informacji elektronicznych urządzeń pomiarowych, a także w organizacji wysyłki"
-    },
-    "card4": {
-      "header":"Web Programowanie",
-      "text": "W dzisiejszym świecie nie da się już obejść bez aplikacji internetowych, zajmuję się tworzeniem aplikacji internetowych w technologii FullStack, aby zaprezentować produkty i usługi szerokiemu gronu odbiorców, tworząc atrakcyjne i funkcjonalne strony internetowe."
-    }
-  },
+        }
+      }      
+   },
   "project": {
     "link": "Więcej informacji",
     "category":{
@@ -108,34 +117,5 @@
     "viber": "+48 791 329 376",
     "telegram":"+38(097)599-65-60",
     "skype": "vladimirov_sk"
-  },
-  "dashboard": {
-    "tab1": {
-      "title": "Płatności",
-      "bank": "Bank",
-      "summa": "Suma",
-      "data": "Data",
-      "chart1": {
-        "title":"Priwat Bank",
-        "caption": "Rejestracja płatności"
-      },
-      "chart2": {
-        "title":"EasyPay",
-        "caption": "Rejestracja płatności"
-      },
-      "chart3": {
-        "title":"Podsumowanie",
-        "caption": "Element płatności"
-      }
-    },
-    "tab2": {
-      "title": "Liczniki"
-    },
-    "tab3": {
-      "title": "Reklamacje"
-
-    }
   }
-
-
 }

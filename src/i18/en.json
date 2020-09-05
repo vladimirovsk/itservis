@@ -20,26 +20,36 @@
     "deviz": {
       "text1": "I suggest a solution to your problems",
       "text2": "I delve into the problem, offer the optimal solution, implement the project as soon as possible"
-  },
-  "modul1": {
+    },
+    "modul1": {
     "text1": "Main",
-    "text2": "direction of development"
-  },
-    "card1": {
-      "header":"Database Development",
-      "text": "One of the main directions of our work is the development of databases and database management systems (DBMS). We work with databases of various architectures (MySQL, MSSQL, Interbase, Firebird, Postgresql). The development of the software interface is carried out at the request of the customer on more convenient software for him, both for the Web interface and for the operating system API."
+    "text2": "direction of development",
+    "cards":{
+      "card1": {
+        "header":"Database Development",
+        "text": "One of the main directions of our work is the development of databases and database management systems (DBMS). We work with databases of various architectures (MySQL, MSSQL, Interbase, Firebird, Postgresql). The development of the software interface is carried out at the request of the customer on more convenient software for him, both for the Web interface and for the operating system API."
+      },
+      "card2": {
+        "header":"Server Configuration",
+        "text": "Installation and configuration of server stations with Linux, Windows operating systems according to the customer’s task. Configuring servers with installed Proxmox or VMWare virtualization systems"
+      },
+      "card3": {
+        "header":"Protocol API Development",
+        "text": "Development and use of REST requests in payment systems, in information collection systems of electronic metering devices, as well as the organization of dispatching"
+      },
+      "card4": {
+        "header":"WEB Development",
+        "text": "In today's world it is no longer possible to do without Web applications. I am engaged in FullStack development of Web applications to present your products and services to a wide audience, creating attractive and functional websites."
+      }  
+    }
+
     },
-    "card2": {
-      "header":"Server Configuration",
-      "text": "Installation and configuration of server stations with Linux, Windows operating systems according to the customer’s task. Configuring servers with installed Proxmox or VMWare virtualization systems"
-    },
-    "card3": {
-      "header":"Protocol API Development",
-      "text": "Development and use of REST requests in payment systems, in information collection systems of electronic metering devices, as well as the organization of dispatching"
-    },
-    "card4": {
-      "header":"WEB Development",
-      "text": "In today's world it is no longer possible to do without Web applications. I am engaged in FullStack development of Web applications to present your products and services to a wide audience, creating attractive and functional websites."
+    "modul2":{
+      "text1":"Skils",
+      "text2":"Programming languages and development environments",
+      "skils":{
+        
+      }
     }
   },
 
@@ -105,32 +115,5 @@
     "title": "Our contacts",
     "city": "Odessa city",
     "phone": "+48 791 329 376"
-  },
-  "dashboard": {
-    "tab1": {
-      "bank": "Bank",
-      "summa": "Amount",
-      "data": "Date",
-      "title": "Payments",
-      "chart1": {
-        "title":"PrivatBank",
-        "caption": "Registration of payments"
-      },
-      "chart2": {
-        "title":"EasyPay",
-        "caption": "Registration of payments"
-      },
-      "chart3": {
-        "title":"Summary",
-        "caption": "Payment component"
-      }
-    },
-    "tab2": {
-      "title": "Accounting Counters"
-    },
-    "tab3": {
-      "title": "Complaints"
-    }
   }
-
 }
