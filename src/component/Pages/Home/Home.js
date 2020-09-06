@@ -31,7 +31,7 @@ import imgRest from '../Home/img/REST.jpeg';
 import imgWebDev from '../Home/img/webdev.jpg';
 import imgDelphi from '../Home/img/delphi.png';
 import imgNodeJs from '../Home/img/nodejs.png';
-import imgReactJs from '../Home/img/react.jpeg';
+import imgReactJs from '../Home/img/react.png';
 import imgSql from '../Home/img/sql.png';
 import imgHtml from '../Home/img/html.png';
 import img1C from '../Home/img/1c.jpeg';

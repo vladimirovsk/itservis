@@ -11,7 +11,10 @@ import restApi from '../Project/img/REST_API.png';
 import cabinetTgo from '../Project/img/TGO_CABINET.png'; 
 import avr from '../Project/img/AVR.jpeg'; 
 import gkh from '../Project/img/GKH.jpg'; 
-
+import imgNodeJs from '../Home/img/nodejs.png'
+import imgAngular from '../Home/img/angular.png'
+import imgArduino from '../Home/img/arduino2.png'
+import imgDelphi from '../Home/img/delphi.png'
 const useStyles = makeStyles((theme) => ({
     mt5:{ marginTop:theme.spacing(8)},
     projectCard:{
@@ -23,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         backgroundColor: theme.palette.common.colorSecondary,
+        boxShadow: theme.shadows[10],
       },
       expand: {
         outline: 'none',
@@ -81,8 +85,10 @@ function Project (props)  {
                         <Card className={classes.projectCard}> 
                             <CardHeader 
                                 avatar={
-                                <Avatar aria-label="recipe" className={classes.avatar}>
-                                  NJ
+                                <Avatar aria-label="recipe" className={classes.avatar}
+                                    src={imgNodeJs}
+                                >
+                                
                                 </Avatar>
                                 }
                                 title = {t('project.row1.title')}
@@ -135,14 +141,13 @@ function Project (props)  {
                         </Card>    
                     </Grid>
 {/*----Two Cards --------------------------------*/}
-
-
                     <Grid item md={12} >
                         <Card className={classes.projectCard}> 
                         <CardHeader 
                                 avatar={
-                                <Avatar aria-label="recipe" className={classes.avatar}>
-                                  AN
+                                <Avatar aria-label="recipe" className={classes.avatar}
+                                  src={imgAngular}
+                                  >
                                 </Avatar>
                                 }
                                 title = {t('project.row2.title')}
@@ -179,13 +184,13 @@ function Project (props)  {
                         </Card>
                     </Grid>
 {/*----Three Cards --------------------------------*/}
-
                     <Grid item md={12} >                
                         <Card className={classes.projectCard}> 
                         <CardHeader 
                                 avatar={
-                                <Avatar aria-label="recipe" className={classes.avatar}>
-                                  AT
+                                <Avatar aria-label="recipe" className={classes.avatar}
+                                    src={imgArduino}
+                                >
                                 </Avatar>
                                 }
                                 title = {t('project.row3.title')}
@@ -226,8 +231,10 @@ function Project (props)  {
                         <Card className={classes.projectCard}> 
                         <CardHeader 
                                 avatar={
-                                <Avatar aria-label="recipe" className={classes.avatar}>
-                                  D
+                                <Avatar aria-label="recipe" className={classes.avatar}
+                                    src={imgDelphi}
+                                >
+                                
                                 </Avatar>
                                 }
                                 title = {t('project.row4.title')}
