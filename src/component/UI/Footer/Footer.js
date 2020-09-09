@@ -39,16 +39,11 @@ function Footer(){
     <footer className={classes.footer}>
  
          <Typography className={classes.footer} align="center" color="textSecondary" component="p" variant="caption">
-                Разработано itservis.od.ua @2020
+                <a href="it-vladimirov.com" rel="noopener noreferrer" target="_blank" >@ Designed 2020</a>
           </Typography>
-          
-            
           <Typography align="center" component={"a"} href="https://www.facebook.com/itservis.od.ua" rel="noopener noreferrer" target="_blank"  >
               <img className={classes.icon} src={facebookIcon} alt="facebook/itservis.od.ua"/> 
           </Typography>
-
-
-
     </footer>
 
   )

@@ -56,32 +56,13 @@
 
 
   "project": {
-    "link": "More details",
-    "category":{
-      "title":"Categories",
-
-      "list": {
-        "row1": {
-          "title": "Programming"
-        },
-        "row2": {
-          "title": "Electronics"
-        }
-      }
-    },
-
-    "vidjet": {
-      "title": "In work",
-      "text": "In development an electronic device for receiving information"
-    },
-
     "row1": {
       "title": "Payment service",
       "text": "The payment service is designed to accept payments from the population in favor of utilities, works on the basis of REST requests"
     },
     "row2": {
-      "title": "Personal user account",
-      "text": "Displays general information about the charge, debts and current payments of the subscriber in the general table. It is possible to pay in your account through a convenient financial company or bank. View accrual and payment history"
+      "title": "Bank payment system",
+      "text": "Software for realizing the possibility of premium payments in bank branches, payment terminals. Allows you to work on very weak communication channels, and provides the ability to make payments online directly from the payer to the service provider."
     },
     "row3": {
       "title": "Modem data transmission",

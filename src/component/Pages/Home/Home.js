@@ -323,6 +323,7 @@ function Home (props) {
         )
 }
 
+
 export default translate(Home);
 
 /**

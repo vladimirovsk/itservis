@@ -45,7 +45,6 @@ class Auth extends Component{
         }
     }
 
-
     loginHandler = () => {
         this.props.auth(
             this.state.formControls.email.value,

@@ -50,7 +50,7 @@ class App extends Component {
                         <Route exact={true} path="/auth"   render={() => <Auth  />}/>
                         <Route exact={true} path="/project"  render={()=><Project />}/>
                         <Route exact={true} path="/about"  render={() => <About />}/>
-                        <Redirect to={'/auth'}/>
+                        <Redirect to={'/'}/>
                     </Switch>
                 )
             }

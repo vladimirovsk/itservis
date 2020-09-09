@@ -1,20 +1,23 @@
 import React,  {useState} from "react";
+import {connect} from "react-redux";
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import {Avatar, IconButton, Card, CardActions, CardHeader, Grid, Container, Typography, CardContent } from "@material-ui/core";
+import {Avatar, IconButton, Card, CardActions, CardHeader, Grid, Container, Typography, CardContent, Button } from "@material-ui/core";
+import {List, ListItem} from '@material-ui/core';
 import Collapse from '@material-ui/core/Collapse';
 //import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 //import {Button, Card, Col, Container, ListGroup, Media, Row} from "react-bootstrap";
 import {translate} from "react-switch-lang";
 import restApi from '../Project/img/REST_API.png'; 
-import cabinetTgo from '../Project/img/TGO_CABINET.png'; 
+import imgNit from '../Project/img/nit.png'; 
 import avr from '../Project/img/AVR.jpeg'; 
 import gkh from '../Project/img/GKH.jpg'; 
 import imgNodeJs from '../Home/img/nodejs.png'
-import imgAngular from '../Home/img/angular.png'
 import imgArduino from '../Home/img/arduino2.png'
 import imgDelphi from '../Home/img/delphi.png'
+import imgUP1 from '../Project/img/UP1.jpg'
+
 const useStyles = makeStyles((theme) => ({
     mt5:{ marginTop:theme.spacing(8)},
     projectCard:{
@@ -49,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 function Project (props)  {
     const classes = useStyles();
     const [{t}] = useState(props);
+    //const [openDlg, setOpenDlg] = useState(props);
     const [expanded1, setExpanded1] = React.useState(false);
     const [expanded2, setExpanded2] = React.useState(false);
     const [expanded3, setExpanded3] = React.useState(false);
@@ -72,7 +76,12 @@ function Project (props)  {
                 console.log('Not find id element: '+event.currentTarget.id);   
       }
     }
-    
+
+    const handleClick = () => {
+
+    }
+
+    //console.log({isAuth})
     //const handleExpandClick2 = (event) => {
         //console.log(event.currentTarget.id);
         //setExpanded2(!expanded2);
@@ -80,16 +89,13 @@ function Project (props)  {
         return (
             <Container className={classes.mt5}>
                 <Grid container className={classes.container} spacing={5} alignItems='center' justify='center' >
-                    <Grid item md={12} >
 {/*----One Cards --------------------------------*/}
+                    <Grid item md={12} >
                         <Card className={classes.projectCard}> 
                             <CardHeader 
                                 avatar={
                                 <Avatar aria-label="recipe" className={classes.avatar}
-                                    src={imgNodeJs}
-                                >
-                                
-                                </Avatar>
+                                    src={imgNodeJs}/>
                                 }
                                 title = {t('project.row1.title')}
                                 subheader = 'Node JS'
@@ -109,6 +115,9 @@ function Project (props)  {
                                 </Grid>
                             </CardContent>
                             <CardActions disableSpacing>
+                                <Button variant="outlined" size="small" color="secondary" hidden={true} onClick={handleClick()}>
+                                    Документация
+                                </Button>
                                 <IconButton
                                     id='1'
                                     className={clsx(classes.expand, {
@@ -130,9 +139,17 @@ function Project (props)  {
                                     <Typography paragraph>
                                         Все команды передаются по https протоколу. 
                                             Используемые типы запросов:
-                                            ●	POST
-                                            ●	GET
-                                            ●	DELETE  
+                                            <List>
+                                                <ListItem>
+                                                    POST
+                                                </ListItem>
+                                                <ListItem>
+                                                    GET
+                                                </ListItem>
+                                                <ListItem>
+                                                    DELETE
+                                                </ListItem>
+                                            </List>    
                                             Данные запросов передаются в кодировке UTF-8.
 
                                     </Typography>
@@ -146,12 +163,11 @@ function Project (props)  {
                         <CardHeader 
                                 avatar={
                                 <Avatar aria-label="recipe" className={classes.avatar}
-                                  src={imgAngular}
-                                  >
-                                </Avatar>
+                                  src={imgDelphi}
+                                  />
                                 }
                                 title = {t('project.row2.title')}
-                                subheader = 'Angular JS'
+                                subheader = 'Delphi'
                                 /*action={<IconButton aria-label="settings">
                                             <MoreVertIcon />
                                         </IconButton>
@@ -160,8 +176,8 @@ function Project (props)  {
 
                         <CardContent>
                             <Grid container>
-                                <Grid item md={2}>
-                                    <img  width={150} height={140} alt={t('project.row2.title')} className="mr-3" src={cabinetTgo} />
+                                <Grid item md={2} >
+                                    <img  width={190} height={150} alt={t('project.row2.title')} className="mr-3" src={imgNit} style={{padding:10}}/>
                                 </Grid>
                                 <Grid item md={10}>
                                     <Typography variant='body1' paragraph align='justify'>{t('project.row2.text')}</Typography>
@@ -170,6 +186,7 @@ function Project (props)  {
                         </CardContent>  
                         <CardActions disableSpacing>
                                 <IconButton
+                                    hidden={true}
                                     id='2'
                                     className={clsx(classes.expand, {
                                         [classes.expandOpen]: expanded2,
@@ -189,12 +206,10 @@ function Project (props)  {
                         <CardHeader 
                                 avatar={
                                 <Avatar aria-label="recipe" className={classes.avatar}
-                                    src={imgArduino}
-                                >
-                                </Avatar>
+                                    src={imgArduino} />
                                 }
                                 title = {t('project.row3.title')}
-                                subheader = 'Atmel C++'
+                                subheader = 'Atmel C++, PHP, HTML'
                                 /*action={<IconButton aria-label="settings">
                                             <MoreVertIcon />
                                         </IconButton>
@@ -223,8 +238,37 @@ function Project (props)  {
                                 <ExpandMoreIcon />
                                 </IconButton>
                             </CardActions>
-                        </Card>
+                            <Collapse in={expanded3} timeout="auto" unmountOnExit>
+                                <CardContent>
+                                    <Typography variant='h5' align='center'>Общее описание</Typography>
+                                    <Grid container style={{padding:20}}>
+                                    <Grid item>
+                                            <Grid container >
+                                                <Grid item md={4}>                                
+                                                    <img style={{marginBottom:15, padding:20}} width={'100%'} src={imgUP1} alt='UP1'/>
+                                                </Grid>  
+                                                <Grid item md={8}>
+                                                    <Typography paragraph align='justify'> 
+                                                        Устройство передачи данных (УП) предназначенное для съема информации с приборов учета тепла фирмы MULTICAL 
+                                                        и передачи их в центральную базу данных для дальнейшей обработки, и визуализации данных.
+                                                    </Typography>
+                                                    <Typography paragraph align='justify'> 
+                                                        Корпус устройства выполнен из пластика и сконфигурирован специально для установки в подвальных помещениях. 
+                                                        На корпусе предусмотрен герметичный вывод для антенны и клеммы для подключения питания.
+                                                    </Typography> 
+                                                    <Typography paragraph align='justify'> 
+                                                        Прибор снабжен аккумулятором который позволяет ему продолжать автономную работу в течении 360 часов после отключения внешнего питания.
+                                                        УП снабжено микропроцессором который программируется индивидуально для заказчика с указанием серийного номера прибора учета тепла.
+                                                    </Typography>
+                                                </Grid>
+                                            </Grid>
+                                    </Grid>
+                                    </Grid>
+                                    </CardContent>
+                                    
+                            </Collapse>
 
+                        </Card>
                     </Grid>
 {/*----Fourth Cards --------------------------------*/}
                     <Grid item md={12} >
@@ -256,6 +300,7 @@ function Project (props)  {
                         </CardContent>   
                         <CardActions disableSpacing>
                                 <IconButton
+                                    hidden={true}
                                     id='4'
                                     className={clsx(classes.expand, {
                                         [classes.expandOpen]: expanded4,
@@ -275,84 +320,14 @@ function Project (props)  {
         )
 }
 
-export default translate(Project)
-
-/**
- <Row>
-                    <Col md="9" className="text-left meProject">
-                        <ListGroup>
-
-                            <ListGroup.Item className="bg-white mt-3"><Media>
-                                <img  width={150} height={110} alt={t('project.row1.title')} className="mr-3" src={restApi} />
-                                <Media.Body>
-                                    <h5 className={"text-center"}>{t('project.row1.title')}</h5>
-                                    <p>{t('project.row1.text')}</p>
-                                    <Button variant={"outline-primary"} >
-                                        <a rel="external" href="https://teplo.od.ua/cabinet">{t('project.link')}</a>
-                                    </Button>
-                                </Media.Body>
-                            </Media></ListGroup.Item>
-
-                            <ListGroup.Item className="bg-white mt-3"><Media className={" m-3 "}>
-                                <img width={150} height={140} alt={t('project.row2.title')} className="mr-3" src={cabinetTgo} />
-                                <Media.Body>
-                                    <h5 className={"text-center"}>{t('project.row2.title')}</h5>
-                                    <p>{t('project.row2.text')}
-                                    </p>
-                                    <Button variant={"outline-primary"} >
-                                        <a rel="external" href="https://teplo.od.ua/cabinet">{t('project.link')}</a>
-                                    </Button>
-                                </Media.Body>
-                            </Media></ListGroup.Item>
-
-                            <ListGroup.Item className="bg-white mt-3"><Media className={" m-3 "}>
-                                <img width={150} height={130} alt={t('project.row3.title')} className="mr-3" src={avr} />
-                                <Media.Body>
-                                    <h5 className={"text-center"}>{t('project.row3.title')}</h5>
-                                    <p>{t('project.row3.text')}
-                                    </p>
-                                    <Button variant={"outline-primary"}>
-                                        <a rel="external" href="http://heatmeter.itservis.od.ua">{t('project.link')}</a>
-                                    </Button>
-                                </Media.Body>
-                            </Media></ListGroup.Item>
-                            <ListGroup.Item className="bg-white mt-3"><Media className={" m-3 "}>
-                                <img width={150} height={150} alt={t('project.row4.title')} className="mr-3" src={gkh} />
-                                <Media.Body>
-                                    <h5 className={"text-center"}>{t('project.row4.title')}</h5>
-                                    <p>{t('project.row4.text')}
-                                    </p>
-                                    <Button variant={"outline-primary"}>
-                                        <a rel="external" href="http://csip.itservis.od.ua/">{t('project.link')}</a>
-                                    </Button>
-                                </Media.Body>
-                            </Media></ListGroup.Item>
-                        </ListGroup>
-                    </Col>
-
-                    <Col md="3">
-                        <Card className="mt-3">
-                            <Card.Title className="text-center mt-4">{t('project.category.title')}</Card.Title>
-                        <ListGroup variant={"flush"}>
-                            <ListGroup.Item>{t('project.category.list.row1.title')}</ListGroup.Item>
-                            <ListGroup.Item>{t('project.category.list.row2.title')}</ListGroup.Item>
-                        </ListGroup>
-                        </Card>
-                        <Card className={"mt-3"}>
-                            <Card.Body>
-                                <Card.Title>{t('project.vidjet.title')}</Card.Title>
-                                <Card.Text>
-                                    {t('project.vidjet.text')}
-
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-
-                </Row>
-
-            </Container>
-        )
+function mapStateToProps(state){
+    //console.log(new Date(localStorage.getItem('expirationDate')))
+    //console.log(new Date(state.auth.expData)
+    return{
+     // isAuth: !!state.auth.token,
+     // stDate: new Date(state.auth.expData),
+      //openDlg state. openDlg
     }
+  }
 
-*/
+export default connect(mapStateToProps) (translate(Project));

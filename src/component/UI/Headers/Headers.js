@@ -337,7 +337,7 @@ function Headers (props) {
 			  hidden = {false}
         //hidden={props.isAuth}
         className={classes.tab} 
-        component={Link} 
+        component={Button} 
         //to={isAuth ?'/logout' :'/auth'} 
         label ={isAuth ?t('navbar.logout') :t('navbar.login')}
         //onClick={()=>setValue(3)}

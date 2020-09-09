@@ -79,8 +79,8 @@
       "text": "Usługa płatnicza ma na celu przyjmowanie płatności od ludności na rzecz usług użyteczności publicznej, działa na podstawie żądań REST"
     },
     "row2": {
-      "title": "Konto Abonenta",
-      "text": "Wyświetla ogólne informacje o opłatach, długach i bieżących płatnościach subskrybenta w ogólnej tabeli. Istnieje możliwość wpłaty na konto za pośrednictwem wygodnej firmy finansowej lub banku. Zobacz historię naliczania i płatności"
+      "title": "System płatności bankowych",
+      "text": "Oprogramowanie do realizacji możliwości opłacania składek w oddziałach bankowych, terminale płatnicze. Umożliwia pracę na bardzo słabych kanałach komunikacyjnych oraz zapewnia możliwość dokonywania płatności online bezpośrednio od płatnika do usługodawcy."
     },
     "row3": {
       "title": "Modem do przesyłania informacji",
