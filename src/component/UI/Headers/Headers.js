@@ -448,7 +448,7 @@ function Headers (props) {
           <Button onClick={handleCloseDlg} color="secondary" variant="outlined">
           {t('login.logout')}
           </Button>
-          <Button onClick={handleCloseDlg} color="secondary" variant="outlined">
+          <Button disabled={true} onClick={handleCloseDlg} color="secondary" variant="outlined">
           {t('login.login')}
           </Button>
 

@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 
 
-//import viberIcon from '../../../assets/viber.png';
-//import telegramIcon from '../../../assets/telegram.jpg';
+import viberIcon from '../../../assets/viber.png';
+import telegramIcon from '../../../assets/telegram.jpg';
 import skypeIcon from '../../../assets/skype.jpg';
 import facebookIcon from '../../../assets/facebook.png';
 import emailIcon from '../../../assets/email.jpg'
@@ -139,6 +139,19 @@ function About (props ) {
                                 </a>
                                 </Tooltip>
                             </Grid>
+                            <Grid item>
+                              <Tooltip title="380975996560" arrow enterDelay={500} leaveDelay={200} placement="top">
+                                <a title="Viber" href="viber://add?number=380975996560">
+                                    <img src={viberIcon} alt="380975996560" className={classes.icon}/>
+                                </a>
+                              </Tooltip>  
+                            </Grid>    
+                            <Grid item hidden={true}>
+                            <a title="Telegram" href="viber://add?number=380975996560">
+                                    <img src={telegramIcon} alt="380975996560" className={classes.icon}/>
+                                </a>
+                            </Grid> 
+
                         </Grid>
                         </div>
                         </Paper>
@@ -170,6 +183,8 @@ function About (props ) {
                             </Typography>
                         </Paper>
                     </Grid>
+                    {//Kontainer
+                    }
                     <Grid hidden={true} className={classes.item} item>
                     <Paper className={classes.paper}>
                             <Typography gutterBottom variant="h5" component="h4" align="center">
@@ -180,6 +195,8 @@ function About (props ) {
                             </Typography>
                         </Paper>
                     </Grid>
+
+                
                     </Grid>
                 </Grid>
 
