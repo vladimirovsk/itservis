@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
+import {Card, CardHeader, CardContent} from '@material-ui/core';
+import renderHTML from 'react-render-html';
 
 
 import viberIcon from '../../../assets/viber.png';
@@ -12,6 +14,9 @@ import telegramIcon from '../../../assets/telegram.jpg';
 import skypeIcon from '../../../assets/skype.jpg';
 import facebookIcon from '../../../assets/facebook.png';
 import emailIcon from '../../../assets/email.jpg'
+import emailCircle from '../About/img/emailCircle.jpg';
+import questCircle from '../About/img/questCircle.jpeg';
+
 
 
 import {translate} from "react-switch-lang";
@@ -70,22 +75,66 @@ const useStyles = makeStyles((theme) => ({
           marginTop:theme.spacing(1),
           flex:1    
       },
-      avatar:{
 
-            width: theme.spacing(20),
-            height: theme.spacing(20),
-            boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
-
+      avatar: {
+        backgroundColor: theme.palette.common.colorSecondary,
+        width: theme.spacing(7),
+        height: theme.spacing(7),
+        boxShadow: theme.shadows[10],
       },
       icon: {
         width: '3em',
         heigh: '3em'
-      }
+      },
+      cardMedia:{
+        paddingTop: "56.25%",
+        //borderRadius: theme.spacing(2), // 16px   
+        //boxShadow: '0px 4px 4px rgba(34, 35, 58, 0.2)',
+          //position: 'relative'
+      },
+      
+      CardContent:{
+            margin:'auto',
+            maxWidth: 500,
+            //paddingBottom: theme.spacing(2),
+            flexGrow:1, 
+            //heigh:500
+      },
+
+      cardGrid:{
+            // 16px
+            transition: '0.3s',
+            //boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
+            //position: 'relative',
+            //maxWidth: 500,
+            //marginLeft: 'auto',
+            overflow: 'initial',
+            background: theme.palette.primary, //'#ffffff',
+            //display: 'flex',
+            //flexDirection: 'column',
+            //alignItems: 'left',
+            //paddingBottom: 100,
+            //marginTop: theme.spacing(4)
+      },
+
+      cardItem:{
+        borderRadius: theme.spacing(2),  
+        width: '100%',
+        height: '100%',
+        //paddingBottom: theme.spacing(2),
+        //marginBottom:theme.spacing(4),
+        "&:hover":{
+            //color: "red"
+            boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
+          }
+      },
+
     }));
 
 function About (props ) {
     const [{t}] = useState(props);
     const classes = useStyles();
+    const strEmail = renderHTML("<a className='mail'  href=mailto:"+t('kontact.email')+">"+t('kontact.email')+"</a>");
     return (
         //xs={12} xm={6} md={4}
         <Container>
@@ -163,25 +212,38 @@ function About (props ) {
                         className={classes.box}
                     >
                     <Grid className={classes.item} item>
-                        <Paper className={classes.paper}>
-                            <Typography gutterBottom variant="h5" component="h4" align="center">
-                                {t("contact.block1.header")}
-                            </Typography>
-                            <Typography variant="body1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
-                            {t('contact.block1.text')}
-                            </Typography>
-                        </Paper>
+                        <Card className={classes.cardItem}>
+                            <CardHeader    
+                                avatar={
+                                    <Avatar aria-label="recipe"  className={classes.avatar} src={emailCircle}/>      
+                                    }
+                                    title= {t("contact.block1.header")}   
+                                    subheader = {strEmail}                           
+                            />
+                            <CardContent>            
+                                <Typography variant="body1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
+                                {t('contact.block1.text')}
+                                </Typography>
+                            </CardContent>
+                            </Card>
                     </Grid>
 
                     <Grid className={classes.item} item>
-                        <Paper className={classes.paper}>
-                            <Typography gutterBottom variant="h5" component="h4" align="center">
-                                {t("contact.block2.header")}
-                            </Typography>
-                            <Typography variant="body1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
+                    
+                    <Card className={classes.cardItem}>
+                            <CardHeader    
+                                avatar={
+                                    <Avatar aria-label="recipe"  className={classes.avatar} src={questCircle}/>      
+                                    }
+                                    title= {t("contact.block2.header")}   
+                                    subheader = " "                           
+                            />
+                            <CardContent>            
+                                <Typography variant="body1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
                                 {t('contact.block2.text')}
-                            </Typography>
-                        </Paper>
+                                </Typography>
+                            </CardContent>
+                            </Card>
                     </Grid>
                     {//Kontainer
                     }
