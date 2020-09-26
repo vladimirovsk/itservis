@@ -4,7 +4,7 @@ import './index.css';
 import App from './component/App/App';
 import {BrowserRouter} from 'react-router-dom'
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap-css-only/css/bootstrap.min.css';
+//import 'bootstrap-css-only/css/bootstrap.min.css';
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import rootReducers  from "./store/reducers/rootReducers";
