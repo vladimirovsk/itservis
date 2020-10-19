@@ -5,13 +5,14 @@ import Typography from "@material-ui/core/Typography"
 //import Paper from "@material-ui/core/Paper";
 //import FacebookIcon from '@material-ui/icons/Facebook';
 import facebookIcon from '../../../assets/facebook.svg';
+import Link from "@material-ui/core/Link";
 
 
 const useStyles = makeStyles(theme => ({
   footer:{
     backgroundColor: theme.palette.common.blue,
     width: '100%',
-    marginTop:theme.spacing(3),
+    marginTop:theme.spacing(5),
     zIndex: 1302,
     textAlign:'center',
     verticalAlignment:"bottom"
@@ -37,6 +38,14 @@ function Footer(){
 
   return (
     <footer className={classes.footer}>
+        <Typography variant="body2" color="textSecondary" align="center">
+            {' © '}
+            <Link color="inherit" href="https://it-vladimirov.com">
+                Serhii Vladimirov
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
  
          <Typography className={classes.footer} align="center" color="textSecondary" component="p" variant="caption">
                 <a href="it-vladimirov.com" rel="noopener noreferrer" target="_blank" >@ Designed 2020</a>

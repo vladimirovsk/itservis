@@ -116,7 +116,7 @@ function Project (props)  {
                             </CardContent>
                             <CardActions disableSpacing>
                                 <Button variant="outlined" size="small" color="secondary" hidden={true} onClick={handleClick()}>
-                                    Документация
+                                {t('project.row1.documents')}
                                 </Button>
                                 <IconButton
                                     id='1'
@@ -139,20 +139,23 @@ function Project (props)  {
                                     <Typography paragraph>
                                         Все команды передаются по https протоколу. 
                                             Используемые типы запросов:
-                                            <List>
-                                                <ListItem>
-                                                    POST
-                                                </ListItem>
-                                                <ListItem>
-                                                    GET
-                                                </ListItem>
-                                                <ListItem>
-                                                    DELETE
-                                                </ListItem>
-                                            </List>    
-                                            Данные запросов передаются в кодировке UTF-8.
-
                                     </Typography>
+
+                                    <List>
+                                        <ListItem>
+                                            - POST
+                                        </ListItem>
+                                        <ListItem>
+                                            - GET
+                                        </ListItem>
+                                        <ListItem>
+                                            - DELETE
+                                        </ListItem>
+                                    </List>    
+                                    <Typography paragraph>
+                                        Данные запросов передаются в кодировке UTF-8.
+                                    </Typography>
+
                                     </CardContent>
                             </Collapse>
                         </Card>    
@@ -245,7 +248,7 @@ function Project (props)  {
                                     <Grid item>
                                             <Grid container >
                                                 <Grid item md={4}>                                
-                                                    <img style={{marginBottom:15, padding:20}} width={'100%'} src={imgUP1} alt='UP1'/>
+                                                    <img style={{marginBottom:15, padding:20}} width={'80%'} src={imgUP1} alt='UP1'/>
                                                 </Grid>  
                                                 <Grid item md={8}>
                                                     <Typography paragraph align='justify'> 

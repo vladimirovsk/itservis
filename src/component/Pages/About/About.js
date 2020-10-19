@@ -10,10 +10,10 @@ import renderHTML from 'react-render-html';
 
 
 import viberIcon from '../../../assets/viber.png';
-import telegramIcon from '../../../assets/telegram.jpg';
+//import telegramIcon from '../../../assets/telegram.jpg';
 import skypeIcon from '../../../assets/skype.jpg';
 import facebookIcon from '../../../assets/facebook.png';
-import emailIcon from '../../../assets/email.jpg'
+//import emailIcon from '../../../assets/email.jpg'
 import emailCircle from '../About/img/emailCircle.jpg';
 import questCircle from '../About/img/questCircle.jpeg';
 
@@ -176,7 +176,7 @@ function About (props ) {
                             <Grid item>
                                 <Tooltip title="sergey@itservis.od.ua" arrow enterDelay={500} leaveDelay={200} placement="top">
                                 <a className="mail" href="mailto:sergey@itservis.od.ua">
-                                    <img src={emailIcon} alt="sergey@itservis.od.ua" className={classes.icon}/>
+                                    <img src={emailCircle} alt="sergey@itservis.od.ua" className={classes.icon}/>
                                 </a>
                                 </Tooltip>
                             </Grid>
@@ -190,16 +190,11 @@ function About (props ) {
                             </Grid>
                             <Grid item>
                               <Tooltip title="380975996560" arrow enterDelay={500} leaveDelay={200} placement="top">
-                                <a title="Viber" href="viber://add?number=380975996560">
+                                <a href="viber://add?number=380975996560">
                                     <img src={viberIcon} alt="380975996560" className={classes.icon}/>
                                 </a>
                               </Tooltip>  
                             </Grid>    
-                            <Grid item hidden={true}>
-                            <a title="Telegram" href="viber://add?number=380975996560">
-                                    <img src={telegramIcon} alt="380975996560" className={classes.icon}/>
-                                </a>
-                            </Grid> 
 
                         </Grid>
                         </div>

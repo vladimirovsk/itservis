@@ -1,8 +1,11 @@
-import React, {useEffect, useStyles, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import { makeStyles, useTheme} from "@material-ui/core/styles";
-import { withStyles} from "@material-ui/styles";
+import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField} from '@material-ui/core';
+
+//import {withStyles} from "@material-ui/styles";
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tabs from '@material-ui/core/Tabs'
@@ -22,13 +25,7 @@ import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-
-
-import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField} from '@material-ui/core';
-
-
-
-
+import AlertContext from '../../../context/alert/alertContext';
 
 const thStyles = makeStyles( theme => ({
   toolbarMargin:{
@@ -97,8 +94,6 @@ const thStyles = makeStyles( theme => ({
   	//	color:"black"
 	//},
 	
-
-
   formControl: {
    margin: theme.spacing(1),
 	minWidth: 60,
@@ -141,23 +136,20 @@ const thStyles = makeStyles( theme => ({
     zIndex: theme.zIndex.modal+1
   },
 
-  textField: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-    backgroundColor: '#fff', //theme.palette.common.primary''
-    paddingTop: theme.spacing(4),
-  }
+
   
 }));
 
 function Headers (props) {
 
+  const [{t, isAuth}] = useState(props)
+  const [openDlg, setOpenDlg] = useState(false);
   const [value, setValue] = useState(0);
-  //const [anchorEl, setAnchoeEl] =  useState(null)
   const [anchorEl2, setAnchorEl2] =  useState(null)
   const [openMenu, setOpenMenu] = useState(false)
+  const {show} = useContext(AlertContext);
+  
+
   const classes = thStyles();
   const theme = useTheme();
 
@@ -165,36 +157,22 @@ function Headers (props) {
 
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
   const [openDrawer, setOpenDrawer] = useState(false); 
-  const [openDlg, setOpenDlg] = useState(false);
-
   const [selectedIndex, setSelectedIndex] = React.useState(1);
-
-  const [{t, isAuth}] = useState(props)
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }; 
-
-  const handleCloseDlg = () => {
-    setOpenDlg(false)
-  }
-
-  const handleOpenDlg = () => {
-    setOpenDlg(true)
+  const handleOpenMsg = () => {
+      show('1236767657657567567', 'success', 5000)
+      //console.log(MyContext.show)
   }
 
 
-  /*const handleClick = (event) => {
-    	setAnchoeEl(event.currentTarget)
-    	setSelectedIndex(event.currentTarget.index);
-    	setOpenMenu(true)
-  }*/
-
-  //const handleClose = (event) => {
-	//    setAnchoeEl(null)
-  //    setOpenMenu(false)
-  //}
-
+  const handleOpenDlg = () =>{
+    setOpenDlg(true);
+  }
+  const handleCloseDlg = () =>{
+    setOpenDlg(false);
+  }
   const handleClickLng = (event) => {
     setOpenMenu(true)
 		setAnchorEl2(event.currentTarget);
@@ -206,22 +184,13 @@ function Headers (props) {
   }
 
   const handleChangeLg = (event, lng) => {
-	  console.log(event.currentTarget.value, lng)
 		setLanguage(lng);
 		setAnchorEl2(null)
 		setOpenMenu(false)
   };
 
-  /*const route = [
-    {name: "Home", link: '/', activeIndex:0 }, 
-    {name: "Project", link: '/project', activeIndex:1},
-    {name: "About", link: '/about', activeIndex:2},
-    {name: "Auth", link: '/auth', activeIndex:3},
-  ]
-*/
   //Для возможности роутинга по страницам без перезагрузки сайта
   useEffect(() => {
-    
    /* [...route].forEach(route => {
       
       switch (window.location.pathname){
@@ -332,17 +301,20 @@ function Headers (props) {
         label ={t('navbar.kontact')}
         onClick={()=>setValue(2)}
 			/>
+      
       <Tab 
         selected ={value === 3}
-			  hidden = {false}
-        //hidden={props.isAuth}
+			  hidden = {true}
+        //hidden={!props.isAuth}
         className={classes.tab} 
         component={Button} 
         //to={isAuth ?'/logout' :'/auth'} 
         label ={isAuth ?t('navbar.logout') :t('navbar.login')}
         //onClick={()=>setValue(3)}
         onClick={()=>{setValue(3); handleOpenDlg()}}
-			/>
+      />
+      
+
 		</Tabs>          
       {lngButton}
 	   </React.Fragment>
@@ -402,7 +374,6 @@ function Headers (props) {
   )
   return(
     <Container>
-    
       <AppBar position="fixed" className={classes.appbar} color="primary">
         <Toolbar 
         disableGutters={true}
@@ -413,48 +384,48 @@ function Headers (props) {
             <img alt="logo" src={logo} className={classes.logo} />
           </Button>
               {matches ? drawer : tabs}
-          </Toolbar>
+        </Toolbar>
       </AppBar>
+      
       <Dialog open={openDlg} onClose={handleCloseDlg} aria-labelledby="customized-dialog-title">
-
-        <DialogTitle id="form-dialog-title">{t('login.header')}</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            
-          </DialogContentText>
-          <TextField className={classes.textField}
-            id="login" 
-            label={t("login.placeholderEmail")}
-            //margin="dense" 
-            type="email"
-            //autoComplete="current-email"
-            //variant="outlined"
-            fullWidth
-          />
-          <TextField className={classes.textField}
-            //disabled={false}
-            //autoFocus   
-            //margin="dense"
-            id="password"
-            label={t("login.placeholderPassword")}
-            type="password"
-            //autoComplete="current-password"
-            //variant="outlined"
-            fullWidth
-          />
-        </DialogContent>
-        <DialogActions>
-          
-          <Button onClick={handleCloseDlg} color="secondary" variant="outlined">
-          {t('login.logout')}
-          </Button>
-          <Button disabled={true} onClick={handleCloseDlg} color="secondary" variant="outlined">
-          {t('login.login')}
-          </Button>
-
-        </DialogActions>
-      </Dialog>
- 
+      <DialogTitle id="form-dialog-title">{t('login.header')}</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+      
+        </DialogContentText>
+        <TextField className={classes.textField}
+          id="login" 
+          label={t("login.placeholderEmail")}
+          //margin="dense" 
+          type="email"
+          //autoComplete="current-email"
+          //variant="outlined"
+          fullWidth
+        />
+        <TextField className={classes.textField}
+          //disabled={false}
+          //autoFocus   
+          //margin="dense"
+          id="password"
+          label={t("login.placeholderPassword")}
+          type="password"
+          //autoComplete="current-password"
+          //variant="outlined"
+          fullWidth
+        />
+    </DialogContent>
+    <DialogActions>
+      <Button onClick={handleCloseDlg} color="secondary" variant="outlined">
+        {t('login.logout')}
+      </Button>
+      <Button disabled={true} onClick={handleCloseDlg} color="secondary" variant="outlined">
+        {t('login.login')}
+      </Button>
+    </DialogActions>
+    </Dialog>
+      
+      
+      
     <div className={classes.toolbarMargin}/>
     </Container>
   )
@@ -462,14 +433,14 @@ function Headers (props) {
 
 function mapStateToProps(state){
   //console.log(new Date(localStorage.getItem('expirationDate')))
-  //console.log(new Date(state.auth.expData)
   return{
     isAuth: !!state.auth.token,
-    stDate: new Date(state.auth.expData)
+    stDate: new Date(state.auth.expData),
   }
 }
 
-export default connect(mapStateToProps) (translate(withStyles(useStyles) (Headers)));
+//export default connect(mapStateToProps) (translate(withStyles(useStyles) (Headers)));
+export default connect(mapStateToProps) (translate(Headers));
 /*
 <Menu 		    
 			id="simple-menu" 

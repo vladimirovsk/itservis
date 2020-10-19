@@ -2,7 +2,7 @@
   "navbar": {
     "glavn": "Home",
     "directory": "Directory",
-    "project": "Our projects",
+    "project": "Projects",
     "dashboard": "Dashboard",
     "kontact": "Contacts",
     "login":"Login",
@@ -48,9 +48,41 @@
     "modul2":{
       "text1":"Skils",
       "text2":"Programming languages and development environments",
-      "skils":{
-
-      }
+        "skils":{
+            "skil0":{
+              "title":"Delphi",
+              "subheader":"Pascal"
+            },
+            "skil1":{
+              "title":"Node JS",
+              "subheader":"JavaScript/REST Api"
+            },
+            "skil2":{
+              "title":"React JS",
+              "subheader":"JavaScript"
+            },
+            "skil3":{
+              "title":"SQL",
+              "subheader":"MSQL/MySQl/Firebird ..."
+            },
+            "skil4":{
+              "title":"HTML/CSS",
+              "subheader":" "
+            },
+            "skil5":{
+              "title":"1C",
+              "subheader":" "
+            },
+            "skil6":{
+              "title":"VMWare/Proxmox",
+              "subheader":"JavaScript"
+            },
+            "skil7":{
+              "title":"Arduino",
+              "subheader":"Atmel"
+            }
+          
+        } 
     }
   },
 
@@ -58,7 +90,8 @@
   "project": {
     "row1": {
       "title": "Payment service",
-      "text": "The payment service is designed to accept payments from the population in favor of utilities, works on the basis of REST requests"
+      "text": "The payment service is designed to accept payments from the population in favor of utilities, works on the basis of REST requests",
+      "documents":"Documentation"
     },
     "row2": {
       "title": "Bank payment system",
@@ -95,7 +128,8 @@
   },
   "kontact": {
     "title": "Our contacts",
-    "city": "Odessa city",
-    "phone": "+48 791 329 376"
+    "city": "Krakow",
+    "phone": "+48 791 329 376",
+    "email":"sergey@itservis.od.ua"
   }
 }
