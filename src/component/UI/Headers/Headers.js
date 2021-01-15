@@ -1,11 +1,9 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import { makeStyles, useTheme} from "@material-ui/core/styles";
-import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField} from '@material-ui/core';
-
+//import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Box} from '@material-ui/core';
 //import {withStyles} from "@material-ui/styles";
-
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tabs from '@material-ui/core/Tabs'
@@ -25,7 +23,7 @@ import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import AlertContext from '../../../context/alert/alertContext';
+//import AlertContext from '../../../context/alert/alertContext';
 
 const thStyles = makeStyles( theme => ({
   toolbarMargin:{
@@ -140,14 +138,13 @@ const thStyles = makeStyles( theme => ({
   
 }));
 
-function Headers (props) {
+ function Headers (props) {
 
   const [{t, isAuth}] = useState(props)
-  const [openDlg, setOpenDlg] = useState(false);
   const [value, setValue] = useState(0);
   const [anchorEl2, setAnchorEl2] =  useState(null)
   const [openMenu, setOpenMenu] = useState(false)
-  const {show} = useContext(AlertContext);
+ // const {show} = React.useContext(AlertContext);
   
 
   const classes = thStyles();
@@ -160,19 +157,15 @@ function Headers (props) {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  }; 
-  const handleOpenMsg = () => {
+  };
+
+
+  /*const handleOpenMsg = () => {
       show('1236767657657567567', 'success', 5000)
       //console.log(MyContext.show)
-  }
+  }*/
 
 
-  const handleOpenDlg = () =>{
-    setOpenDlg(true);
-  }
-  const handleCloseDlg = () =>{
-    setOpenDlg(false);
-  }
   const handleClickLng = (event) => {
     setOpenMenu(true)
 		setAnchorEl2(event.currentTarget);
@@ -247,7 +240,7 @@ function Headers (props) {
           onMouseLeave: handleCloseLng
         }}
 		>
-			      <MenuItem onClick={(event) => {handleChangeLg(event, 'en'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={1 === selectedIndex} >EN</MenuItem>
+            <MenuItem onClick={(event) => {handleChangeLg(event, 'en'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={1 === selectedIndex} >EN</MenuItem>
           	<MenuItem onClick={(event) => {handleChangeLg(event, 'ru'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={2 === selectedIndex} >RU</MenuItem>
           	<MenuItem onClick={(event) => {handleChangeLg(event, 'pl'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={3 === selectedIndex}  >PL</MenuItem>
       </Menu>	
@@ -302,7 +295,8 @@ function Headers (props) {
         onClick={()=>setValue(2)}
 			/>
       
-      <Tab 
+            {/*
+			<Tab
         selected ={value === 3}
 			  hidden = {true}
         //hidden={!props.isAuth}
@@ -313,10 +307,13 @@ function Headers (props) {
         //onClick={()=>setValue(3)}
         onClick={()=>{setValue(3); handleOpenDlg()}}
       />
+      */}
       
 
-		</Tabs>          
+		</Tabs>
+
       {lngButton}
+
 	   </React.Fragment>
   )
 
@@ -358,9 +355,6 @@ function Headers (props) {
               {lngButton}
             </ListItem>
           </List>
-
-          
-
       </SwipeableDrawer> 
       <IconButton 
         className={classes.drawerIconContainer}
@@ -386,47 +380,7 @@ function Headers (props) {
               {matches ? drawer : tabs}
         </Toolbar>
       </AppBar>
-      
-      <Dialog open={openDlg} onClose={handleCloseDlg} aria-labelledby="customized-dialog-title">
-      <DialogTitle id="form-dialog-title">{t('login.header')}</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-      
-        </DialogContentText>
-        <TextField className={classes.textField}
-          id="login" 
-          label={t("login.placeholderEmail")}
-          //margin="dense" 
-          type="email"
-          //autoComplete="current-email"
-          //variant="outlined"
-          fullWidth
-        />
-        <TextField className={classes.textField}
-          //disabled={false}
-          //autoFocus   
-          //margin="dense"
-          id="password"
-          label={t("login.placeholderPassword")}
-          type="password"
-          //autoComplete="current-password"
-          //variant="outlined"
-          fullWidth
-        />
-    </DialogContent>
-    <DialogActions>
-      <Button onClick={handleCloseDlg} color="secondary" variant="outlined">
-        {t('login.logout')}
-      </Button>
-      <Button disabled={true} onClick={handleCloseDlg} color="secondary" variant="outlined">
-        {t('login.login')}
-      </Button>
-    </DialogActions>
-    </Dialog>
-      
-      
-      
-    <div className={classes.toolbarMargin}/>
+        <div className={classes.toolbarMargin}/>
     </Container>
   )
 }
@@ -475,4 +429,44 @@ export default connect(mapStateToProps) (translate(Headers));
 			Network software
 			</MenuItem>  
 			</Menu>  
+*/
+
+
+    /*
+          <Dialog open={openDlg} onClose={handleCloseDlg} aria-labelledby="customized-dialog-title">
+      <DialogTitle id="form-dialog-title">{t('login.header')}</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+
+        </DialogContentText>
+        <TextField className={classes.textField}
+          id="login"
+          label={t("login.placeholderEmail")}
+          //margin="dense"
+          type="email"
+          //autoComplete="current-email"
+          //variant="outlined"
+          fullWidth
+        />
+        <TextField className={classes.textField}
+          //disabled={false}
+          //autoFocus
+          //margin="dense"
+          id="password"
+          label={t("login.placeholderPassword")}
+          type="password"
+          //autoComplete="current-password"
+          //variant="outlined"
+          fullWidth
+        />
+    </DialogContent>
+    <DialogActions>
+      <Button onClick={handleCloseDlg} color="secondary" variant="outlined">
+        {t('login.logout')}
+      </Button>
+      <Button disabled={true} onClick={handleCloseDlg} color="secondary" variant="outlined">
+        {t('login.login')}
+      </Button>
+    </DialogActions>
+    </Dialog>
 */

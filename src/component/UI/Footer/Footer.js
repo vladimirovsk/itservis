@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography"
 //import Grid from "@material-ui/core/Grid";
 //import Paper from "@material-ui/core/Paper";
 //import FacebookIcon from '@material-ui/icons/Facebook';
-import facebookIcon from '../../../assets/facebook.svg';
+//import facebookIcon from '../../../assets/facebook.svg';
 import Link from "@material-ui/core/Link";
 
 
@@ -38,21 +38,14 @@ function Footer(){
 
   return (
     <footer className={classes.footer}>
-        <Typography variant="body2" color="textSecondary" align="center">
+        <Typography className={classes.footer}  variant="body2" color="textSecondary" align="center">
             {' © '}
             <Link color="inherit" href="https://it-vladimirov.com">
-                Serhii Vladimirov
+                Sergey Vladimirov
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
         </Typography>
- 
-         <Typography className={classes.footer} align="center" color="textSecondary" component="p" variant="caption">
-                <a href="it-vladimirov.com" rel="noopener noreferrer" target="_blank" >@ Designed 2020</a>
-          </Typography>
-          <Typography hidden={true} align="center" component={"a"} href="https://www.facebook.com/itservis.od.ua" rel="noopener noreferrer" target="_blank"  >
-              <img className={classes.icon} src={facebookIcon} alt="facebook/itservis.od.ua"/> 
-          </Typography>
     </footer>
 
   )

@@ -91,7 +91,18 @@
     "row1": {
       "title": "Payment service",
       "text": "The payment service is designed to accept payments from the population in favor of utilities, works on the basis of REST requests",
-      "documents":"Documentation"
+      "documents":"Documentation",
+      "colapseTitle":"General description",
+      "colapseText": {
+        "row1":"The exchange service was created for the convenience of simultaneous execution of a large number of payments, as well as, for the convenience of implementing client software by transferring part of the client logic to the server.",
+        "row2": "All commands are transmitted via https protocol",
+        "row3": "Used request types:",
+        "row4": "Request data is transmitted in UTF-8 encoding.",
+        "item1": " - GET",
+        "item2": " - POST",
+        "item3": " - DELETE"
+
+      }
     },
     "row2": {
       "title": "Bank payment system",
@@ -99,7 +110,14 @@
     },
     "row3": {
       "title": "Modem data transmission",
-      "text": "Designing your own electronic circuit, a full range from manufacturing an electronic device to commissioning, connecting a modem connection to an existing dispatch system"
+      "text": "Designing your own electronic circuit, a full range from manufacturing an electronic device to commissioning, connecting a modem connection to an existing dispatch system",
+      "colapseTitle":"General description",
+      "colapseText": {
+        "row1": "A data transmission device (UP) is designed to retrieve information from heat metering devices and transfer them to a central database for further processing and data visualization.",
+        "row2": "The body of the device is made of plastic and is specially configured for installation in basements. The housing has a sealed outlet for the antenna and terminals for connecting the power supply.",
+        "row3": "The device is equipped with a battery that allows it to continue autonomous operation for 360 hours after disconnecting the external power supply. The UP is equipped with a microprocessor that is programmed individually for the customer, indicating the serial number of the heat meter."
+      }
+
     },
     "row4": {
       "title": "Centralized information processing system",
@@ -113,8 +131,8 @@
       "text":"Don't like using contact forms? Please contact us by email, we will respond within one business day."
     },
     "block2":{
-      "header":"С чего начать?",
-      "text":"Расскажите нам про свой проект в любой удобной для вас форме, будь то четко сформулированные требования или просто идея. Мы подберем специалистов под ваши нужды с учетом отраслевой специфики, способа технологической реализации и характера предоставляемой услуги."
+      "header":"Where to begin?",
+      "text":"Tell us about your project in any form convenient for you, be it clearly formulated requirements or just an idea. We will select specialists for your needs, taking into account the industry specifics, the method of technological implementation and the nature of the service provided."
     },
     "block3":{
       "header":"Конфиденциальность",

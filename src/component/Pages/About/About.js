@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
       paper: {
         height:"100%",
         width:"100%",
-        padding:theme.spacing(2),
+        padding:theme.spacing(1),
         //"&:hover":{
         //    boxShadow: '0px 14px 14px rgba(34, 35, 58, 0.4)',
         //  }
@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
 
       container: {
           marginTop: theme.spacing(6),
-            height: "100%"
+          height: "100%"
       },
       item:{
           marginTop:theme.spacing(1),
@@ -94,7 +94,8 @@ const useStyles = makeStyles((theme) => ({
       },
       
       CardContent:{
-            margin:'auto',
+            //margin:'auto',
+            margin: theme.spacing(5),
             maxWidth: 500,
             //paddingBottom: theme.spacing(2),
             flexGrow:1, 
@@ -140,16 +141,16 @@ function About (props ) {
         <Container>
             <Grid container className={classes.container} spacing={5}>
                 <Grid item xs={12} md={8} >
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} >
                     <Avatar alt="Sergey Vladimirov" src={mePhoto} className={classes.avatar}/>
                        
-                        <Typography gutterBottom variant="h5" component="h4" align="center">
+                        <Typography gutterBottom variant="h5" component="h4" align="center" >
                                {t("contact.block4.header")}
                         </Typography>
-                        <Typography variant="subtitle1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
+                        <Typography variant="subtitle1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em', padding:'2em'}}>
                                {t('contact.block4.text1')}
                         </Typography>
-                        <Typography variant="subtitle1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em'}}>
+                        <Typography variant="subtitle1" color="textSecondary" component="p" align='justify' style={{textIndent: '2em', padding:'2em'}}>
                                {t('contact.block4.text2')}
                         </Typography>
                         <hr />

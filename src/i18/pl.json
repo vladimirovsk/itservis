@@ -87,13 +87,21 @@
    },
 
    "project": {
-    
-
-
     "row1": {
       "title": "Usługa płatności",
       "text": "Usługa płatnicza ma na celu przyjmowanie płatności od ludności na rzecz usług użyteczności publicznej, działa na podstawie żądań REST",
-      "documents":"Documentation"
+      "documents":"Documentation",
+      "colapseTitle":"Ogólny opis",
+      "colapseText": {
+        "row1":"Usługa wymiany została stworzona z myślą o wygodzie jednoczesnego dokonywania dużej liczby płatności, a także dla wygody wdrażania oprogramowania klienckiego poprzez przeniesienie części logiki klienta na serwer.",
+        "row2": "Wszystkie polecenia są przesyłane za pośrednictwem protokołu https",
+        "row3": "Używane typy żądań:",
+        "row4": "Dane żądania są przesyłane w kodowaniu UTF-8.",
+        "item1": " - GET",
+        "item2": " - POST",
+        "item3": " - DELETE"
+
+      }
     },
     "row2": {
       "title": "System płatności bankowych",
@@ -101,7 +109,14 @@
     },
     "row3": {
       "title": "Modem do przesyłania informacji",
-      "text": "Projektowanie własnego układu elektronicznego, pełen zakres od produkcji urządzenia elektronicznego po uruchomienie, podłączenie połączenia modemowego z istniejącym systemem dyspozytorskim"
+      "text": "Projektowanie własnego układu elektronicznego, pełen zakres od produkcji urządzenia elektronicznego po uruchomienie, podłączenie połączenia modemowego z istniejącym systemem dyspozytorskim",
+      "colapseTitle":"Ogólny opis",
+      "colapseText": {
+        "row1": "Urządzenie do transmisji danych (UP) jest przeznaczone do pobierania informacji z mierników ciepła i przesyłania ich do centralnej bazy danych w celu dalszego przetwarzania i wizualizacji danych.",
+        "row2": "Korpus urządzenia wykonany jest z tworzywa sztucznego i jest specjalnie skonfigurowany do montażu w piwnicach. Obudowa posiada uszczelniony wyprowadzenie anteny oraz zaciski do zasilania.",
+        "row3": "Urządzenie wyposażone jest w akumulator, który pozwala na autonomiczną pracę przez 360 godzin po odłączeniu zewnętrznego zasilania. UP wyposażony jest w programowany indywidualnie dla klienta mikroprocesor wskazujący numer seryjny ciepłomierza."
+      }
+
     },
     "row4": {
       "title": "Scentralizowany system przetwarzania informacji",

@@ -9,6 +9,7 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 //import {Button, Card, Col, Container, ListGroup, Media, Row} from "react-bootstrap";
 import {translate} from "react-switch-lang";
+
 import restApi from '../Project/img/REST_API.png'; 
 import imgNit from '../Project/img/nit.png'; 
 import avr from '../Project/img/AVR.jpeg'; 
@@ -132,28 +133,32 @@ function Project (props)  {
                             </CardActions>
                                 <Collapse in={expanded1} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Общее описание:</Typography>
+                                    <Typography paragraph>{t('project.row1.colapseTitle')}</Typography>
                                     <Typography paragraph>
-                                        Сервис обмена создан для удобства одновременного проведения большого количества платежей, а также, для удобства реализации клиентского программного обеспечения за счет переноса части клиентской логики на сервер.
+                                        <React.Fragment>
+                                            {t('project.row1.colapseText.row1')}
+                                        </React.Fragment>
                                     </Typography>
                                     <Typography paragraph>
-                                        Все команды передаются по https протоколу. 
-                                            Используемые типы запросов:
+                                        {t('project.row1.colapseText.row2')}
+                                    </Typography>
+                                    <Typography paragraph>
+                                        {t('project.row1.colapseText.row3')}
                                     </Typography>
 
                                     <List>
                                         <ListItem>
-                                            - POST
+                                            {t('project.row1.colapseText.item1')}
                                         </ListItem>
                                         <ListItem>
-                                            - GET
+                                            {t('project.row1.colapseText.item2')}
                                         </ListItem>
                                         <ListItem>
-                                            - DELETE
+                                            {t('project.row1.colapseText.item3')}
                                         </ListItem>
                                     </List>    
                                     <Typography paragraph>
-                                        Данные запросов передаются в кодировке UTF-8.
+                                        {t('project.row1.colapseText.row4')}
                                     </Typography>
 
                                     </CardContent>
@@ -180,7 +185,7 @@ function Project (props)  {
                         <CardContent>
                             <Grid container>
                                 <Grid item md={2} >
-                                    <img  width={190} height={150} alt={t('project.row2.title')} className="mr-3" src={imgNit} style={{padding:10}}/>
+                                    <img  width={160} height={120} alt={t('project.row2.title')} className="mr-3" src={imgNit} style={{padding:10}}/>
                                 </Grid>
                                 <Grid item md={10}>
                                     <Typography variant='body1' paragraph align='justify'>{t('project.row2.text')}</Typography>
@@ -243,7 +248,7 @@ function Project (props)  {
                             </CardActions>
                             <Collapse in={expanded3} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography variant='h5' align='center'>Общее описание</Typography>
+                                    <Typography variant='h5' align='center'>{t('project.row3.colapseTitle')}</Typography>
                                     <Grid container style={{padding:20}}>
                                     <Grid item>
                                             <Grid container >
@@ -251,17 +256,14 @@ function Project (props)  {
                                                     <img style={{marginBottom:15, padding:20}} width={'80%'} src={imgUP1} alt='UP1'/>
                                                 </Grid>  
                                                 <Grid item md={8}>
-                                                    <Typography paragraph align='justify'> 
-                                                        Устройство передачи данных (УП) предназначенное для съема информации с приборов учета тепла фирмы MULTICAL 
-                                                        и передачи их в центральную базу данных для дальнейшей обработки, и визуализации данных.
+                                                    <Typography paragraph align='justify'>
+                                                        {t('project.row3.colapseText.row1')}
                                                     </Typography>
-                                                    <Typography paragraph align='justify'> 
-                                                        Корпус устройства выполнен из пластика и сконфигурирован специально для установки в подвальных помещениях. 
-                                                        На корпусе предусмотрен герметичный вывод для антенны и клеммы для подключения питания.
+                                                    <Typography paragraph align='justify'>
+                                                        {t('project.row3.colapseText.row2')}
                                                     </Typography> 
-                                                    <Typography paragraph align='justify'> 
-                                                        Прибор снабжен аккумулятором который позволяет ему продолжать автономную работу в течении 360 часов после отключения внешнего питания.
-                                                        УП снабжено микропроцессором который программируется индивидуально для заказчика с указанием серийного номера прибора учета тепла.
+                                                    <Typography paragraph align='justify'>
+                                                        {t('project.row3.colapseText.row3')}
                                                     </Typography>
                                                 </Grid>
                                             </Grid>

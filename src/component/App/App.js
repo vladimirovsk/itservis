@@ -21,6 +21,7 @@ import pl from '../../i18/pl.json';
 
 import * as PropTypes from "prop-types";
 import MyAlert from '../MyAlert/MyAlert';
+import Footer from "../UI/Footer/Footer";
 
 setTranslations({ ru, en, pl });
 setDefaultLanguage('en');
@@ -62,6 +63,7 @@ class App extends Component {
                 <MyAlert alert={{text:'test my alert'}}/>
                 <Headers />
                 {routes}
+                <Footer/>
         </ThemeProvider>
         </AlertState>
     )
