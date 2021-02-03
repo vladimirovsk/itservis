@@ -17,8 +17,11 @@ import gkh from '../Project/img/GKH.jpg';
 import imgNodeJs from '../Home/img/nodejs.png'
 import imgArduino from '../Home/img/arduino2.png'
 import imgDelphi from '../Home/img/delphi.png'
-import imgUP1 from '../Project/img/UP1.jpg'
-
+import imgUP1 from '../Project/img/atmega.jpg'
+import impReact from '../Home/img/react.png'
+import webdesign from '../Project/img/webdesign2.png';
+import okt1 from '../Project/img/OKT1.png';
+import okt2 from '../Project/img/OKT2.png'
 const useStyles = makeStyles((theme) => ({
     mt5:{ marginTop:theme.spacing(8)},
     projectCard:{
@@ -54,6 +57,7 @@ function Project (props)  {
     const classes = useStyles();
     const [{t}] = useState(props);
     //const [openDlg, setOpenDlg] = useState(props);
+    const [expanded0, setExpanded0] = React.useState(false);
     const [expanded1, setExpanded1] = React.useState(false);
     const [expanded2, setExpanded2] = React.useState(false);
     const [expanded3, setExpanded3] = React.useState(false);
@@ -61,6 +65,9 @@ function Project (props)  {
 
     const handleExpandClick = (event) => {
         switch (event.currentTarget.id) {
+            case '0': 
+            setExpanded0(!expanded0);
+           break;
             case '1': 
                setExpanded1(!expanded1);
               break;
@@ -87,9 +94,90 @@ function Project (props)  {
         //console.log(event.currentTarget.id);
         //setExpanded2(!expanded2);
       //};
+
+      function raiseInvoiceClicked() {
+        const url = 'https://drive.google.com/file/d/0B7gHNdjZ_HOscGJ3M1ZyXzRQbVU/view?usp=sharing';
+        window.open(url, '_blank');
+    }
         return (
             <Container className={classes.mt5}>
                 <Grid container className={classes.container} spacing={5} alignItems='center' justify='center' >
+{/*----Zero Cards --------------------------------*/}
+<Grid item md={12} >
+                        <Card className={classes.projectCard}> 
+                            <CardHeader 
+                                avatar={
+                                <Avatar aria-label="recipe" className={classes.avatar}
+                                    src={impReact}/>
+                                }
+                                title = {t('project.row0.title')}
+                                subheader = 'React JS, Meterial-UI, Bootstrap, css'
+                                /*action={<IconButton aria-label="settings">
+                                            <MoreVertIcon />
+                                        </IconButton>
+                                }*/
+                            />
+                            <CardContent>
+                                <Grid container direction='row'>
+                                    <Grid item md={2}>
+                                        <img  width={190} height={100} alt={t('project.row0.title')} className="mr-3" src={webdesign} />
+                                    </Grid>
+                                    <Grid item md={10}>
+                                        <Typography variant='body1' paragraph align='justify'>{t('project.row0.text')}</Typography>
+                                    </Grid>    
+                                </Grid>
+                            </CardContent>
+                            <CardActions disableSpacing>
+                                {/* <Button variant="outlined" size="small" color="secondary" onClick={handleClick()}>
+                                {t('project.row0.documents')}
+                                </Button> */}
+                                <IconButton
+                                    id='0'
+                                    className={clsx(classes.expand, {
+                                        [classes.expandOpen]: expanded0,
+                                    })}
+                                    onClick={handleExpandClick}
+                                    aria-expanded={expanded1}
+                                    aria-label="show more"
+                                    hidden = {true}
+                                    >
+                                     <ExpandMoreIcon />
+                                </IconButton>
+                            </CardActions>
+                                <Collapse in={expanded0} timeout="auto" unmountOnExit>
+                                {/* <CardContent>
+                                    <Typography paragraph>{t('project.row0.colapseTitle')}</Typography>
+                                    <Typography paragraph>
+                                        <React.Fragment>
+                                            {t('project.row0.colapseText.row1')}
+                                        </React.Fragment>
+                                    </Typography>
+                                    <Typography paragraph>
+                                        {t('project.row0.colapseText.row2')}
+                                    </Typography>
+                                    <Typography paragraph>
+                                        {t('project.row0.colapseText.row3')}
+                                    </Typography>
+
+                                    <List>
+                                        <ListItem>
+                                            {t('project.row0.colapseText.item1')}
+                                        </ListItem>
+                                        <ListItem>
+                                            {t('project.row0.colapseText.item2')}
+                                        </ListItem>
+                                        <ListItem>
+                                            {t('project.row0.colapseText.item3')}
+                                        </ListItem>
+                                    </List>    
+                                    <Typography paragraph>
+                                        {t('project.row0.colapseText.row4')}
+                                    </Typography>
+                                    </CardContent> */}
+                            </Collapse>
+                        </Card>    
+                    </Grid>
+
 {/*----One Cards --------------------------------*/}
                     <Grid item md={12} >
                         <Card className={classes.projectCard}> 
@@ -253,7 +341,7 @@ function Project (props)  {
                                     <Grid item>
                                             <Grid container >
                                                 <Grid item md={4}>                                
-                                                    <img style={{marginBottom:15, padding:20}} width={'80%'} src={imgUP1} alt='UP1'/>
+                                                    <img style={{marginBottom:15, padding:10}} width={'80%'} src={imgUP1} alt='UP1'/>
                                                 </Grid>  
                                                 <Grid item md={8}>
                                                     <Typography paragraph align='justify'>
@@ -304,6 +392,10 @@ function Project (props)  {
                             </Grid> 
                         </CardContent>   
                         <CardActions disableSpacing>
+                        
+                                <Button variant="outlined" size="small" color="secondary" onClick={raiseInvoiceClicked}>
+                                {t('project.row4.documents')}
+                                </Button>
                                 <IconButton
                                     hidden={true}
                                     id='4'
@@ -317,6 +409,39 @@ function Project (props)  {
                                 <ExpandMoreIcon />
                                 </IconButton>
                             </CardActions>
+                            {/*https://drive.google.com/file/d/0B7gHNdjZ_HOscGJ3M1ZyXzRQbVU/view?usp=sharing*/}
+
+                            <Collapse in={expanded4} timeout="auto" unmountOnExit>
+                                <CardContent>
+                                <Typography variant='h5' align='center'>{t('project.row4.colapseTitle')}</Typography>
+                                    <Grid container style={{padding:20}}>
+                                    <Grid item>
+                                            <Grid container >
+                                                <Grid item md={4}>                                
+                                                <img style={{marginBottom:15, padding:10}} width={'80%'} src={okt1} alt='OKT1'/>
+                                                <img style={{marginBottom:15, padding:10}} width={'80%'} src={okt2} alt='OKT2'/>
+                                                </Grid>  
+                                                <Grid item md={8}>
+                                                    <ul>
+                                                    <Typography paragraph align='justify'>
+                                                        <li>{t('project.row4.colapseText.row1')}</li>
+                                                    </Typography>
+                                                    <Typography paragraph align='justify'>
+                                                        <li>{t('project.row4.colapseText.row2')}</li>
+                                                    </Typography> 
+                                                    <Typography paragraph align='justify'>
+                                                        <li>{t('project.row4.colapseText.row3')}</li>
+                                                    </Typography>
+                                                    <Typography paragraph align='justify'>
+                                                        <li>{t('project.row4.colapseText.row4')}</li>
+                                                    </Typography>
+                                                    </ul>
+                                                </Grid>
+                                            </Grid>
+                                    </Grid>
+                                    </Grid>
+                                    </CardContent>
+                            </Collapse>
                         </Card>
                     </Grid>
 

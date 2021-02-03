@@ -87,6 +87,15 @@
    },
 
    "project": {
+
+    "row0":{
+      "title": "Strony internetowe",
+      "text": "Tworzymy strony od podstaw, korzystamy z nowych technologii i frameworków JavaScript, co pozwala nam pisać jasne i niepowtarzalne strony internetowe",
+      "colapseText" : {
+        "row1": "WebSite1",
+        "row2": "WebSite2"
+      }
+     },
     "row1": {
       "title": "Usługa płatności",
       "text": "Usługa płatnicza ma na celu przyjmowanie płatności od ludności na rzecz usług użyteczności publicznej, działa na podstawie żądań REST",
@@ -119,8 +128,19 @@
 
     },
     "row4": {
+      "documents":"Dokumentacja (rosyjski)",
       "title": "Scentralizowany system przetwarzania informacji",
-      "text": "System umożliwia dostęp do bazy danych w tym samym czasie dużej liczbie użytkowników. Każdy użytkownik systemu ma swoją nazwę i hasło z pewnymi przywilejami dostępu do danych. W zwykłym przypadku pracownik przedsiębiorstwa może uzyskać dostęp do określonej części danych systemowych, wykonywać funkcje charakterystyczne dla swoich obowiązków i otrzymywać niezbędne raporty. Wielopoziomowy system do sprawdzania uprawnień użytkowników pozwala całkowicie zabezpieczyć system przed nieautoryzowanym dostępem."
+      "text": "System umożliwia dostęp do bazy danych w tym samym czasie dużej liczbie użytkowników. Każdy użytkownik systemu ma swoją nazwę i hasło z pewnymi przywilejami dostępu do danych. W zwykłym przypadku pracownik przedsiębiorstwa może uzyskać dostęp do określonej części danych systemowych, wykonywać funkcje charakterystyczne dla swoich obowiązków i otrzymywać niezbędne raporty. Wielopoziomowy system do sprawdzania uprawnień użytkowników pozwala całkowicie zabezpieczyć system przed nieautoryzowanym dostępem.",
+      "documents":"Dokumentacja (rosyjski)",
+      "colapseTitle": "Centralized system of information processing - CISP",
+      "colapseText":{
+        "row1": "Rachunkowość zasobów mieszkaniowych - podsystem ten zapewnia rozliczanie charakterystyk budynków mieszkalnych, innych obiektów i otoczenia, historię bieżących i kapitalnych remontów budynków i sieci inżynieryjnych.",
+        "row2": "Księgowość abonentów - podsystem ten zapewnia bezpośrednie wprowadzanie i przechowywanie wszystkich znaków i atrybutów abonentów, kontrolę poprawności wprowadzania danych, audyt wprowadzanych zmian oraz tworzenie formularzy raportowych. Zapewnia również wygodny interfejs do wyświetlania i wyszukiwania niezbędnych informacji o populacji.",
+        "row3": "Uwzględnianie poszczególnych urządzeń pomiarowych i ich odczytów. Podsystem ten zapewnia rozliczanie urządzeń (ich charakterystyki, miejsca instalacji, numery inwentarzowe, daty weryfikacji itp.). Zapewnia również ręczne wprowadzanie i automatyczne ładowanie informacji z banków i miejskich organizacji użyteczności publicznej zgodnie z odczytami liczników. System zapewnia wygodny interfejs do wyświetlania odczytów w kontekście abonentów z automatycznym wskazaniem błędnie wprowadzonych danych.",
+        "row4": "I wiele więcej...",
+        "row5": ""
+      }
+
     }
 
   },

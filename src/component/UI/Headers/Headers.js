@@ -13,7 +13,6 @@ import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-//import {Link, animateScroll as scroll } from "react-scroll"
 import {translate ,getLanguage, setLanguage } from 'react-switch-lang';
 import { Container } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";

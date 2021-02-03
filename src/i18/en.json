@@ -88,6 +88,16 @@
 
 
   "project": {
+    
+    "row0":{
+      "title": "Website",
+      "text": "Website development from scratch, we use new technologies and JavaScript frameworks, which allows us to write bright and unique websites",
+      "colapseText" : {
+        "row1": "WebSite1",
+        "row2": "WebSite2"
+      }
+     },
+
     "row1": {
       "title": "Payment service",
       "text": "The payment service is designed to accept payments from the population in favor of utilities, works on the basis of REST requests",
@@ -121,7 +131,16 @@
     },
     "row4": {
       "title": "Centralized information processing system",
-      "text": "The system allows access to the database at the same time a large number of users. Each user of the system has his own name and password with certain privileges of access to data. In the usual case, an employee of an enterprise can get access to a specified part of the system data, perform functions characteristic of his duties and receive the necessary reports. A multi-level system for checking user permissions allows you to completely protect the system from unauthorized access."
+      "text": "The system allows access to the database at the same time a large number of users. Each user of the system has his own name and password with certain privileges of access to data. In the usual case, an employee of an enterprise can get access to a specified part of the system data, perform functions characteristic of his duties and receive the necessary reports. A multi-level system for checking user permissions allows you to completely protect the system from unauthorized access.",
+      "colapseTitle": "Centralized system of information processing - CISP",
+      "documents":"Documentation (Russian)",
+      "colapseText":{
+        "row1": "Housing stock accounting - this subsystem provides accounting of the characteristics of residential buildings, other objects and the surrounding area, the history of ongoing and major repairs of buildings and utilities.",
+        "row2": "Subscriber accounting - this subsystem provides direct input and storage of all signs and attributes of subscribers, control of the correctness of data entry, audit of changes made and the formation of reporting forms. It also provides a convenient interface for displaying and searching for the necessary information on the population.",
+        "row3": "Accounting for individual metering devices and their readings. This subsystem provides accounting of devices (their characteristics, installation locations, inventory numbers, verification dates, etc.). It also provides manual input and automatic loading of information from banks and city public service organizations based on meter readings. The system provides a convenient interface for displaying readings in the context of subscribers with automatic indication of erroneously entered data.",
+        "row4": "And much more...",
+        "row5": ""
+      }
     }
 
   },
