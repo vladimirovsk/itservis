@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import "animate.css/animate.min.css";
 import App from './component/App/App';
 import {BrowserRouter} from 'react-router-dom'
 import '@fortawesome/fontawesome-free/css/all.min.css';

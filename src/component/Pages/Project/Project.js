@@ -22,6 +22,7 @@ import impReact from '../Home/img/react.png'
 import webdesign from '../Project/img/webdesign2.png';
 import okt1 from '../Project/img/OKT1.png';
 import okt2 from '../Project/img/OKT2.png'
+import ScrollAnimation from 'react-animate-on-scroll';
 const useStyles = makeStyles((theme) => ({
     mt5:{ marginTop:theme.spacing(8)},
     projectCard:{
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         //position:'absolute',
         boxShadow: theme.shadows[10],
         borderRadius: 15,
-        padding: '1em'
+        padding: '2em'
     },
     avatar: {
         backgroundColor: theme.palette.common.colorSecondary,
@@ -101,9 +102,13 @@ function Project (props)  {
     }
         return (
             <Container className={classes.mt5}>
+                
                 <Grid container className={classes.container} spacing={5} alignItems='center' justify='center' >
+                    {/** animatePreScroll={true} initiallyVisible={false}  */}
 {/*----Zero Cards --------------------------------*/}
-<Grid item md={12} >
+                     
+                    <Grid item md={12} >
+                    <ScrollAnimation animateIn='animate__slideInUp' >
                         <Card className={classes.projectCard}> 
                             <CardHeader 
                                 avatar={
@@ -120,7 +125,7 @@ function Project (props)  {
                             <CardContent>
                                 <Grid container direction='row'>
                                     <Grid item md={2}>
-                                        <img  width={190} height={100} alt={t('project.row0.title')} className="mr-3" src={webdesign} />
+                                        <img  width={160} height={100} alt={t('project.row0.title')} className="mr-3" src={webdesign} />
                                     </Grid>
                                     <Grid item md={10}>
                                         <Typography variant='body1' paragraph align='justify'>{t('project.row0.text')}</Typography>
@@ -128,9 +133,6 @@ function Project (props)  {
                                 </Grid>
                             </CardContent>
                             <CardActions disableSpacing>
-                                {/* <Button variant="outlined" size="small" color="secondary" onClick={handleClick()}>
-                                {t('project.row0.documents')}
-                                </Button> */}
                                 <IconButton
                                     id='0'
                                     className={clsx(classes.expand, {
@@ -141,7 +143,7 @@ function Project (props)  {
                                     aria-label="show more"
                                     hidden = {true}
                                     >
-                                     <ExpandMoreIcon />
+                                    <ExpandMoreIcon />
                                 </IconButton>
                             </CardActions>
                                 <Collapse in={expanded0} timeout="auto" unmountOnExit>
@@ -174,12 +176,13 @@ function Project (props)  {
                                         {t('project.row0.colapseText.row4')}
                                     </Typography>
                                     </CardContent> */}
-                            </Collapse>
+                                        </Collapse>
                         </Card>    
-                    </Grid>
-
+                        </ScrollAnimation>
+                    </Grid>                        
 {/*----One Cards --------------------------------*/}
                     <Grid item md={12} >
+                    <ScrollAnimation animateIn='animate__slideInUp' >
                         <Card className={classes.projectCard}> 
                             <CardHeader 
                                 avatar={
@@ -193,8 +196,9 @@ function Project (props)  {
                                         </IconButton>
                                 }*/
                             />
+
                             <CardContent>
-                                <Grid container direction='row'>
+                            <Grid container direction='row'>
                                     <Grid item md={2}>
                                         <img  width={150} height={110} alt={t('project.row1.title')} className="mr-3" src={restApi} />
                                     </Grid>
@@ -219,42 +223,14 @@ function Project (props)  {
                                 <ExpandMoreIcon />
                                 </IconButton>
                             </CardActions>
-                                <Collapse in={expanded1} timeout="auto" unmountOnExit>
-                                <CardContent>
-                                    <Typography paragraph>{t('project.row1.colapseTitle')}</Typography>
-                                    <Typography paragraph>
-                                        <React.Fragment>
-                                            {t('project.row1.colapseText.row1')}
-                                        </React.Fragment>
-                                    </Typography>
-                                    <Typography paragraph>
-                                        {t('project.row1.colapseText.row2')}
-                                    </Typography>
-                                    <Typography paragraph>
-                                        {t('project.row1.colapseText.row3')}
-                                    </Typography>
-
-                                    <List>
-                                        <ListItem>
-                                            {t('project.row1.colapseText.item1')}
-                                        </ListItem>
-                                        <ListItem>
-                                            {t('project.row1.colapseText.item2')}
-                                        </ListItem>
-                                        <ListItem>
-                                            {t('project.row1.colapseText.item3')}
-                                        </ListItem>
-                                    </List>    
-                                    <Typography paragraph>
-                                        {t('project.row1.colapseText.row4')}
-                                    </Typography>
-
-                                    </CardContent>
-                            </Collapse>
-                        </Card>    
-                    </Grid>
+                            
+                        </Card> 
+                    </ScrollAnimation>       
+                    </Grid>                        
 {/*----Two Cards --------------------------------*/}
+                    
                     <Grid item md={12} >
+                    <ScrollAnimation animateIn='animate__slideInUp' >
                         <Card className={classes.projectCard}> 
                         <CardHeader 
                                 avatar={
@@ -295,9 +271,13 @@ function Project (props)  {
                                 </IconButton>
                             </CardActions>
                         </Card>
+                      </ScrollAnimation>  
                     </Grid>
+                    
 {/*----Three Cards --------------------------------*/}
-                    <Grid item md={12} >                
+                    {/* <ScrollAnimation animateIn='animate__slideInUp' > */}
+                    <Grid item md={12} >     
+                    <ScrollAnimation animateIn='animate__slideInUp' >      
                         <Card className={classes.projectCard}> 
                         <CardHeader 
                                 avatar={
@@ -362,9 +342,14 @@ function Project (props)  {
                             </Collapse>
 
                         </Card>
+                        </ScrollAnimation>     
                     </Grid>
+                    {/* </ScrollAnimation> */}
+                    
 {/*----Fourth Cards --------------------------------*/}
+                    {/* <ScrollAnimation animateIn='animate__slideInUp'> */}
                     <Grid item md={12} >
+                    <ScrollAnimation animateIn='animate__slideInUp' >      
                         <Card className={classes.projectCard}> 
                         <CardHeader 
                                 avatar={
@@ -443,9 +428,15 @@ function Project (props)  {
                                     </CardContent>
                             </Collapse>
                         </Card>
+                       </ScrollAnimation> 
                     </Grid>
+                    {/* </ScrollAnimation> */}
+                     
 
-                </Grid>        
+                     
+                   
+                  </Grid>  
+                 
             </Container>
         )
 }
