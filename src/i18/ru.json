@@ -108,9 +108,11 @@
     "row0":{
       "title": "Website",
       "text": "Разработка веб сайтов с нуля, используем новые технологии и фреймфорки JavaScript что позволяет писать яркие и уникальные сайты",
+      "colapseTitle": "Примеры моих сайтов",
       "colapseText" : {
-        "row1": "WebSite1",
-        "row2": "WebSite2"
+        "row1": "WEBNIT.PL, сайт разрабатывался на ReactJS, Botstrap, c использование  анимации CSS",
+        "row2": "BROGAN.PL  сайт разрабатывался на ReactJS, Botstrap, c использование  анимации CSS",
+        "row3": "Server.itservis.od.ua сайт разрабатывался как тестовая Dashboard panel, c использование технологий ReactJS, Redux, Material-UI, REST API, Firebase" 
       }
      },
 
@@ -184,7 +186,7 @@
     "viber": "380975996560",
     "telegram":"380975996560",
     "skype": "vladimirov_sk",
-    "email":"sergey@itservis.od.ua"
+    "email":"sergey@it-vladimirov.com"
   },
   "cabinet":{
     "brand":"Личный кабинет",

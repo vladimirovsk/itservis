@@ -1,28 +1,30 @@
 import React,  {useState} from "react";
-import {connect} from "react-redux";
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {Avatar, IconButton, Card, CardActions, CardHeader, Grid, Container, Typography, CardContent, Button } from "@material-ui/core";
-import {List, ListItem} from '@material-ui/core';
 import Collapse from '@material-ui/core/Collapse';
 //import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 //import {Button, Card, Col, Container, ListGroup, Media, Row} from "react-bootstrap";
 import {translate} from "react-switch-lang";
 
-import restApi from '../Project/img/REST_API.png'; 
-import imgNit from '../Project/img/nit.png'; 
-import avr from '../Project/img/AVR.jpeg'; 
-import gkh from '../Project/img/GKH.jpg'; 
+import restApi from '../../../assets/img/REST_API.png'; 
+import imgNit from '../../../assets/img/nit.png'; 
+import avr from '../../../assets/img/AVR.png'; 
+import gkh from '../../../assets/img/GKH.jpg'; 
 import imgNodeJs from '../Home/img/nodejs.png'
 import imgArduino from '../Home/img/arduino2.png'
 import imgDelphi from '../Home/img/delphi.png'
-import imgUP1 from '../Project/img/atmega.jpg'
+import imgUP1 from '../../../assets/img/atmega.jpg';
 import impReact from '../Home/img/react.png'
-import webdesign from '../Project/img/webdesign2.png';
-import okt1 from '../Project/img/OKT1.png';
-import okt2 from '../Project/img/OKT2.png'
+import webdesign from '../../../assets/img/webdesign2.png';
+import okt1 from '../../../assets/img/OKT1.png';
+import okt2 from '../../../assets/img/OKT2.png';
+import webnit from '../../../assets/img/webnit.png';
+import brogan from '../../../assets/img/brogan.png';
+import serverIt from '../../../assets/img/serverIt.png';
 import ScrollAnimation from 'react-animate-on-scroll';
+
 const useStyles = makeStyles((theme) => ({
     mt5:{ marginTop:theme.spacing(8)},
     projectCard:{
@@ -86,9 +88,7 @@ function Project (props)  {
       }
     }
 
-    const handleClick = () => {
 
-    }
 
     //console.log({isAuth})
     //const handleExpandClick2 = (event) => {
@@ -100,6 +100,30 @@ function Project (props)  {
         const url = 'https://drive.google.com/file/d/0B7gHNdjZ_HOscGJ3M1ZyXzRQbVU/view?usp=sharing';
         window.open(url, '_blank');
     }
+    // async function openLink(link){
+    //     const _link= link;
+    //     window.open(_link, '_blank');
+    // }
+
+    function openWebnit(){
+        const _link= 'https://webnit.pl';
+        window.open(_link, '_blank');
+    }
+
+    function openBrogan(){
+        const _link= 'https://brogan.webnit.pl';
+        window.open(_link, '_blank');
+    }
+
+    function openServerIt(){
+        const _link= 'https://server.itservis.od.ua';
+        window.open(_link, '_blank');
+    }
+
+    React.useEffect(()=>{
+
+    },[])
+
         return (
             <Container className={classes.mt5}>
                 
@@ -124,8 +148,9 @@ function Project (props)  {
                             />
                             <CardContent>
                                 <Grid container direction='row'>
-                                    <Grid item md={2}>
-                                        <img  width={160} height={100} alt={t('project.row0.title')} className="mr-3" src={webdesign} />
+                                    <Grid item md={2}>   
+                                    <img  width={160} height={100} alt={t('project.row0.title')} className="mr-3" src={webdesign} />
+                                       
                                     </Grid>
                                     <Grid item md={10}>
                                         <Typography variant='body1' paragraph align='justify'>{t('project.row0.text')}</Typography>
@@ -147,36 +172,61 @@ function Project (props)  {
                                 </IconButton>
                             </CardActions>
                                 <Collapse in={expanded0} timeout="auto" unmountOnExit>
-                                {/* <CardContent>
-                                    <Typography paragraph>{t('project.row0.colapseTitle')}</Typography>
-                                    <Typography paragraph>
-                                        <React.Fragment>
-                                            {t('project.row0.colapseText.row1')}
-                                        </React.Fragment>
-                                    </Typography>
-                                    <Typography paragraph>
-                                        {t('project.row0.colapseText.row2')}
-                                    </Typography>
-                                    <Typography paragraph>
-                                        {t('project.row0.colapseText.row3')}
-                                    </Typography>
+                                <CardContent>
 
-                                    <List>
-                                        <ListItem>
-                                            {t('project.row0.colapseText.item1')}
-                                        </ListItem>
-                                        <ListItem>
-                                            {t('project.row0.colapseText.item2')}
-                                        </ListItem>
-                                        <ListItem>
-                                            {t('project.row0.colapseText.item3')}
-                                        </ListItem>
-                                    </List>    
-                                    <Typography paragraph>
-                                        {t('project.row0.colapseText.row4')}
-                                    </Typography>
-                                    </CardContent> */}
-                                        </Collapse>
+                                <Typography variant='h5' align='center'>{t('project.row0.colapseTitle')}</Typography>
+                                    <Grid container style={{padding:20}}>
+                                    <Grid item>
+                                        {/* First site */}
+                                            <Grid container >
+                                                <Grid item md={4}> 
+                                                <IconButton 
+                                                 onClick={openWebnit}
+                                                >
+                                                <img src = {webnit} alt='webnit' />
+                                                </IconButton>                               
+                                                </Grid>  
+
+                                                <Grid item md={8} style={{marginTop: '1em'}}>
+                                                {t('project.row0.colapseText.row1')}
+                                                </Grid>
+                                                
+                                            </Grid>
+                                            {/* Second site */}
+                                            <Grid container >
+                                                <Grid item md={4}> 
+                                                <IconButton 
+                                                 onClick={openBrogan}
+                                                >
+                                                <img src = {brogan} alt='brogan' />
+                                                </IconButton>                               
+                                                </Grid>  
+
+                                                <Grid item md={8} style={{marginTop: '1em'}}>
+                                                {t('project.row0.colapseText.row2')}
+                                                </Grid>
+
+                                            </Grid>
+                                            {/* Three site */}
+                                            <Grid container >
+                                                <Grid item md={4}> 
+                                                <IconButton 
+                                                 onClick={openServerIt}
+                                                >
+                                                <img src = {serverIt} alt='serverIt' />
+                                                </IconButton>                               
+                                                </Grid>  
+
+                                                <Grid item md={8} style={{marginTop: '1em'}}>
+                                                {t('project.row0.colapseText.row3')}
+                                                </Grid>
+
+                                            </Grid>
+                                    </Grid>
+                                    </Grid>
+
+                                </CardContent> 
+                                </Collapse>
                         </Card>    
                         </ScrollAnimation>
                     </Grid>                        
@@ -208,7 +258,7 @@ function Project (props)  {
                                 </Grid>
                             </CardContent>
                             <CardActions disableSpacing>
-                                <Button variant="outlined" size="small" color="secondary" hidden={true} onClick={handleClick()}>
+                                <Button variant="outlined" size="small" color="secondary" hidden={true} onClick={null}>
                                 {t('project.row1.documents')}
                                 </Button>
                                 <IconButton
@@ -441,14 +491,14 @@ function Project (props)  {
         )
 }
 
-function mapStateToProps(state){
-    //console.log(new Date(localStorage.getItem('expirationDate')))
-    //console.log(new Date(state.auth.expData)
-    return{
-     // isAuth: !!state.auth.token,
-     // stDate: new Date(state.auth.expData),
-      //openDlg state. openDlg
-    }
-  }
+// function mapStateToProps(state){
+//     //console.log(new Date(localStorage.getItem('expirationDate')))
+//     //console.log(new Date(state.auth.expData)
+//     return{
+//      // isAuth: !!state.auth.token,
+//      // stDate: new Date(state.auth.expData),
+//       //openDlg state. openDlg
+//     }
+//   }
 
-export default connect(mapStateToProps) (translate(Project));
+export default (translate(Project));

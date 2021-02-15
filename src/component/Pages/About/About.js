@@ -175,16 +175,16 @@ function About (props ) {
                             </Grid>
 
                             <Grid item>
-                                <Tooltip title="sergey@itservis.od.ua" arrow enterDelay={500} leaveDelay={200} placement="top">
-                                <a className="mail" href="mailto:sergey@itservis.od.ua">
-                                    <img src={emailCircle} alt="sergey@itservis.od.ua" className={classes.icon}/>
+                                <Tooltip title="sergey@it-vladimirov.com" arrow enterDelay={500} leaveDelay={200} placement="top">
+                                <a className="mail" href="mailto:sergey@it-vladimirov.com">
+                                    <img src={emailCircle} alt="sergey@it-vladimirov.com" className={classes.icon}/>
                                 </a>
                                 </Tooltip>
                             </Grid>
 
                             <Grid item>
-                                <Tooltip title="facebook.com/itservis.od.ua" arrow enterDelay={500} leaveDelay={200} placement="top">
-                                <a href="https://www.facebook.com/itservis.od.ua" rel="noopener noreferrer" target="_blank" >
+                                <Tooltip title="facebook.com/itvladimirov" arrow enterDelay={500} leaveDelay={200} placement="top">
+                                <a href="https://www.facebook.com/itvladimirov" rel="noopener noreferrer" target="_blank" >
                                 <img className={classes.icon} src={facebookIcon} alt="facebook"/>
                                 </a>
                                 </Tooltip>

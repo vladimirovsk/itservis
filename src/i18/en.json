@@ -92,9 +92,11 @@
     "row0":{
       "title": "Website",
       "text": "Website development from scratch, we use new technologies and JavaScript frameworks, which allows us to write bright and unique websites",
+      "colapseTitle": "Example my pages",
       "colapseText" : {
-        "row1": "WebSite1",
-        "row2": "WebSite2"
+        "row1": "WEBNIT.PL, the site was developed in React JS, Bootstrap, using CSS animation",
+        "row2": "BROGAN.PL site was developed in React JS, Bootstrap, c using CSS animation",
+        "row3": "Server.itservis.od.ua site was developed as a test Dashboard panel, using technologies ReactJS, Redux, Material-UI, REST API, Firebase" 
       }
      },
 
@@ -145,6 +147,7 @@
 
   },
   "contact": {
+
     "block1":{
       "header":"Write to us",
       "text":"Don't like using contact forms? Please contact us by email, we will respond within one business day."
@@ -167,6 +170,6 @@
     "title": "Our contacts",
     "city": "Krakow",
     "phone": "+48 791 329 376",
-    "email":"sergey@itservis.od.ua"
+    "email":"sergey@it-vladimirov.com"
   }
 }

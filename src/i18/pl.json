@@ -91,9 +91,11 @@
     "row0":{
       "title": "Strony internetowe",
       "text": "Tworzymy strony od podstaw, korzystamy z nowych technologii i frameworków JavaScript, co pozwala nam pisać jasne i niepowtarzalne strony internetowe",
+      "colapseTitle": "Przykłady moich stron",
       "colapseText" : {
-        "row1": "WebSite1",
-        "row2": "WebSite2"
+        "row1": "Ыекщтф WEBNIT.PL została stworzona w React JS, Bootstrap, z wykorzystaniem animacji CSS",
+        "row2": "Strona BROGAN.PL została stworzona w React JS, Bootstrap, c z wykorzystaniem animacji CSS",
+        "row3": "Strona Server.itservis.od.ua została opracowana jako testowy panel Dashboard, z wykorzystaniem technologii ReactJS, Redux, Material-UI, REST API, Firebase" 
       }
      },
     "row1": {
