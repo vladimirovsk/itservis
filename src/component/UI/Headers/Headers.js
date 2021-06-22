@@ -1,10 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-//import clsx from 'clsx';
 import { makeStyles, useTheme} from "@material-ui/core/styles";
-//import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Box} from '@material-ui/core';
-//import {withStyles} from "@material-ui/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tabs from '@material-ui/core/Tabs'
@@ -23,7 +19,6 @@ import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-//import AlertContext from '../../../context/alert/alertContext';
 
 const thStyles = makeStyles( theme => ({
   toolbarMargin:{
@@ -140,7 +135,7 @@ const thStyles = makeStyles( theme => ({
 
  function Headers (props) {
 
-  const [{t, isAuth}] = useState(props)
+  const [{t}] = useState(props)
   const [value, setValue] = useState(0);
   const [anchorEl2, setAnchorEl2] =  useState(null)
   const [openMenu, setOpenMenu] = useState(false)
@@ -347,10 +342,6 @@ const thStyles = makeStyles( theme => ({
               <ListItemText className={classes.drawerItem } 
                 disableTypography>{t('navbar.kontact')}</ListItemText>
             </ListItem>
-            <ListItem classes={{selected: classes.drawerItemSelected}} divider button component={Link} to="/auth" onClick={()=>{setOpenDrawer(false); setValue(3)}} selected={value===3}>
-              <ListItemText className={classes.drawerItem } 
-                disableTypography>{isAuth ? t('navbar.logout') :t('navbar.login')}</ListItemText>
-            </ListItem>
             <ListItem>
               {lngButton}
             </ListItem>
@@ -385,88 +376,4 @@ const thStyles = makeStyles( theme => ({
   )
 }
 
-function mapStateToProps(state){
-  //console.log(new Date(localStorage.getItem('expirationDate')))
-  return{
-    isAuth: !!state.auth.token,
-    stDate: new Date(state.auth.expData),
-  }
-}
-
-//export default connect(mapStateToProps) (translate(withStyles(useStyles) (Headers)));
-export default connect(mapStateToProps) (translate(Headers));
-/*
-<Menu 		    
-			id="simple-menu" 
-			anchorEl={anchorEl} 
-			open={openMenu}
-			component={Link}
-			onClose={handleClose}
-			MenuListProps={{onMouseLeave: handleClose}}
-			keepMounted
-			classes={{paper: classes.menu}}
-			elevation={0}
-	
-			/*getContentAnchorEl={null}
-			anchorOrigin={{
-			vertical: 'bottom',
-			horizontal: 'center',
-			}}
-			transformOrigin={{
-			vertical: 'top',
-			horizontal: 'center',
-			}}*/
-    //{...props}
-    /*
-			>
-			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
-			CustomSoft
-			</MenuItem>  
-			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
-			Mobile software
-			</MenuItem>  
-			<MenuItem className={classes.menuItem} onClick={()=>{handleClose(); setValue(1)}} component={Link} to='/Project' pathname="/Project">
-			Network software
-			</MenuItem>  
-			</Menu>  
-*/
-
-
-    /*
-          <Dialog open={openDlg} onClose={handleCloseDlg} aria-labelledby="customized-dialog-title">
-      <DialogTitle id="form-dialog-title">{t('login.header')}</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-
-        </DialogContentText>
-        <TextField className={classes.textField}
-          id="login"
-          label={t("login.placeholderEmail")}
-          //margin="dense"
-          type="email"
-          //autoComplete="current-email"
-          //variant="outlined"
-          fullWidth
-        />
-        <TextField className={classes.textField}
-          //disabled={false}
-          //autoFocus
-          //margin="dense"
-          id="password"
-          label={t("login.placeholderPassword")}
-          type="password"
-          //autoComplete="current-password"
-          //variant="outlined"
-          fullWidth
-        />
-    </DialogContent>
-    <DialogActions>
-      <Button onClick={handleCloseDlg} color="secondary" variant="outlined">
-        {t('login.logout')}
-      </Button>
-      <Button disabled={true} onClick={handleCloseDlg} color="secondary" variant="outlined">
-        {t('login.login')}
-      </Button>
-    </DialogActions>
-    </Dialog>
-*/
+export default (translate(Headers));

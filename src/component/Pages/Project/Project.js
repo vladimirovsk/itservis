@@ -3,11 +3,8 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {Avatar, IconButton, Card, CardActions, CardHeader, Grid, Container, Typography, CardContent, Button } from "@material-ui/core";
 import Collapse from '@material-ui/core/Collapse';
-//import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-//import {Button, Card, Col, Container, ListGroup, Media, Row} from "react-bootstrap";
 import {translate} from "react-switch-lang";
-
 import restApi from '../../../assets/img/REST_API.png'; 
 import imgNit from '../../../assets/img/nit.png'; 
 import avr from '../../../assets/img/AVR.png'; 
@@ -59,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
 function Project (props)  {
     const classes = useStyles();
     const [{t}] = useState(props);
-    //const [openDlg, setOpenDlg] = useState(props);
     const [expanded0, setExpanded0] = React.useState(false);
     const [expanded1, setExpanded1] = React.useState(false);
     const [expanded2, setExpanded2] = React.useState(false);
@@ -88,22 +84,10 @@ function Project (props)  {
       }
     }
 
-
-
-    //console.log({isAuth})
-    //const handleExpandClick2 = (event) => {
-        //console.log(event.currentTarget.id);
-        //setExpanded2(!expanded2);
-      //};
-
       function raiseInvoiceClicked() {
         const url = 'https://drive.google.com/file/d/0B7gHNdjZ_HOscGJ3M1ZyXzRQbVU/view?usp=sharing';
         window.open(url, '_blank');
     }
-    // async function openLink(link){
-    //     const _link= link;
-    //     window.open(_link, '_blank');
-    // }
 
     function openWebnit(){
         const _link= 'https://webnit.pl';
@@ -164,7 +148,7 @@ function Project (props)  {
                                         [classes.expandOpen]: expanded0,
                                     })}
                                     onClick={handleExpandClick}
-                                    aria-expanded={expanded1}
+                                    aria-expanded={expanded0}
                                     aria-label="show more"
                                     hidden = {true}
                                     >
@@ -180,11 +164,11 @@ function Project (props)  {
                                         {/* First site */}
                                             <Grid container >
                                                 <Grid item md={4}> 
-                                                <IconButton 
-                                                 onClick={openWebnit}
-                                                >
-                                                <img src = {webnit} alt='webnit' />
-                                                </IconButton>                               
+                                                    <IconButton 
+                                                    onClick={openWebnit}
+                                                    >
+                                                    <img src = {webnit} alt='webnit' />
+                                                    </IconButton>                               
                                                 </Grid>  
 
                                                 <Grid item md={8} style={{marginTop: '1em'}}>

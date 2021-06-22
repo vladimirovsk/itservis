@@ -1,34 +1,26 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-
-//const colorPrimary = "#00838f";
-//const colorSecondary = "#FFBA60";
-
 const colorPrimary = "#fff"; //white
 const colorSecondary = "#0d47a1"; //blue
-//const colorSpecial = "#FFBA60"; //orange
 
 export default createMuiTheme({
   palette:{
 	  //type:'dark',//"light", //dark
-    common:{
-      colorPrimary:`${colorPrimary}`,
-      colorSecondary:`${colorSecondary}`, 
-      //colorSpecial:`${colorSpecial}`, 
-    },
+     common:{
+       colorPrimary:`${colorPrimary}`,
+       colorSecondary:`${colorSecondary}`
+     },
      primary:{
-     light: '#fff',	
-     main:'#fff',
-	   dark: '#002884',
-	   contrastText: '#000',
-    },
+        light: '#fff',
+        main:'#fff',
+	    dark: '#002884',
+	    contrastText: '#000',
+     },
      secondary:{
-     //main:`${colorSecondary}`
-     
-	   light: '#0d47a1',
-     main: '#0d47a1',
-     dark: '#0d47a1',
-     contrastText: '#fff',
-    },
+        light: '#0d47a1',
+        main: '#0d47a1',
+        dark: '#0d47a1',
+        contrastText: '#fff',
+     },
   },
   
   typography:{
@@ -47,8 +39,9 @@ export default createMuiTheme({
       textTransform:"upper",
     },
     links:{
-       //color:"black", 
+       color:"black",
     }
+
   },
   
 })

@@ -1,30 +1,11 @@
 import React, {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
-
-
-//import {faHome} from '@fortawesome/free-solid-svg-icons'
-//import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-//import {CardDeck, Container} from "react-bootstrap";
-
-//import Button from '@material-ui/core/Button';
-
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-
-//import LayerIcon from '@material-ui/icons/Layers'; 
-//import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
-//import RestoreIcon from '@material-ui/icons/Restore';
-//import FavotiteIcon from '@material-ui/icons/Favorite';
-//import LocationOnIcon from '@material-ui/icons/LocationOn';
-//import FolderIcon from '@material-ui/icons/Folder';
-
-import {Card, CardContent, CardMedia, CardHeader, Avatar} from '@material-ui/core';
+import {Card, CardContent, CardMedia, CardHeader, Avatar, CardActions, IconButton} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-
 import {translate} from 'react-switch-lang';
-
-
 import imgDatabase from '../Home/img/database.jpg';
 import imgServer from '../Home/img/servers.jpg';
 import imgRest from '../Home/img/REST.jpeg';
@@ -38,8 +19,19 @@ import img1C from '../Home/img/1c.jpeg';
 import imgVm from '../Home/img/vm.jpeg';
 import imgArduino from '../Home/img/arduino2.png';
 import laptopItservis1 from '../Home/img/laptopItservis.jpg';
-//import laptopItservis2 from '../Home/img/laptopItservis2.jpg';
-//import BackgroundSlider from '../../BackgroundSlider/BackgroundSlider'
+import ScrollAnimation from 'react-animate-on-scroll';
+import clsx from "clsx";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Collapse from '@material-ui/core/Collapse';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
+import CheckIcon from '@material-ui/icons/Check';
+//import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -97,9 +89,22 @@ const useStyles = makeStyles((theme) => ({
             margin:'auto',
             maxWidth: 500,
             //paddingBottom: theme.spacing(2),
-            flexGrow:1, 
+            flexGrow:1,
+
             //heigh:500
       },
+
+    CardContentSkills:{
+        //margin:'auto',
+        //maxWidth: 500,
+        //paddingBottom: theme.spacing(2),
+        //flexGrow:1,
+        margin: '10px',
+        backgroundColor:'#f6f6f6',
+        borderRadius: theme.spacing(1),
+        //boxShadow: '0px 5px 5px rgba(34, 35, 58, 0.4)',
+
+    },
 
       cardGrid:{
             // 16px
@@ -149,99 +154,184 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(7),
         boxShadow: theme.shadows[10],
       },
+
+    expand: {
+        outline: 'none',
+        WebkitTapHighlightColor: 'transparent',
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+            transition: theme.transitions.create('transform', {
+                duration: theme.transitions.duration.shortest,
+             }),
+        },
+        expandOpen: {
+        WebkitTapHighlightColor: 'transparent',
+        outline: 'none',
+        transform: 'rotate(180deg)',
+        },
     }));
 
-/*
-xs, extra-small: 0px
-sm, small: 600px
-md, medium: 960px
-lg, large: 1280px
-xl, extra-large: 1920px
-*/
   
 let cards = [];
 let skils = [];
 
+
 function Home (props) {
+    const [expanded0, setExpanded0] = React.useState(false);
+    const [expanded1, setExpanded1] = React.useState(false);
+    const [expanded2, setExpanded2] = React.useState(false);
+    const [expanded3, setExpanded3] = React.useState(false);
+    const [expanded4, setExpanded4] = React.useState(false);
+    const [expanded5, setExpanded5] = React.useState(false);
+    const [expanded6, setExpanded6] = React.useState(false);
+    const [expanded7, setExpanded7] = React.useState(false);
+
     const classes = useStyles();
     const [{t}] = useState(props)
     skils[0] = {
         id:0,
         title: t("home.modul2.skils.skil0.title"),
+        img: imgDelphi,
+        expanded: expanded0,
+        hidden:false,
+        disabled:false,
+        framework:[
+            {name:"Windows application"},
+            {name:"Fast Report"},
+            {name:"FIB Plus"},
+            {name:"EHlib"}
+        ]
 
-        img: imgDelphi
-    }
+    };
     skils[1] = {
         id:1,
         title: t("home.modul2.skils.skil1.title"),
         subheader:t("home.modul2.skils.skil1.subheader"),
-        img: imgNodeJs
-    }
+        img: imgNodeJs,
+        expanded: expanded1,
+        disabled:false,
+        hidden:false,
+        framework:[
+            {name:"Express"},
+            {name:"Redis"},
+            {name:"Route"},
+            {name:"Sequelize"}
+        ]
+
+    };
     skils[2] = {
         id:2,
         title: t("home.modul2.skils.skil2.title"),
         subheader:t("home.modul2.skils.skil2.subheader"),
-        img: imgReactJs
-    }
+        img: imgReactJs,
+        expanded: expanded2,
+        disabled:false,
+        hidden:false,
+        framework:[
+            {name:"Redux"},
+            {name:"Hooks"},
+            {name:"Material UI"},
+            {name:"Bootstrap"}
+        ]
+    };
     skils[3] = {
         id:3,
         title: t("home.modul2.skils.skil3.title"),
         subheader:t("home.modul2.skils.skil3.subheader"),
-        img: imgSql
-    }
+        img: imgSql,
+        disabled:false,
+        hidden:false,
+        expanded: expanded3,
+        framework:[
+            {name:"PostgreSQL"},
+            {name:"MySQL"},
+            {name:"Firebird"},
+            {name:"MongoDB"}
+        ]
+    };
     skils[4] = {
         id:4,
         title: t("home.modul2.skils.skil4.title"),
         subheader:t("home.modul2.skils.skil4.subheader"),
-        img: imgHtml
-    }
+        img: imgHtml,
+        expanded: expanded4,
+        disabled:true,
+        hidden:true,
+        framework:[{}]
+    };
     skils[5] = {
         id:5,
         title: t("home.modul2.skils.skil5.title"),
         subheader:t("home.modul2.skils.skil5.subheader"),
-        img: img1C
-    }
-
+        img: img1C,
+        expanded: expanded5,
+        disabled:true,
+        hidden:true,
+        framework:[{}]
+    };
     skils[6] = {
         id:6,
         title: t("home.modul2.skils.skil6.title"),
         subheader:t("home.modul2.skils.skil6.subheader"),
-
-        img: imgVm
-    }
+        img: imgVm,
+        expanded: expanded6,
+        hidden:true,
+        disabled:true,
+        framework:[{}]
+    };
     skils[7] = {
         id:7,
         title: t("home.modul2.skils.skil7.title"),
         subheader:t("home.modul2.skils.skil7.subheader"),
-
-        img: imgArduino
-    }
+        img: imgArduino,
+        expanded: expanded7,
+        hidden:true,
+        disabled:true,
+        framework:[{}]
+    };
     /////////////////////////////////////////////////
     cards[0] = {
         id:"1",
         title:t("home.modul1.cards.card1.header"),
         text:t("home.modul1.cards.card1.text"),
         img: imgDatabase
-    }
+    };
     cards[1] = {
         id:"2",
         title:t("home.modul1.cards.card2.header"),
         text:t("home.modul1.cards.card2.text"),
         img: imgServer
-    }
+    };
     cards[2] = {
         id:"3",
         title:t("home.modul1.cards.card3.header"),
         text:t("home.modul1.cards.card3.text"),
         img: imgRest
-    }
+    };
     cards[3] = {
         id:"4",
         title:t("home.modul1.cards.card4.header"),
         text:t("home.modul1.cards.card4.text"),
         img: imgWebDev
-    }
-        return (
+    };
+
+    const handleExpandClick = (event) => {
+
+         switch (parseInt(event.currentTarget.id)) {
+             case 0: setExpanded0(!expanded0); break;
+             case 1: setExpanded1(!expanded1); break;
+             case 2: setExpanded2(!expanded2); break;
+             case 3: setExpanded3(!expanded3); break;
+             case 4: setExpanded4(!expanded4); break;
+             case 5: setExpanded5(!expanded5); break;
+             case 6: setExpanded6(!expanded6); break;
+             case 7: setExpanded7(!expanded7); break;
+             default:
+                 console.log('Not find id element: ' + event.currentTarget.id);
+         }
+    };
+
+    return (
             <React.Fragment>
                 <Paper className={classes.mainFuturePost}>
                 <Container fixed>
@@ -249,7 +339,6 @@ function Home (props) {
                     <Grid container>
                         <Grid item md={6} >
                             <div className={classes.mainFuturePostContetnt}>
-                           
                             <Typography variant="h3" component="h1" color="inherit" >
                                 {t('home.deviz.text1')}
                              </Typography>
@@ -306,14 +395,44 @@ function Home (props) {
                                 <Card className={classes.cardItemSkil}>
                                     <CardHeader
                                         avatar={
-                                            <Avatar aria-label="recipe" className={classes.avatar} src={skil.img}/>      
+                                            <ScrollAnimation animateIn='animate__swing' >
+                                            <Avatar aria-label="recipe" className={classes.avatar} src={skil.img}/>
+                                            </ScrollAnimation>
                                             }
                                         title= {skil.title}
                                         subheader ={skil.subheader}   
-                                    /> 
-
-                                </Card>    
-                            </Grid>
+                                    />
+                                    <CardActions disableSpacing style={{margin: '0', padding:'0'}}>
+                                        <IconButton
+                                            id={skil.id}
+                                            className={clsx(classes.expand, {
+                                                [classes.expandOpen]:skil.expanded,
+                                            })}
+                                            onClick={handleExpandClick}
+                                            aria-expanded={skil.expanded}
+                                            aria-label="show more"
+                                            hidden = {true}
+                                            disabled={skil.disabled}
+                                        >
+                                            <ExpandMoreIcon />
+                                        </IconButton>
+                                    </CardActions>
+                                    <Collapse in={skil.expanded} timeout="auto" unmountOnExit>
+                                    <CardContent  className={classes.CardContentSkills}>
+                                        <List key={'list_'+skil.id}  style={{backgroundColor:'transparent'}}>
+                                        {skil.framework.map(fw=>(
+                                            <ListItem key={'list_item'+fw.name} button dense={true}>
+                                                <ListItemIcon key={'list_item_icon'+fw.name}><CheckIcon/></ListItemIcon>
+                                                <ListItemText key={'list_item_text'+fw.name}>
+                                                    {fw.name}
+                                                </ListItemText>
+                                            </ListItem>
+                                        ))}
+                                        </List>
+                                    </CardContent>
+                                    </Collapse>
+                                </Card>
+                                </Grid>
 
                             ))}
                     </Grid>   
@@ -322,15 +441,4 @@ function Home (props) {
             </React.Fragment>
         )
 }
-
-
 export default translate(Home);
-
-/**
- *                                         <CardActions>
-                                        <Button size="small" color="secondary">View</Button>
-                                        <Button size="small" color="secondary">Edit</Button>
-                                        <LayerIcon />
-                                        <PlayCircleFilledIcon />
-                                        </CardActions>
- */

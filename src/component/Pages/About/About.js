@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './About.scss';
+import './About.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
@@ -7,27 +7,16 @@ import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import {Card, CardHeader, CardContent} from '@material-ui/core';
 import renderHTML from 'react-render-html';
-
-
 import viberIcon from '../../../assets/viber.png';
-//import telegramIcon from '../../../assets/telegram.jpg';
 import skypeIcon from '../../../assets/skype.jpg';
 import facebookIcon from '../../../assets/facebook.png';
-//import emailIcon from '../../../assets/email.jpg'
 import emailCircle from '../About/img/emailCircle.jpg';
 import questCircle from '../About/img/questCircle.jpeg';
-
-
-
 import {translate} from "react-switch-lang";
 import { Container, Paper } from "@material-ui/core";
-
 import mePhoto from "../../Pages/About/me3.jpg";
 
-
-
 const useStyles = makeStyles((theme) => ({
-
     root: {
         flexGrow: 1,
         margin: 'auto',
@@ -37,14 +26,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         marginTop: theme.spacing(8),
         maxWidth: 1000,
-        
-        //absolute
-        //fixed
-        //relative
-        //static
-        //sticky
-        
-        //marginLeft: 'auto',
+
         overflow: 'initial',
         background: '#ffffff',
         display: 'flex',

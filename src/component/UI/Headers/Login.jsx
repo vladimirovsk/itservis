@@ -14,7 +14,6 @@ const Login = (props, openDlg=false) => {
 
     console.log(openDlg);
     return(
-    //<Dialog open={openDlg} onClose={handleCloseDlg} aria-labelledby="customized-dialog-title">
     <Dialog open={openDlg} aria-labelledby="customized-dialog-title">
 
         <DialogTitle id="form-dialog-title">{t('login.header')}</DialogTitle>
