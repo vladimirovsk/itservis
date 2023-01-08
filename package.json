@@ -9,7 +9,7 @@
     "animate.css": "^4.1.1",
     "create-react-class": "^15.7.0",
     "css-base": "^1.0.0",
-    "npm": "^6.14.11",
+    "npm": "^9.2.0",
     "react": "^16.14.0",
     "react-animate-on-scroll": "^2.1.5",
     "react-dom": "^16.14.0",
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "PORT=3010 react-scripts start",
-    "build": "PORT=3010react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
