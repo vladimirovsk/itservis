@@ -237,7 +237,7 @@ const thStyles = makeStyles( theme => ({
 		>
             <MenuItem onClick={(event) => {handleChangeLg(event, 'en'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={1 === selectedIndex} >EN</MenuItem>
           	<MenuItem onClick={(event) => {handleChangeLg(event, 'ru'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={2 === selectedIndex} >RU</MenuItem>
-          	<MenuItem onClick={(event) => {handleChangeLg(event, 'pl'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={3 === selectedIndex}  >PL</MenuItem>
+          	{/*<MenuItem onClick={(event) => {handleChangeLg(event, 'pl'); setOpenDrawer(false); setOpenMenu(false)}} className={classes.menuItem} selected={3 === selectedIndex}  >PL</MenuItem>*/}
       </Menu>	
     </React.Fragment>
   )
