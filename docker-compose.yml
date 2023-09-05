@@ -2,6 +2,8 @@ version: '3'
 
 services:
   it-service-react:
+    container_name: 'it-service-react'
+    restart: always
     build: ./
     ports:
       - '3010:3010'
