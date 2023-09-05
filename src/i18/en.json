@@ -50,20 +50,20 @@
       "text2":"Programming languages and development environments",
         "skils":{
             "skil0":{
-              "title":"Delphi",
-              "subheader":"Pascal"
+              "title":"Flutter",
+              "subheader":"Dart"
             },
             "skil1":{
               "title":"Node JS",
-              "subheader":"JavaScript/REST Api"
+              "subheader":"JavaScript/TypeScript"
             },
             "skil2":{
               "title":"React JS",
-              "subheader":"JavaScript"
+              "subheader":"JavaScript/TypeScript"
             },
             "skil3":{
-              "title":"SQL",
-              "subheader":"MSQL/MySQl/Firebird ..."
+              "title":"Database",
+              "subheader":"Postgresql/MySQl/MongoDb ..."
             },
             "skil4":{
               "title":"HTML/CSS",

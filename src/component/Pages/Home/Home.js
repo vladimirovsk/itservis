@@ -10,7 +10,7 @@ import imgDatabase from '../Home/img/database.jpg';
 import imgServer from '../Home/img/servers.jpg';
 import imgRest from '../Home/img/REST.jpeg';
 import imgWebDev from '../Home/img/webdev.jpg';
-import imgDelphi from '../Home/img/delphi.png';
+import imgFlutter from '../Home/img/flutter.png';
 import imgNodeJs from '../Home/img/nodejs.png';
 import imgReactJs from '../Home/img/react.png';
 import imgSql from '../Home/img/sql.png';
@@ -191,15 +191,13 @@ function Home (props) {
     skils[0] = {
         id:0,
         title: t("home.modul2.skils.skil0.title"),
-        img: imgDelphi,
+        img: imgFlutter,
         expanded: expanded0,
         hidden:false,
         disabled:false,
         framework:[
-            {name:"Windows application"},
-            {name:"Fast Report"},
-            {name:"FIB Plus"},
-            {name:"EHlib"}
+            {name:"Dart"},
+
         ]
 
     };

@@ -50,8 +50,8 @@
       "text2":"Языки программирования и среды разработок",
       "skils":{
           "skil0":{
-            "title":"Delphi",
-            "subheader":"Pascal"
+            "title":"Flutter",
+            "subheader":"Dart"
           },
           "skil1":{
             "title":"Node JS",

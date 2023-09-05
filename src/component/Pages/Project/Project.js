@@ -9,11 +9,11 @@ import restApi from '../../../assets/img/REST_API.png';
 import imgNit from '../../../assets/img/nit.png'; 
 import avr from '../../../assets/img/AVR.png'; 
 import gkh from '../../../assets/img/GKH.jpg'; 
-import imgNodeJs from '../Home/img/nodejs.png'
-import imgArduino from '../Home/img/arduino2.png'
-import imgDelphi from '../Home/img/delphi.png'
+import imgNodeJs from '../Home/img/nodejs.png';
+import imgArduino from '../Home/img/arduino2.png';
+import imgFlutter from '../Home/img/flutter.png';
 import imgUP1 from '../../../assets/img/atmega.jpg';
-import impReact from '../Home/img/react.png'
+import impReact from '../Home/img/react.png';
 import webdesign from '../../../assets/img/webdesign2.png';
 import okt1 from '../../../assets/img/OKT1.png';
 import okt2 from '../../../assets/img/OKT2.png';
@@ -82,7 +82,7 @@ function Project (props)  {
               default: 
                 console.log('Not find id element: '+event.currentTarget.id);   
       }
-    }
+    };
 
       function raiseInvoiceClicked() {
         const url = 'https://drive.google.com/file/d/0B7gHNdjZ_HOscGJ3M1ZyXzRQbVU/view?usp=sharing';
@@ -106,7 +106,7 @@ function Project (props)  {
 
     React.useEffect(()=>{
 
-    },[])
+    },[]);
 
         return (
             <Container className={classes.mt5}>
@@ -269,7 +269,7 @@ function Project (props)  {
                         <CardHeader 
                                 avatar={
                                 <Avatar aria-label="recipe" className={classes.avatar}
-                                  src={imgDelphi}
+                                  src={imgFlutter}
                                   />
                                 }
                                 title = {t('project.row2.title')}
@@ -388,7 +388,7 @@ function Project (props)  {
                         <CardHeader 
                                 avatar={
                                 <Avatar aria-label="recipe" className={classes.avatar}
-                                    src={imgDelphi}
+                                    src={imgFlutter}
                                 >
                                 
                                 </Avatar>
