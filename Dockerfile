@@ -14,20 +14,6 @@ ENV NODE_ENV=production
 
 RUN npm run build
 
-FROM node:16.14.0
-
-ENV NODE_ENV=production
-
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-COPY --from=builder /usr/src/app/node_modules ./node_modules
-COPY --from=builder /usr/src/app ./
-
-COPY --from=builder ["/usr/src/app/package.json", "./"]
-
-#COPY --from=builder ["/usr/src/app/next.config.js", "/usr/src/app/.env", "/usr/src/app/package.json", "./"]
-
 EXPOSE 3010
 
 CMD [ "npm", "run", "start" ]
